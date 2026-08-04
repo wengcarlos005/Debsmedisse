@@ -24,14 +24,17 @@ const CONFIG = {
     msgCartaDoDia: 'Olá, Debs! Tirei minha carta do dia no site e gostaria de uma leitura completa.',
   },
 
-  /* ---------- TELAS (abas) ---------- */
+  /* ---------- TELAS (abas) ----------
+     "inicio" reúne capa + sobre + carta do dia numa tela só.
+     Leituras e Agendar continuam em telas separadas. */
   telas: [
-    { id: 'inicio',   label: 'Início',    icone: 'ico-lua' },
-    { id: 'sobre',    label: 'Sobre',     icone: 'ico-coracao' },
-    { id: 'leituras', label: 'Leituras',  icone: 'ico-carta-completa' },
-    { id: 'carta',    label: 'Carta',     icone: 'ico-estrela' },
-    { id: 'agendar',  label: 'Agendar',   icone: 'ico-zap' },
+    { id: 'inicio',   label: 'Início',   icone: 'ico-lua' },
+    { id: 'leituras', label: 'Leituras', icone: 'ico-carta-completa' },
+    { id: 'agendar',  label: 'Agendar',  icone: 'ico-zap' },
   ],
+
+  /* Cartas mostradas no leque da capa (índice do arcano) */
+  lequeCapa: [18, 17, 19],   // A Lua · A Estrela · O Sol
 
   /* ---------- INÍCIO ---------- */
   hero: {
@@ -55,9 +58,12 @@ const CONFIG = {
       'Não prevejo um futuro fechado. Abro o baralho com você e mostro o que está em jogo agora — os movimentos, os medos, as portas que você ainda não viu.',
       'Atendo online, com hora marcada, sem enrolação. A decisão continua sendo inteiramente sua.',
     ],
-    // Coloque a foto em assets/ e aponte aqui. Ex.: 'assets/debs.jpg'
-    foto: null,
-    fotoAlt: 'Debs, cartomante e leitora de Tarô',
+    // Foto tratada a partir de assets/debora-original.jpg
+    // (recorte 3:4, nitidez e gradação para a paleta do site)
+    foto:      'assets/debora.jpg',
+    fotoWebp:  'assets/debora.webp',
+    fotoMini:  'assets/debora@450.jpg',
+    fotoAlt:   'Débora, cartomante e leitora de Tarô',
     pilares: [
       { titulo: 'Ética',         texto: 'Não leio terceiros sem consentimento.',      icone: 'balanca' },
       { titulo: 'Sigilo',        texto: 'O que é dito na leitura fica na leitura.',   icone: 'cadeado' },

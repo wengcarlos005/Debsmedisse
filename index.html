@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -39,8 +39,8 @@
 </script>
 
 <!-- bumpe ?v= a cada edição de CSS/JS -->
-<link rel="stylesheet" href="css/style.css?v=4">
-<link rel="stylesheet" href="css/animations.css?v=4">
+<link rel="stylesheet" href="css/style.css?v=6">
+<link rel="stylesheet" href="css/animations.css?v=6">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"ProfessionalService","name":"Debs | Cartomante",
@@ -64,6 +64,7 @@
   </symbol>
   <symbol id="ico-dir" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
   <symbol id="ico-esq" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+  <symbol id="ico-baixo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></symbol>
   <symbol id="ico-balanca" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
     <path d="M12 5v16M8 21h8M4 8h16"/><path d="M7 8 4 15h6zM17 8l-3 7h6z"/><circle cx="12" cy="4" r="1.6"/>
   </symbol>
@@ -102,14 +103,42 @@
 <!-- ============================================================
      TOPO
      ============================================================ -->
-<header class="topo" id="topo">
+<header class="topo">
   <div class="topo-in">
     <a href="#/inicio" class="logo" aria-label="Início">
       <span class="logo-mark">
-        <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
-          <circle cx="22" cy="22" r="20" opacity=".4"/>
-          <path d="M26 11a11.5 11.5 0 1 0 0 22 13.5 13.5 0 0 1 0-22z" stroke-linejoin="round"/>
-          <path d="M22 2v3M22 39v3M2 22h3M39 22h3" stroke-linecap="round" opacity=".8"/>
+        <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" aria-hidden="true">
+          <!-- anel externo com marcações, gira devagar -->
+          <g class="lm-ext">
+            <circle cx="30" cy="30" r="28" stroke-width=".7" opacity=".45"/>
+            <g stroke-width="1" opacity=".8" stroke-linecap="round">
+              <path d="M30 2v4M30 54v4M2 30h4M54 30h4"/>
+            </g>
+            <g stroke-width=".8" opacity=".5" stroke-linecap="round">
+              <path d="M10.2 10.2l2.8 2.8M47 47l2.8 2.8M10.2 49.8l2.8-2.8M47 13l2.8-2.8"/>
+            </g>
+          </g>
+
+          <!-- anel interno de 8 pontas, gira ao contrário -->
+          <g class="lm-int" stroke-width=".8" opacity=".65">
+            <circle cx="30" cy="30" r="21" stroke-dasharray="2 5"/>
+            <path d="M30 9l1.6 3.4 3.4 1.6-3.4 1.6L30 21l-1.6-5.4-3.4-1.6 3.4-1.6z" opacity=".9"/>
+            <path d="M30 51l1.6-3.4 3.4-1.6-3.4-1.6L30 39l-1.6 5.4-3.4 1.6 3.4 1.6z" opacity=".9"/>
+          </g>
+
+          <!-- lua crescente, fixa -->
+          <g class="lm-lua">
+            <path d="M35 15a15.5 15.5 0 1 0 0 30 18.5 18.5 0 0 1 0-30z"
+                  stroke-width="1.4" stroke-linejoin="round"/>
+            <circle cx="24" cy="26" r="1.3" fill="currentColor" stroke="none" opacity=".7"/>
+            <circle cx="21" cy="33" r="1" fill="currentColor" stroke="none" opacity=".5"/>
+          </g>
+
+          <!-- estrela em órbita -->
+          <g class="lm-orbita">
+            <path d="M30 4l1.3 2.7L34 8l-2.7 1.3L30 12l-1.3-2.7L26 8l2.7-1.3z"
+                  fill="currentColor" stroke="none" opacity=".95"/>
+          </g>
         </svg>
       </span>
       <span class="logo-txt">
@@ -122,7 +151,7 @@
       <span class="abas-marca" id="abasMarca" aria-hidden="true"></span>
     </nav>
 
-    <a class="btn btn--zap btn--sm topo-zap" data-zap="hero" target="_blank" rel="noopener">
+    <a class="btn btn--ouro btn--sm topo-cta" data-zap="hero" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-zap"/></svg>
       <span class="so-desktop">Agendar</span>
     </a>
@@ -130,234 +159,235 @@
 </header>
 
 
+<main class="palco">
+
 <!-- ============================================================
-     PALCO — cada .tela é uma "janela" própria
+     TELA 1 — INÍCIO (capa + sobre + carta do dia)
      ============================================================ -->
-<main class="palco" id="palco">
+<section class="tela" data-tela="inicio" aria-label="Início">
 
-  <!-- ---------- INÍCIO ---------- -->
-  <section class="tela" data-tela="inicio" aria-labelledby="t-inicio">
-    <div class="moldura moldura--hero">
-      <div class="mold-cantos" aria-hidden="true"></div>
-      <div class="mold-corpo hero-corpo">
+  <!-- ---- capa ---- -->
+  <div class="moldura moldura--hero">
+    <span class="mold-cantos" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <div class="mold-corpo hero-corpo">
+      <div class="hero-txt">
+        <p class="eyebrow" data-hero-eyebrow></p>
+        <h1 id="t-inicio"></h1>
+        <p class="lead" data-hero-sub></p>
 
-        <div class="hero-txt">
-          <p class="eyebrow" data-hero-eyebrow></p>
-          <h1 id="t-inicio"></h1>
-          <p class="lead" data-hero-sub></p>
-
-          <div class="acoes">
-            <a href="#/leituras" class="btn btn--ouro" data-magnetico>
-              <span data-hero-cta1></span>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-dir"/></svg>
-            </a>
-            <a href="#/agendar" class="btn btn--linha" data-magnetico>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-lua"/></svg>
-              <span data-hero-cta2></span>
-            </a>
-          </div>
-
-          <ul class="marcas" id="heroMarcas"></ul>
+        <div class="acoes">
+          <a href="#/leituras" class="btn btn--ouro" data-magnetico>
+            <span data-hero-cta1></span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-dir"/></svg>
+          </a>
+          <a href="#/agendar" class="btn btn--linha" data-magnetico>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-lua"/></svg>
+            <span data-hero-cta2></span>
+          </a>
         </div>
 
-        <div class="leque" id="leque" aria-hidden="true"></div>
+        <ul class="marcas" id="heroMarcas"></ul>
       </div>
-      <span class="mold-fita" data-fita>Início</span>
+
+      <div class="leque" id="leque" aria-hidden="true"></div>
     </div>
-  </section>
+    <span class="mold-fita" data-fita>Debs · Cartomante</span>
+  </div>
 
-  <!-- ---------- SOBRE ---------- -->
-  <section class="tela" data-tela="sobre" aria-labelledby="t-sobre">
-    <div class="moldura">
-      <div class="mold-cantos" aria-hidden="true"></div>
-      <div class="mold-corpo sobre-corpo">
+  <a class="desce" href="#bloco-sobre" aria-label="Descer para Sobre">
+    <span></span>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-baixo"/></svg>
+  </a>
 
-        <div class="retrato">
-          <div class="retrato-arco" aria-hidden="true">
-            <svg viewBox="0 0 300 400" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
-              <path data-desenha style="--traco:1100"
-                    d="M150 14c-45 0-82 33-82 76v244c0 25 20 45 45 45h74c25 0 45-20 45-45V90c0-43-37-76-82-76z"/>
-              <path data-desenha style="--traco:420;--delay:250ms"
-                    d="M68 132c-13-8-21-21-21-37 0-9 6-17 13-17s13 8 13 17M232 132c13-8 21-21 21-37 0-9-6-17-13-17s-13 8-13 17"/>
-              <path data-desenha style="--traco:300;--delay:450ms"
-                    d="M150 14V4M139 8l11-8 11 8M122 28c-8-6-8-15 0-19M178 28c8-6 8-15 0-19"/>
-            </svg>
-          </div>
-          <div class="retrato-foto" id="retratoFoto"></div>
+  <!-- ---- sobre ---- -->
+  <div class="moldura" id="bloco-sobre">
+    <span class="mold-cantos" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <div class="mold-corpo sobre-corpo">
+      <div class="retrato" data-reveal="zoom">
+        <div class="retrato-arco" aria-hidden="true">
+          <svg viewBox="0 0 300 400" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+            <path data-desenha style="--traco:1100"
+                  d="M150 14c-45 0-82 33-82 76v244c0 25 20 45 45 45h74c25 0 45-20 45-45V90c0-43-37-76-82-76z"/>
+            <path data-desenha style="--traco:420;--delay:250ms"
+                  d="M68 132c-13-8-21-21-21-37 0-9 6-17 13-17s13 8 13 17M232 132c13-8 21-21 21-37 0-9-6-17-13-17s-13 8-13 17"/>
+            <path data-desenha style="--traco:300;--delay:450ms"
+                  d="M150 14V4M139 8l11-8 11 8M122 28c-8-6-8-15 0-19M178 28c8-6 8-15 0-19"/>
+          </svg>
         </div>
-
-        <div class="sobre-txt">
-          <p class="eyebrow" data-sobre-eyebrow></p>
-          <h2 id="t-sobre" data-sobre-titulo></h2>
-          <div class="prosa" id="sobreTexto"></div>
-          <p class="assinatura" data-sobre-assinatura></p>
-          <ul class="pilares" id="pilares"></ul>
-        </div>
-
+        <div class="retrato-foto" id="retratoFoto"></div>
       </div>
-      <span class="mold-fita" data-fita>Sobre</span>
+
+      <div class="sobre-txt">
+        <p class="eyebrow" data-sobre-eyebrow></p>
+        <h2 data-sobre-titulo></h2>
+        <div class="prosa" id="sobreTexto"></div>
+        <p class="assinatura" data-sobre-assinatura></p>
+        <ul class="pilares" id="pilares"></ul>
+      </div>
     </div>
-  </section>
+    <span class="mold-fita" data-fita>Sobre</span>
+  </div>
 
-  <!-- ---------- LEITURAS ---------- -->
-  <section class="tela" data-tela="leituras" aria-labelledby="t-leituras">
-    <div class="moldura">
-      <div class="mold-cantos" aria-hidden="true"></div>
-      <div class="mold-corpo">
+  <!-- ---- carta do dia ---- -->
+  <div class="moldura">
+    <span class="mold-cantos" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <div class="mold-corpo carta-corpo">
+      <div class="baralho">
+        <div class="carta" id="carta" role="button" tabindex="0"
+             aria-label="Tirar a carta do dia" aria-pressed="false">
+          <div class="carta-face carta-verso" id="cartaVerso"></div>
+          <div class="carta-face carta-frente" id="cartaFrente"></div>
+          <div class="particulas" id="particulas" aria-hidden="true"></div>
+        </div>
+        <span class="carta-dica" id="cartaDica">toque para revelar</span>
+      </div>
 
-        <header class="tela-head">
-          <p class="eyebrow" data-servicos-eyebrow></p>
-          <h2 id="t-leituras" data-servicos-titulo></h2>
-          <p class="lead" data-servicos-sub></p>
-        </header>
+      <div class="carta-leitura">
+        <p class="eyebrow" id="cartaRotulo" data-carta-eyebrow></p>
+        <h2><span id="cartaTitulo"></span></h2>
+        <div class="carta-chaves" id="cartaChaves"></div>
+        <p class="msg" id="cartaMsg"></p>
 
-        <div class="svc-grid" id="servicosGrid"></div>
-
-        <p class="nota">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-escudo"/></svg>
-          Pix antes da tiragem · Sigilo garantido · Maiores de 18 anos
+        <p class="rodape-msg" id="cartaRodape" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-lua"/></svg>
+          <span>Volte amanhã para uma nova carta.</span>
         </p>
 
-        <div class="risco" aria-hidden="true"><i></i><b></b><i></i></div>
-
-        <h3 class="sub-titulo" data-jornada-titulo></h3>
-        <ol class="passos" id="passos"></ol>
-
-        <div id="depoBloco" hidden>
-          <div class="risco" aria-hidden="true"><i></i><b></b><i></i></div>
-          <div class="aviso" id="avisoExemplo" hidden>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-alerta"/></svg>
-            <span><strong>Nota para quem edita:</strong> depoimentos de exemplo. Troque por reais em <code>js/config.js</code> antes de divulgar.</span>
-          </div>
-          <div class="carrossel" id="carrossel">
-            <div class="carrossel-trilho" id="carrosselTrilho"></div>
-          </div>
-          <div class="carrossel-nav">
-            <button class="cbtn" id="depoAnt" aria-label="Anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-esq"/></svg></button>
-            <div class="dots" id="depoDots" role="tablist" aria-label="Depoimentos"></div>
-            <button class="cbtn" id="depoProx" aria-label="Próximo"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-dir"/></svg></button>
-          </div>
-        </div>
-
-      </div>
-      <span class="mold-fita" data-fita>Leituras</span>
-    </div>
-  </section>
-
-  <!-- ---------- CARTA DO DIA ---------- -->
-  <section class="tela" data-tela="carta" aria-labelledby="t-carta">
-    <div class="moldura">
-      <div class="mold-cantos" aria-hidden="true"></div>
-      <div class="mold-corpo carta-corpo">
-
-        <div class="baralho">
-          <div class="carta" id="carta" role="button" tabindex="0"
-               aria-label="Tirar a carta do dia" aria-pressed="false">
-            <div class="carta-face carta-verso" id="cartaVerso"></div>
-            <div class="carta-face carta-frente" id="cartaFrente"></div>
-            <div class="particulas" id="particulas" aria-hidden="true"></div>
-          </div>
-          <span class="carta-dica" id="cartaDica">toque para revelar</span>
-        </div>
-
-        <div class="carta-leitura">
-          <p class="eyebrow" id="cartaRotulo" data-carta-eyebrow></p>
-          <h2 id="t-carta"><span id="cartaTitulo"></span></h2>
-          <div class="carta-chaves" id="cartaChaves"></div>
-          <p class="msg" id="cartaMsg"></p>
-
-          <p class="rodape-msg" id="cartaRodape" hidden>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-lua"/></svg>
-            <span>Volte amanhã para uma nova carta.</span>
-          </p>
-
-          <div class="acoes" id="cartaAcoes" hidden>
-            <a class="btn btn--zap" data-zap="carta" target="_blank" rel="noopener" data-magnetico>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-zap"/></svg>
-              Quero uma leitura completa
-            </a>
-          </div>
-        </div>
-
-      </div>
-      <span class="mold-fita" data-fita>Carta do dia</span>
-    </div>
-  </section>
-
-  <!-- ---------- AGENDAR ---------- -->
-  <section class="tela" data-tela="agendar" aria-labelledby="t-agendar">
-    <div class="moldura">
-      <div class="mold-cantos" aria-hidden="true"></div>
-      <div class="mold-corpo">
-
-        <header class="tela-head">
-          <p class="eyebrow" data-agenda-eyebrow></p>
-          <h2 id="t-agendar" data-agenda-titulo></h2>
-          <p class="lead" data-agenda-sub></p>
-        </header>
-
-        <form id="formAgenda" novalidate>
-          <div class="form-grid">
-            <div class="campo">
-              <label for="fNome">Seu nome</label>
-              <input type="text" id="fNome" placeholder="Como posso te chamar?" autocomplete="name" required>
-              <span class="erro" data-erro="fNome"></span>
-            </div>
-            <div class="campo">
-              <label for="fFormato">Formato</label>
-              <select id="fFormato" required></select>
-              <span class="erro" data-erro="fFormato"></span>
-            </div>
-            <div class="campo" id="campoQtd">
-              <label for="fQtd">Quantas perguntas?</label>
-              <select id="fQtd">
-                <option>1 pergunta</option>
-                <option selected>3 perguntas</option>
-                <option>5 perguntas</option>
-                <option>mais de 5 perguntas</option>
-                <option>ainda não sei</option>
-              </select>
-            </div>
-            <div class="campo">
-              <label for="fTema">Tema</label>
-              <select id="fTema"></select>
-            </div>
-            <div class="campo campo--full">
-              <label for="fHorario">Melhor horário</label>
-              <select id="fHorario"></select>
-            </div>
-            <div class="campo campo--full">
-              <label for="fMsg">Quer adiantar algo? <em>(opcional)</em></label>
-              <textarea id="fMsg" placeholder="Em poucas linhas, o que te traz até as cartas."></textarea>
-            </div>
-          </div>
-
-          <button type="submit" class="btn btn--zap btn--bloco" data-magnetico>
+        <div class="acoes" id="cartaAcoes" hidden>
+          <a class="btn btn--zap" data-zap="carta" target="_blank" rel="noopener" data-magnetico>
             <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-zap"/></svg>
-            Enviar pelo WhatsApp
-          </button>
-          <p class="nota">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-info"/></svg>
-            O botão abre o WhatsApp com a mensagem pronta para você revisar antes de enviar.
-          </p>
-        </form>
-
-        <div class="risco" aria-hidden="true"><i></i><b></b><i></i></div>
-
-        <h3 class="sub-titulo" data-faq-titulo></h3>
-        <div class="faq" id="faqLista"></div>
-
+            Quero uma leitura completa
+          </a>
+        </div>
       </div>
-      <span class="mold-fita" data-fita>Agendar</span>
     </div>
-  </section>
+    <span class="mold-fita" data-fita>Carta do dia</span>
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     TELA 2 — LEITURAS
+     ============================================================ -->
+<section class="tela" data-tela="leituras" aria-label="Leituras">
+  <div class="moldura">
+    <span class="mold-cantos" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <div class="mold-corpo">
+
+      <header class="tela-head">
+        <p class="eyebrow" data-servicos-eyebrow></p>
+        <h2 data-servicos-titulo></h2>
+        <p class="lead" data-servicos-sub></p>
+      </header>
+
+      <div class="svc-grid" id="servicosGrid"></div>
+
+      <p class="nota">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-escudo"/></svg>
+        Pix antes da tiragem · Sigilo garantido · Maiores de 18 anos
+      </p>
+
+      <div class="risco" aria-hidden="true"><i></i><b></b><i></i></div>
+
+      <h3 class="sub-titulo" data-jornada-titulo></h3>
+      <ol class="passos" id="passos"></ol>
+
+      <div id="depoBloco" hidden>
+        <div class="risco" aria-hidden="true"><i></i><b></b><i></i></div>
+        <div class="aviso" id="avisoExemplo" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-alerta"/></svg>
+          <span><strong>Nota para quem edita:</strong> depoimentos de exemplo. Troque por reais em <code>js/config.js</code> antes de divulgar.</span>
+        </div>
+        <div class="carrossel" id="carrossel">
+          <div class="carrossel-trilho" id="carrosselTrilho"></div>
+        </div>
+        <div class="carrossel-nav">
+          <button class="cbtn" id="depoAnt" aria-label="Anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-esq"/></svg></button>
+          <div class="dots" id="depoDots" role="tablist" aria-label="Depoimentos"></div>
+          <button class="cbtn" id="depoProx" aria-label="Próximo"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-dir"/></svg></button>
+        </div>
+      </div>
+
+    </div>
+    <span class="mold-fita" data-fita>Leituras</span>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     TELA 3 — AGENDAR
+     ============================================================ -->
+<section class="tela" data-tela="agendar" aria-label="Agendar">
+  <div class="moldura">
+    <span class="mold-cantos" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <div class="mold-corpo">
+
+      <header class="tela-head">
+        <p class="eyebrow" data-agenda-eyebrow></p>
+        <h2 data-agenda-titulo></h2>
+        <p class="lead" data-agenda-sub></p>
+      </header>
+
+      <form id="formAgenda" novalidate>
+        <div class="form-grid">
+          <div class="campo">
+            <label for="fNome">Seu nome</label>
+            <input type="text" id="fNome" placeholder="Como posso te chamar?" autocomplete="name" required>
+            <span class="erro" data-erro="fNome"></span>
+          </div>
+          <div class="campo">
+            <label for="fFormato">Formato</label>
+            <select id="fFormato" required></select>
+            <span class="erro" data-erro="fFormato"></span>
+          </div>
+          <div class="campo" id="campoQtd">
+            <label for="fQtd">Quantas perguntas?</label>
+            <select id="fQtd">
+              <option>1 pergunta</option>
+              <option selected>3 perguntas</option>
+              <option>5 perguntas</option>
+              <option>mais de 5 perguntas</option>
+              <option>ainda não sei</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="fTema">Tema</label>
+            <select id="fTema"></select>
+          </div>
+          <div class="campo campo--full">
+            <label for="fHorario">Melhor horário</label>
+            <select id="fHorario"></select>
+          </div>
+          <div class="campo campo--full">
+            <label for="fMsg">Quer adiantar algo? <em>(opcional)</em></label>
+            <textarea id="fMsg" placeholder="Em poucas linhas, o que te traz até as cartas."></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn--zap btn--bloco" data-magnetico>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-zap"/></svg>
+          Enviar pelo WhatsApp
+        </button>
+        <p class="nota">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-info"/></svg>
+          O botão abre o WhatsApp com a mensagem pronta para você revisar antes de enviar.
+        </p>
+      </form>
+
+      <div class="risco" aria-hidden="true"><i></i><b></b><i></i></div>
+
+      <h3 class="sub-titulo" data-faq-titulo></h3>
+      <div class="faq" id="faqLista"></div>
+
+    </div>
+    <span class="mold-fita" data-fita>Agendar</span>
+  </div>
+</section>
 
 </main>
 
 
-<!-- ============================================================
-     RODAPÉ
-     ============================================================ -->
 <footer class="rodape">
   <p class="rodape-frase" data-rodape-frase></p>
   <div class="sociais" id="sociais"></div>
@@ -369,7 +399,6 @@
 </footer>
 
 
-<!-- abas fixas (mobile) -->
 <nav class="abas-mob" id="abasMob" aria-label="Seções do site"></nav>
 
 <noscript>
@@ -378,9 +407,9 @@
   </div>
 </noscript>
 
-<script src="js/config.js?v=4"></script>
-<script src="js/cards.js?v=4"></script>
-<script src="js/animations.js?v=4"></script>
-<script src="js/app.js?v=4"></script>
+<script src="js/config.js?v=6"></script>
+<script src="js/cards.js?v=6"></script>
+<script src="js/animations.js?v=6"></script>
+<script src="js/app.js?v=6"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    TARÔ DA DEBS — estilo base
    Cada seção é uma TELA (aba) dentro de uma MOLDURA de carta.
    Mobile-first. Sem gradientes borrados genéricos: a fronteira
@@ -139,14 +139,26 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   gap: 1rem;
 }
 
-.logo { display: flex; align-items: center; gap: .6rem; flex: none; }
+.logo { display: flex; align-items: center; gap: .7rem; flex: none; }
 .logo-mark {
-  width: 34px; height: 34px;
+  width: 42px; height: 42px;
   color: var(--ouro);
   flex: none;
-  transition: transform .7s cubic-bezier(.2, .8, .2, 1);
+  transition: transform .9s cubic-bezier(.2, .8, .2, 1), filter .5s ease;
 }
-.logo:hover .logo-mark { transform: rotate(180deg); }
+.logo-mark svg { width: 100%; height: 100%; overflow: visible; }
+.logo:hover .logo-mark {
+  transform: rotate(180deg);
+  filter: drop-shadow(0 0 7px rgba(212, 175, 55, .55));
+}
+
+/* camadas girando em ritmos e sentidos diferentes */
+.lm-ext, .lm-int, .lm-orbita { transform-origin: 30px 30px; }
+.lm-ext    { animation: giraLento 46s linear infinite; }
+.lm-int    { animation: giraLento 32s linear infinite reverse; }
+.lm-orbita { animation: giraLento 14s linear infinite; }
+.lm-lua    { transform-origin: 30px 30px; transition: transform .9s cubic-bezier(.2, .8, .2, 1); }
+.logo:hover .lm-lua { transform: rotate(-180deg); }   /* a lua fica de pé no hover */
 .logo-txt { line-height: 1.05; }
 .logo-nome {
   display: block;
@@ -207,6 +219,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .tela { display: none; }
 .tela.ativa { display: block; }
 
+/* na tela "Início" as molduras empilham — respiro entre elas */
+.tela .moldura + .moldura,
+.desce + .moldura { margin-top: clamp(1.6rem, 4vw, 2.8rem); }
+
 /* ---------- MOLDURA (a fronteira visual) ---------- */
 .moldura {
   position: relative;
@@ -228,31 +244,18 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   pointer-events: none;
 }
 
-/* cantos ornamentados */
+/* cantos ornamentados — os 4 vértices */
 .mold-cantos { position: absolute; inset: 0; pointer-events: none; }
-.mold-cantos::before,
-.mold-cantos::after {
-  content: '';
+.mold-cantos i {
   position: absolute;
-  width: 34px; height: 34px;
+  width: 30px; height: 30px;
   border: 0 solid var(--ouro);
-  opacity: .75;
+  opacity: .8;
 }
-.mold-cantos::before { top: 14px; left: 14px;  border-top-width: 1.5px; border-left-width: 1.5px;  border-top-left-radius: 8px; }
-.mold-cantos::after  { top: 14px; right: 14px; border-top-width: 1.5px; border-right-width: 1.5px; border-top-right-radius: 8px; }
-.moldura::after {
-  content: '';
-  position: absolute;
-  bottom: 14px; left: 14px; right: 14px;
-  height: 34px;
-  border-bottom: 1.5px solid var(--ouro);
-  border-left: 1.5px solid var(--ouro);
-  border-right: 1.5px solid var(--ouro);
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  opacity: .28;
-  pointer-events: none;
-}
+.mold-cantos i:nth-child(1) { top: 13px;    left: 13px;  border-top-width: 1.4px;    border-left-width: 1.4px;  border-top-left-radius: 7px; }
+.mold-cantos i:nth-child(2) { top: 13px;    right: 13px; border-top-width: 1.4px;    border-right-width: 1.4px; border-top-right-radius: 7px; }
+.mold-cantos i:nth-child(3) { bottom: 13px; left: 13px;  border-bottom-width: 1.4px; border-left-width: 1.4px;  border-bottom-left-radius: 7px; }
+.mold-cantos i:nth-child(4) { bottom: 13px; right: 13px; border-bottom-width: 1.4px; border-right-width: 1.4px; border-bottom-right-radius: 7px; }
 
 /* fita com o nome da tela */
 .mold-fita {
@@ -437,24 +440,39 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 250px;
+  min-height: 290px;
   perspective: 1300px;
 }
 .leque-carta {
   position: absolute;
-  width: clamp(112px, 27vw, 168px);
+  width: clamp(118px, 28vw, 172px);
   aspect-ratio: 300 / 520;
-  border-radius: 10px;
+  border-radius: 11px;
   overflow: hidden;
   box-shadow: var(--sombra);
-  transition: transform .7s cubic-bezier(.2, .8, .2, 1);
+  transition: transform .7s cubic-bezier(.2, .8, .2, 1), box-shadow .5s ease;
 }
-.leque-carta:nth-child(1) { transform: rotate(-15deg) translate(-56%, 10px); z-index: 1; }
-.leque-carta:nth-child(2) { transform: translateY(-12px); z-index: 3; }
-.leque-carta:nth-child(3) { transform: rotate(15deg) translate(56%, 10px); z-index: 2; }
-.leque:hover .leque-carta:nth-child(1) { transform: rotate(-21deg) translate(-74%, 2px); }
-.leque:hover .leque-carta:nth-child(2) { transform: translateY(-26px) scale(1.04); }
-.leque:hover .leque-carta:nth-child(3) { transform: rotate(21deg) translate(74%, 2px); }
+.leque-carta:nth-child(1) { transform: rotate(-14deg) translate(-62%, 14px); z-index: 1; }
+.leque-carta:nth-child(2) { transform: translateY(-14px);                    z-index: 3; }
+.leque-carta:nth-child(3) { transform: rotate(14deg)  translate(62%, 14px);  z-index: 2; }
+.leque:hover .leque-carta:nth-child(1) { transform: rotate(-20deg) translate(-84%, 2px); }
+.leque:hover .leque-carta:nth-child(2) { transform: translateY(-30px) scale(1.05); box-shadow: var(--sombra), 0 0 38px -8px rgba(212, 175, 55, .45); }
+.leque:hover .leque-carta:nth-child(3) { transform: rotate(20deg)  translate(84%, 2px); }
+
+/* seta que desce da capa para o bloco Sobre */
+.desce {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .4rem;
+  padding: 1.6rem 0 .6rem;
+  color: var(--ouro);
+  opacity: .55;
+  transition: opacity .3s ease;
+}
+.desce:hover { opacity: 1; }
+.desce span { width: 1px; height: 30px; background: linear-gradient(var(--ouro), transparent); }
+.desce svg { width: 16px; height: 16px; }
 
 
 /* ============================================================
@@ -475,7 +493,22 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   display: grid;
   place-items: center;
 }
-.retrato-foto img { width: 100%; height: 100%; object-fit: cover; }
+.retrato-foto picture { display: contents; }
+.retrato-foto img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: 50% 22%;
+}
+/* véu azul-noite por cima para a foto sentar na paleta */
+.retrato-foto::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(15, 20, 50, .1) 0%, transparent 32%, rgba(11, 17, 32, .55) 100%),
+    radial-gradient(75% 60% at 50% 38%, transparent 40%, rgba(20, 25, 60, .42) 100%);
+}
 .retrato-vazio {
   display: flex;
   flex-direction: column;

@@ -151,13 +151,26 @@
         <li><div class="num">${m.num}</div><div class="lbl">${m.lbl}</div></li>`).join('');
     }
 
+    // Leque da capa: cartas ILUSTRADAS de verdade (não versos vazios)
     const leque = $('#leque');
     if (leque) {
-      leque.innerHTML = Array.from({ length: 3 },
-        (_, i) => `<div class="leque-carta${i === 1 ? ' anim-flutua' : ''}">${VERSO_SVG}</div>`).join('');
+      const escolhidas = (CONFIG.lequeCapa || [18, 17, 19])
+        .map((n) => ARCANOS.find((a) => a.n === n))
+        .filter(Boolean);
+
+      leque.innerHTML = escolhidas.map((arc, i) =>
+        `<div class="leque-carta${i === 1 ? ' anim-flutua' : ''}">${cartaSVG(arc)}</div>`
+      ).join('');
     }
   }
 
+
+  const placeholderFoto = () => `
+    <div class="retrato-vazio">${ICO('ico-camera')}
+      <span>Espaço para a foto</span>
+      <span style="font-size:.56rem;opacity:.7;text-transform:none;letter-spacing:0">
+        defina <code>sobre.foto</code> em js/config.js</span>
+    </div>`;
 
   /* ============================================================
      TELA: SOBRE
@@ -173,13 +186,20 @@
 
     const foto = $('#retratoFoto');
     if (foto) {
-      foto.innerHTML = s.foto
-        ? `<img src="${s.foto}" alt="${s.fotoAlt}" loading="lazy">`
-        : `<div class="retrato-vazio">${ICO('ico-camera')}
-             <span>Espaço para a foto</span>
-             <span style="font-size:.56rem;opacity:.7;text-transform:none;letter-spacing:0">
-               defina <code>sobre.foto</code> em js/config.js</span>
-           </div>`;
+      if (s.foto) {
+        // webp quando o navegador suporta, jpg como reserva; mini no celular
+        foto.innerHTML = `
+          <picture>
+            ${s.fotoWebp ? `<source type="image/webp" srcset="${s.fotoWebp}">` : ''}
+            <img src="${s.foto}" alt="${s.fotoAlt}" loading="lazy" decoding="async">
+          </picture>`;
+        // se o arquivo sumir, cai no placeholder em vez de mostrar ícone quebrado
+        foto.querySelector('img').addEventListener('error', () => {
+          foto.innerHTML = placeholderFoto();
+        });
+      } else {
+        foto.innerHTML = placeholderFoto();
+      }
     }
 
     const pil = $('#pilares');
