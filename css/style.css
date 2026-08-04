@@ -1101,11 +1101,12 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .acoes { margin-top: 1.15rem; gap: .55rem; }
   .acoes .btn { flex: 1 1 auto; }
 
-  .leque { min-height: 232px; align-items: flex-start; }
+  /* margem para o leque não encostar no botão Agendar */
+  .leque { min-height: 236px; align-items: flex-start; margin-top: 1.5rem; }
   .leque-carta { width: clamp(98px, 27vw, 122px); }
-  .leque-carta:nth-child(1) { transform: rotate(-13deg) translate(-56%, 10px); }
-  .leque-carta:nth-child(2) { transform: translateY(-6px); }
-  .leque-carta:nth-child(3) { transform: rotate(13deg)  translate(56%, 10px); }
+  .leque-carta:nth-child(1) { transform: rotate(-13deg) translate(-56%, 12px); }
+  .leque-carta:nth-child(2) { transform: translateY(0); }
+  .leque-carta:nth-child(3) { transform: rotate(13deg)  translate(56%, 12px); }
 
   .desce { padding: 1rem 0 .3rem; }
 }
