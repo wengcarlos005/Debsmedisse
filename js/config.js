@@ -40,7 +40,7 @@ const CONFIG = {
   hero: {
     eyebrow: 'Leituras de Tarô · Online',
     titulo: 'Os guias falam.<br>Eu <em>traduzo</em>.',
-    subtitulo: 'Escuta, ética e zero julgamento. Você traz a pergunta — as cartas fazem o resto.',
+    subtitulo: 'Você traz a pergunta. As cartas fazem o resto.',
     ctaPrimario: 'Ver as leituras',
     ctaSecundario: 'Agendar',
     marcas: [
@@ -55,8 +55,8 @@ const CONFIG = {
     eyebrow: 'Quem lê as cartas',
     titulo: 'Prazer, eu sou a Debs',
     paragrafos: [
-      'Não prevejo um futuro fechado. Abro o baralho com você e mostro o que está em jogo agora — os movimentos, os medos, as portas que você ainda não viu.',
-      'Atendo online, com hora marcada, sem enrolação. A decisão continua sendo inteiramente sua.',
+      'Não leio futuro fechado. Abro o baralho com você e mostro o que está em jogo agora: os movimentos, os medos, as portas que você ainda não viu.',
+      'Atendo online, com hora marcada. A decisão continua sendo sua.',
     ],
     // Foto tratada a partir de assets/debora-original.jpg
     // (recorte 3:4, nitidez e gradação para a paleta do site)
@@ -67,8 +67,8 @@ const CONFIG = {
     pilares: [
       { titulo: 'Ética',         texto: 'Não leio terceiros sem consentimento.',      icone: 'balanca' },
       { titulo: 'Sigilo',        texto: 'O que é dito na leitura fica na leitura.',   icone: 'cadeado' },
-      { titulo: 'Acolhimento',   texto: 'Chegue como estiver. Sem se justificar.',    icone: 'coracao' },
-      { titulo: 'Livre-arbítrio',texto: 'As cartas mostram caminhos, não sentenças.', icone: 'chave' },
+      { titulo: 'Acolhimento',   texto: 'Chegue como estiver.',    icone: 'coracao' },
+      { titulo: 'Livre-arbítrio',texto: 'As cartas mostram caminhos. A escolha é sua.', icone: 'chave' },
     ],
   },
 
@@ -90,7 +90,7 @@ const CONFIG = {
       },
       {
         id: 'completas', nome: 'Completas', acento: 'ouro', destaque: true, selo: 'Mais procurada',
-        descricao: 'Contexto, obstáculos e conselho em cada pergunta.',
+        descricao: 'Cada pergunta destrinchada: contexto, obstáculo e conselho.',
         duracao: 'Até 24h',
         linhas: [
           { label: '1 pergunta',           valor: 'R$ 30,00' },
@@ -126,7 +126,7 @@ const CONFIG = {
   carta: {
     eyebrow: 'Mini-oráculo · Grátis',
     titulo: 'Sua carta de hoje',
-    subtitulo: 'Uma carta, uma mensagem. A mesma acompanha você até a meia-noite.',
+    subtitulo: 'Uma carta por dia. A sua vale até a meia-noite.',
   },
 
   /* ---------- DEPOIMENTOS ----------
@@ -165,11 +165,11 @@ const CONFIG = {
   faq: {
     titulo: 'Dúvidas frequentes',
     itens: [
-      { p: 'Preciso estar presente na tiragem?', r: 'Nas leituras Simples e Completas, não — você manda as perguntas e recebe o resultado. Na consulta por hora, sim: é ao vivo.' },
+      { p: 'Preciso estar presente na tiragem?', r: 'Nas Simples e Completas não: você manda as perguntas e recebe o resultado pronto. Na consulta por hora sim, porque é ao vivo.' },
       { p: 'Como recebo a leitura?', r: 'Pelo WhatsApp, em áudio ou texto, com a foto da tiragem.' },
       { p: 'Formas de pagamento?', r: 'Pix, antes da tiragem.' },
-      { p: 'Posso perguntar sobre outra pessoa?', r: 'Posso ler a sua relação com ela. O que não faço é ler a vida de terceiros que não pediram.' },
-      { p: 'O Tarô prevê doença ou morte?', r: 'Não, e eu não faço esse tipo de leitura. Para saúde, procure um médico.' },
+      { p: 'Posso perguntar sobre outra pessoa?', r: 'Posso ler a sua relação com ela. A vida íntima de quem não pediu leitura eu não abro.' },
+      { p: 'O Tarô prevê doença ou morte?', r: 'Não faço esse tipo de leitura. Para saúde, procure um médico.' },
     ],
   },
 

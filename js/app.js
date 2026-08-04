@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    APP — router de telas + montagem do conteúdo a partir do CONFIG
    ============================================================ */
 
@@ -111,7 +111,7 @@
     const m = CONFIG.marca;
     setTexto('[data-marca-nome]', m.nome);
     setTexto('[data-marca-titulo]', m.titulo);
-    document.title = `${m.nome} | ${m.titulo} — Leituras de Tarô Online`;
+    document.title = `${m.nome} | ${m.titulo} · Leituras de Tarô Online`;
     const ano = $('#ano');
     if (ano) ano.textContent = new Date().getFullYear();
   }
@@ -179,7 +179,7 @@
     const s = CONFIG.sobre;
     setTexto('[data-sobre-eyebrow]', s.eyebrow);
     setTexto('[data-sobre-titulo]', s.titulo);
-    setTexto('[data-sobre-assinatura]', `— ${CONFIG.marca.nome}`);
+    setTexto('[data-sobre-assinatura]', CONFIG.marca.nome);
 
     const txt = $('#sobreTexto');
     if (txt) txt.innerHTML = s.paragrafos.map((p) => `<p>${p}</p>`).join('');
@@ -233,7 +233,7 @@
     if (grid) {
       grid.innerHTML = s.itens.map((it, i) => {
         const linhas = it.linhas.map((l) => {
-          const msg = `Olá, ${CONFIG.marca.nome}! Vim pelo site. Gostaria de uma leitura *${it.nome}* — ${l.label.toLowerCase()} (${l.valor}). Podemos conversar?`;
+          const msg = `Olá, ${CONFIG.marca.nome}! Vim pelo site. Gostaria de uma leitura *${it.nome}*, ${l.label.toLowerCase()} (${l.valor}). Podemos conversar?`;
           return `<div class="svc-linha">
               <span class="lbl">${l.label}</span>
               <span class="val">${l.valor}</span>
@@ -283,10 +283,12 @@
     if (!d.lista || d.lista.length === 0) { bloco.remove(); return; }
     bloco.hidden = false;
 
-    const aviso = $('#avisoExemplo');
-    if (aviso) aviso.hidden = !d.exemplo;
+    // Sem banner na página: o alerta vai só para quem abre o console
     if (d.exemplo) {
-      console.warn('[Tarô da Debs] Os depoimentos são EXEMPLOS FICTÍCIOS. Troque por reais em js/config.js antes de publicar.');
+      console.warn(
+        '[Tarô da Debs] Os depoimentos em js/config.js ainda são EXEMPLOS FICTÍCIOS.\n' +
+        'Troque por depoimentos reais (ou use lista: []) antes de divulgar o site.'
+      );
     }
 
     const trilho = $('#carrosselTrilho');
