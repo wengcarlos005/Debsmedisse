@@ -1,203 +1,108 @@
 /* ============================================================
-   ANIMAÇÕES — keyframes, classes utilitárias e reduced-motion.
-   Regra: nada aqui pode causar reflow em loop. Só transform,
-   opacity, filter e stroke-dashoffset (compostos na GPU).
+   ANIMAÇÕES — keyframes, transição entre telas e reduced-motion
+   Só transform / opacity / filter / stroke-dashoffset (GPU).
    ============================================================ */
 
 /* ---------- KEYFRAMES ---------- */
+@keyframes fadeUp    { from { opacity:0; transform: translateY(26px); } to { opacity:1; transform:none; } }
+@keyframes fadeLeft  { from { opacity:0; transform: translateX(-28px); } to { opacity:1; transform:none; } }
+@keyframes fadeRight { from { opacity:0; transform: translateX(28px); }  to { opacity:1; transform:none; } }
+@keyframes scaleIn   { from { opacity:0; transform: scale(.92); }        to { opacity:1; transform:scale(1); } }
+@keyframes blurIn    { from { opacity:0; filter: blur(9px); transform: translateY(14px);} to { opacity:1; filter:blur(0); transform:none; } }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: none; }
-}
+@keyframes flutua      { 0%,100% { transform: translateY(-12px); } 50% { transform: translateY(-26px); } }
+@keyframes respira     { 0%,100% { opacity:.4; } 50% { opacity:.85; } }
+@keyframes desenha     { from { stroke-dashoffset: var(--traco, 1200); } to { stroke-dashoffset: 0; } }
+@keyframes giraLento   { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+@keyframes brilhaTexto { 0% { background-position: -220% center; } 100% { background-position: 220% center; } }
 
-@keyframes fadeDown {
-  from { opacity: 0; transform: translateY(-24px); }
-  to   { opacity: 1; transform: none; }
-}
-
-@keyframes fadeLeft {
-  from { opacity: 0; transform: translateX(-34px); }
-  to   { opacity: 1; transform: none; }
-}
-
-@keyframes fadeRight {
-  from { opacity: 0; transform: translateX(34px); }
-  to   { opacity: 1; transform: none; }
-}
-
-@keyframes scaleIn {
-  from { opacity: 0; transform: scale(.9); }
-  to   { opacity: 1; transform: scale(1); }
-}
-
-@keyframes blurIn {
-  from { opacity: 0; filter: blur(10px); transform: translateY(16px); }
-  to   { opacity: 1; filter: blur(0);    transform: none; }
-}
-
-/* Menu mobile — entrada dos itens */
-@keyframes menuEntra {
-  from { opacity: 0; transform: translateY(18px); }
-  to   { opacity: 1; transform: none; }
-}
-
-/* Flutuação suave (lua, cartas, orbes) */
-@keyframes flutua {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-16px); }
-}
-
-@keyframes flutuaLento {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  33%      { transform: translate(10px, -14px) rotate(2deg); }
-  66%      { transform: translate(-8px, -6px) rotate(-2deg); }
-}
-
-/* Halo respirando */
-@keyframes respira {
-  0%, 100% { opacity: .35; transform: scale(1); }
-  50%      { opacity: .75; transform: scale(1.07); }
-}
-
-/* Anel pulsante do WhatsApp */
-@keyframes anelPulsa {
-  0%   { transform: scale(1);    opacity: .85; }
-  70%  { transform: scale(1.75); opacity: 0; }
-  100% { transform: scale(1.75); opacity: 0; }
-}
-
-/* Varredura dourada sobre texto */
-@keyframes brilhaTexto {
-  0%   { background-position: -220% center; }
-  100% { background-position: 220% center; }
-}
-
-/* Desenho de traço SVG */
-@keyframes desenha {
-  from { stroke-dashoffset: var(--traco, 1200); }
-  to   { stroke-dashoffset: 0; }
-}
-
-/* Rotação lenta (mandalas de fundo) */
-@keyframes giraLento {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-@keyframes giraLentoInverso {
-  from { transform: rotate(360deg); }
-  to   { transform: rotate(0deg); }
-}
-
-/* Aurora — blobs de gradiente derivando no fundo */
-@keyframes aurora {
-  0%, 100% { transform: translate(0, 0) scale(1);    opacity: .5; }
-  33%      { transform: translate(6%, -8%) scale(1.15); opacity: .8; }
-  66%      { transform: translate(-7%, 5%) scale(.92);  opacity: .45; }
-}
-
-/* Cintilar (estrelas estáticas do CSS) */
-@keyframes cintila {
-  0%, 100% { opacity: .2; transform: scale(.8); }
-  50%      { opacity: 1;  transform: scale(1.15); }
-}
-
-/* Seta de scroll */
-@keyframes desceSeta {
-  0%   { transform: translateY(-6px); opacity: 0; }
-  40%  { opacity: 1; }
-  100% { transform: translateY(8px);  opacity: 0; }
-}
-
-/* Embaralhar o baralho */
 @keyframes embaralha {
-  0%   { transform: translateX(0) rotate(0deg); }
-  20%  { transform: translateX(-24px) rotate(-7deg) scale(.96); }
-  40%  { transform: translateX(22px)  rotate(6deg)  scale(1.02); }
-  60%  { transform: translateX(-14px) rotate(-4deg) scale(.98); }
-  80%  { transform: translateX(9px)   rotate(2deg); }
-  100% { transform: translateX(0) rotate(0deg); }
+  0%   { transform: translateX(0) rotate(0); }
+  20%  { transform: translateX(-22px) rotate(-6deg) scale(.96); }
+  40%  { transform: translateX(20px)  rotate(5deg)  scale(1.02); }
+  60%  { transform: translateX(-13px) rotate(-3deg) scale(.98); }
+  80%  { transform: translateX(8px)   rotate(2deg); }
+  100% { transform: translateX(0) rotate(0); }
 }
 
-/* Explosão de partículas ao revelar a carta */
 @keyframes particula {
-  0%   { transform: translate(0, 0) scale(1);  opacity: 1; }
-  100% { transform: translate(var(--px, 0), var(--py, 0)) scale(0); opacity: 0; }
+  0%   { transform: translate(0,0) scale(1); opacity:1; }
+  100% { transform: translate(var(--px,0), var(--py,0)) scale(0); opacity:0; }
 }
 
-/* Glow que pulsa */
-@keyframes glowPulsa {
-  0%, 100% { box-shadow: 0 0 22px rgba(212, 175, 55, .22); }
-  50%      { box-shadow: 0 0 46px rgba(212, 175, 55, .55); }
-}
-
-/* Contagem/entrada das linhas da tabela de preço */
-@keyframes linhaEntra {
-  from { opacity: 0; transform: translateX(-14px); }
+/* transição entre telas — a "janela" entra e sai */
+@keyframes telaEntra {
+  from { opacity: 0; transform: translateY(18px) scale(.985); }
   to   { opacity: 1; transform: none; }
+}
+@keyframes telaSai {
+  from { opacity: 1; transform: none; }
+  to   { opacity: 0; transform: translateY(-12px) scale(.99); }
+}
+
+/* moldura desenhando o filete ao entrar */
+@keyframes moldNasce {
+  from { clip-path: inset(0 0 100% 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+
+/* fita subindo */
+@keyframes fitaSobe {
+  from { opacity: 0; transform: translate(-50%, 12px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
 }
 
 
 /* ============================================================
-   SCROLL REVEAL — base + variações
-   O JS só adiciona a classe .visivel; o CSS faz o resto.
+   TRANSIÇÃO DE TELA
    ============================================================ */
+.tela.entrando { animation: telaEntra .55s cubic-bezier(.2,.8,.2,1) both; }
+.tela.saindo   { animation: telaSai .22s ease-in both; }
 
-[data-reveal] {
-  opacity: 0;
-  will-change: opacity, transform;
-}
+.tela.entrando .mold-cantos::before,
+.tela.entrando .mold-cantos::after { animation: moldNasce .7s .12s cubic-bezier(.3,.9,.3,1) both; }
+.tela.entrando .mold-fita          { animation: fitaSobe .5s .3s cubic-bezier(.2,.8,.2,1) both; }
+
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+[data-reveal] { opacity: 0; }
 [data-reveal].visivel {
-  animation: fadeUp .85s cubic-bezier(.2, .8, .2, 1) forwards;
+  animation: fadeUp .7s cubic-bezier(.2,.8,.2,1) forwards;
   animation-delay: var(--delay, 0ms);
 }
-
-[data-reveal='baixo'].visivel   { animation-name: fadeDown; }
 [data-reveal='esquerda'].visivel { animation-name: fadeLeft; }
 [data-reveal='direita'].visivel  { animation-name: fadeRight; }
 [data-reveal='zoom'].visivel     { animation-name: scaleIn; }
-[data-reveal='blur'].visivel     { animation-name: blurIn; animation-duration: 1s; }
+[data-reveal='blur'].visivel     { animation-name: blurIn; animation-duration: .9s; }
 
-/* Traços SVG que se desenham ao entrar em tela */
 [data-desenha] {
   stroke-dasharray: var(--traco, 1200);
   stroke-dashoffset: var(--traco, 1200);
 }
 [data-desenha].visivel {
-  animation: desenha 2.1s cubic-bezier(.4, 0, .2, 1) forwards;
+  animation: desenha 1.9s cubic-bezier(.4,0,.2,1) forwards;
   animation-delay: var(--delay, 0ms);
 }
 
 
 /* ============================================================
-   CLASSES DE ANIMAÇÃO CONTÍNUA
+   CONTÍNUAS
    ============================================================ */
+.anim-flutua { animation: flutua 6s ease-in-out infinite; }
+.anim-gira   { animation: giraLento 70s linear infinite; }
 
-.anim-flutua       { animation: flutua 6s ease-in-out infinite; }
-.anim-flutua-lento { animation: flutuaLento 14s ease-in-out infinite; }
-.anim-respira      { animation: respira 5s ease-in-out infinite; }
-.anim-gira         { animation: giraLento 70s linear infinite; }
-.anim-gira-inv     { animation: giraLentoInverso 95s linear infinite; }
-.anim-cintila      { animation: cintila 3.4s ease-in-out infinite; }
+.palavra {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(24px);
+  animation: fadeUp .85s cubic-bezier(.2,.8,.2,1) forwards;
+}
 
-/* Atrasos escalonados reutilizáveis */
-.d1 { animation-delay: .12s; }
-.d2 { animation-delay: .28s; }
-.d3 { animation-delay: .46s; }
-.d4 { animation-delay: .64s; }
-
-/* Texto com varredura dourada */
 .texto-brilho {
-  background: linear-gradient(
-    100deg,
-    var(--ouro-claro) 0%,
-    #fff8e0 18%,
-    var(--ouro) 34%,
-    var(--ouro-claro) 52%,
-    var(--ouro) 70%,
-    var(--ouro-claro) 100%
-  );
+  background: linear-gradient(100deg, var(--ouro-claro) 0%, #fff8e0 20%, var(--ouro) 40%,
+              var(--ouro-claro) 60%, var(--ouro) 80%, var(--ouro-claro) 100%);
   background-size: 220% auto;
   -webkit-background-clip: text;
   background-clip: text;
@@ -205,52 +110,8 @@
   animation: brilhaTexto 7s linear infinite;
 }
 
-/* Anel do botão de WhatsApp */
-.zap-flut .anel  { animation: anelPulsa 2.4s ease-out infinite; }
-.zap-flut .anel2 { animation: anelPulsa 2.4s 1.2s ease-out infinite; }
-
-/* Seta do hero */
-.scroll-dica .seta { animation: desceSeta 2s ease-in-out infinite; }
-
-/* Blobs de aurora no fundo das seções */
-.aurora-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
-  z-index: 0;
-  animation: aurora 24s ease-in-out infinite;
-}
-.aurora-blob--ouro    { background: rgba(212, 175, 55, .17); }
-.aurora-blob--lavanda { background: rgba(185, 167, 218, .15); animation-duration: 30s; animation-delay: -8s; }
-.aurora-blob--rosa    { background: rgba(232, 180, 196, .13); animation-duration: 27s; animation-delay: -15s; }
-
-/* Mandala girando atrás de uma seção */
-.mandala {
-  position: absolute;
-  pointer-events: none;
-  z-index: 0;
-  color: var(--ouro);
-  opacity: .07;
-}
-.mandala svg { width: 100%; height: 100%; }
-
-/* Revelação palavra a palavra do título do hero */
-.palavra {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(28px) rotate(3deg);
-  animation: fadeUp .9s cubic-bezier(.2, .8, .2, 1) forwards;
-}
-
-/* Partículas da carta revelada */
-.particulas {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 5;
-  overflow: visible;
-}
+/* partículas da carta */
+.particulas { position: absolute; inset: 0; pointer-events: none; z-index: 5; overflow: visible; }
 .particula {
   position: absolute;
   top: 50%; left: 50%;
@@ -258,69 +119,30 @@
   border-radius: 50%;
   background: var(--ouro-claro);
   box-shadow: 0 0 8px var(--ouro);
-  animation: particula 1.25s cubic-bezier(.15, .8, .3, 1) forwards;
+  animation: particula 1.2s cubic-bezier(.15,.8,.3,1) forwards;
 }
 
-/* Carta revelada respira um glow */
-.carta.revelada .carta-frente { animation: glowPulsa 3.6s ease-in-out infinite; }
-
-/* Linhas da tabela de preço entram em cascata */
-.svc.visivel .svc-linha {
-  opacity: 0;
-  animation: linhaEntra .55s cubic-bezier(.2, .8, .2, 1) forwards;
-}
-.svc.visivel .svc-linha:nth-child(1) { animation-delay: .18s; }
-.svc.visivel .svc-linha:nth-child(2) { animation-delay: .30s; }
-.svc.visivel .svc-linha:nth-child(3) { animation-delay: .42s; }
-
-/* Tilt 3D — o JS escreve as variáveis */
-.tilt {
-  transform:
-    perspective(900px)
-    rotateX(var(--rx, 0deg))
-    rotateY(var(--ry, 0deg))
-    translateY(var(--ty, 0));
-}
+/* dica pulsando sob o baralho */
+.carta-dica { animation: respira 2.8s ease-in-out infinite; }
 
 
 /* ============================================================
-   ACESSIBILIDADE — respeita quem pediu menos movimento.
-   Desliga TUDO: keyframes, transições, parallax e starfield.
+   ACESSIBILIDADE — desliga tudo
    ============================================================ */
-
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: .001ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: .001ms !important;
     scroll-behavior: auto !important;
   }
-
-  /* garante que nada fique invisível por causa do opacity:0 inicial */
-  [data-reveal],
-  .palavra,
-  .svc.visivel .svc-linha,
-  .menu-mob a,
-  .menu-mob .btn {
+  [data-reveal], .palavra, .tela.entrando, .tela.saindo {
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;
+    clip-path: none !important;
   }
-
-  [data-desenha] {
-    stroke-dasharray: none !important;
-    stroke-dashoffset: 0 !important;
-  }
-
-  #starfield,
-  .cursor-aura,
-  .aurora-blob,
-  .mandala,
-  .particulas {
-    display: none !important;
-  }
-
+  [data-desenha] { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; }
+  #starfield, .particulas { display: none !important; }
   .carta { transition: none !important; }
 }

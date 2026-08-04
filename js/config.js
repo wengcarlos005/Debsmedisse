@@ -1,7 +1,6 @@
 /* ============================================================
    CONFIG — Tudo que a Debs precisa editar está NESTE arquivo.
    Nome, telefone, preços, textos, depoimentos e FAQ.
-   Nenhum outro arquivo precisa ser tocado para trocar conteúdo.
    ============================================================ */
 
 const CONFIG = {
@@ -16,181 +15,131 @@ const CONFIG = {
   },
 
   /* ---------- CONTATO ----------
-     Formato do WhatsApp: código do país + DDD + número, só dígitos. */
+     WhatsApp: código do país + DDD + número, só dígitos. */
   whatsapp: {
     numero: '5511941723682',
     exibicao: '+55 (11) 94172-3682',
-    // Mensagem do botão flutuante
-    msgPadrao: 'Olá, Debs! Vim pelo site e gostaria de saber mais sobre as leituras. ✨',
-    // Mensagem do CTA do hero
+    msgPadrao: 'Olá, Debs! Vim pelo site e gostaria de saber mais sobre as leituras.',
     msgHero: 'Olá, Debs! Vim pelo site e gostaria de agendar uma leitura de Tarô.',
-    // Mensagem do CTA da carta do dia
     msgCartaDoDia: 'Olá, Debs! Tirei minha carta do dia no site e gostaria de uma leitura completa.',
   },
 
-  /* ---------- HERO ---------- */
+  /* ---------- TELAS (abas) ---------- */
+  telas: [
+    { id: 'inicio',   label: 'Início',    icone: 'ico-lua' },
+    { id: 'sobre',    label: 'Sobre',     icone: 'ico-coracao' },
+    { id: 'leituras', label: 'Leituras',  icone: 'ico-carta-completa' },
+    { id: 'carta',    label: 'Carta',     icone: 'ico-estrela' },
+    { id: 'agendar',  label: 'Agendar',   icone: 'ico-zap' },
+  ],
+
+  /* ---------- INÍCIO ---------- */
   hero: {
-    eyebrow: 'Leituras de Tarô · Consultas online',
+    eyebrow: 'Leituras de Tarô · Online',
     titulo: 'Os guias falam.<br>Eu <em>traduzo</em>.',
-    subtitulo:
-      'Um espaço seguro para você ouvir o que já sabe por dentro. Leituras de Tarô feitas com escuta, ética e zero julgamento — no seu tempo, de onde você estiver.',
-    ctaPrimario: 'Conheça os Oráculos',
-    ctaSecundario: 'Agendar Leitura',
+    subtitulo: 'Escuta, ética e zero julgamento. Você traz a pergunta — as cartas fazem o resto.',
+    ctaPrimario: 'Ver as leituras',
+    ctaSecundario: 'Agendar',
+    marcas: [
+      { num: '22',   lbl: 'Arcanos' },
+      { num: '24h',  lbl: 'Resposta' },
+      { num: '100%', lbl: 'Sigiloso' },
+    ],
   },
 
   /* ---------- SOBRE ---------- */
   sobre: {
-    eyebrow: 'Quem conduz a leitura',
+    eyebrow: 'Quem lê as cartas',
     titulo: 'Prazer, eu sou a Debs',
     paragrafos: [
-      'Sou cartomante e leitora de Tarô. Meu trabalho não é prever um futuro fechado — é abrir o baralho junto com você e mostrar o que está em jogo agora: os movimentos, os medos, as portas que você ainda não viu.',
-      'Atendo online, com hora marcada, em conversa direta e sem enrolação. Você traz a pergunta, eu trago a leitura — e a decisão continua sendo inteiramente sua.',
+      'Não prevejo um futuro fechado. Abro o baralho com você e mostro o que está em jogo agora — os movimentos, os medos, as portas que você ainda não viu.',
+      'Atendo online, com hora marcada, sem enrolação. A decisão continua sendo inteiramente sua.',
     ],
-    // Troque por uma foto real: coloque o arquivo em assets/ e aponte aqui.
-    // Ex.: foto: 'assets/debs.jpg'
+    // Coloque a foto em assets/ e aponte aqui. Ex.: 'assets/debs.jpg'
     foto: null,
     fotoAlt: 'Debs, cartomante e leitora de Tarô',
     pilares: [
-      {
-        titulo: 'Ética',
-        texto: 'Não leio terceiros sem consentimento, não faço previsão de morte, doença ou gravidez.',
-        icone: 'balanca',
-      },
-      {
-        titulo: 'Sigilo',
-        texto: 'O que é dito na leitura fica na leitura. Sempre. Sem exceção.',
-        icone: 'cadeado',
-      },
-      {
-        titulo: 'Acolhimento',
-        texto: 'Você não precisa se explicar nem se justificar. Chegue como estiver.',
-        icone: 'coracao',
-      },
-      {
-        titulo: 'Livre-arbítrio',
-        texto: 'As cartas mostram caminhos, não sentenças. A escolha final é sempre sua.',
-        icone: 'chave',
-      },
+      { titulo: 'Ética',         texto: 'Não leio terceiros sem consentimento.',      icone: 'balanca' },
+      { titulo: 'Sigilo',        texto: 'O que é dito na leitura fica na leitura.',   icone: 'cadeado' },
+      { titulo: 'Acolhimento',   texto: 'Chegue como estiver. Sem se justificar.',    icone: 'coracao' },
+      { titulo: 'Livre-arbítrio',texto: 'As cartas mostram caminhos, não sentenças.', icone: 'chave' },
     ],
   },
 
-  /* ---------- JORNADA / COMO FUNCIONA ---------- */
-  jornada: {
-    eyebrow: 'Como funciona',
-    titulo: 'A jornada da sua leitura',
-    subtitulo: 'Do primeiro "oi" até a resposta na sua mão — quatro passos, sem mistério.',
-    passos: [
-      {
-        n: '01',
-        titulo: 'Escolha o formato',
-        texto: 'Perguntas Simples, Completas ou consulta por hora. Se não souber qual, me chama que eu te ajudo a decidir.',
-      },
-      {
-        n: '02',
-        titulo: 'Envie suas perguntas',
-        texto: 'Pelo WhatsApp, no seu tempo. Quanto mais específica a pergunta, mais precisa a leitura.',
-      },
-      {
-        n: '03',
-        titulo: 'Eu abro as cartas',
-        texto: 'Faço a tiragem em silêncio, com sua energia em mente, e interpreto carta por carta.',
-      },
-      {
-        n: '04',
-        titulo: 'Você recebe a leitura',
-        texto: 'Em áudio ou texto, com a foto da tiragem. Dúvidas sobre o que veio? Pode perguntar.',
-      },
-    ],
-  },
-
-  /* ---------- SERVIÇOS E PREÇOS ----------
-     Tabela real da @debsmedisse (destaque de stories "Tabela de Preços"). */
+  /* ---------- LEITURAS: preços + jornada ---------- */
   servicos: {
     eyebrow: 'Tabela de preços',
     titulo: 'Escolha o seu oráculo',
-    subtitulo: 'Três formatos de leitura. Pagamento via Pix antes da tiragem.',
+    subtitulo: 'Pagamento via Pix antes da tiragem.',
     itens: [
       {
-        id: 'simples',
-        nome: 'Simples',
-        descricao: 'Respostas objetivas e diretas ao ponto. Ideal para dúvidas pontuais do dia a dia.',
-        duracao: 'Resposta em até 24h',
-        destaque: false,
-        acento: 'rosa',
+        id: 'simples', nome: 'Simples', acento: 'rosa', destaque: false,
+        descricao: 'Respostas diretas ao ponto.',
+        duracao: 'Até 24h',
         linhas: [
-          { label: '1 pergunta',            valor: 'R$ 15,00' },
-          { label: '3 perguntas',           valor: 'R$ 35,00' },
-          { label: 'Acima de 5 perguntas',  valor: 'R$ 10,00 cada' },
+          { label: '1 pergunta',           valor: 'R$ 15,00' },
+          { label: '3 perguntas',          valor: 'R$ 35,00' },
+          { label: 'Acima de 5 perguntas', valor: 'R$ 10,00 cada' },
         ],
       },
       {
-        id: 'completas',
-        nome: 'Completas',
-        descricao: 'Leitura aprofundada de cada pergunta: contexto, obstáculos, conselho e desdobramentos.',
-        duracao: 'Resposta em até 24h',
-        destaque: true,
-        selo: 'Mais procurada',
-        acento: 'ouro',
+        id: 'completas', nome: 'Completas', acento: 'ouro', destaque: true, selo: 'Mais procurada',
+        descricao: 'Contexto, obstáculos e conselho em cada pergunta.',
+        duracao: 'Até 24h',
         linhas: [
-          { label: '1 pergunta',            valor: 'R$ 30,00' },
-          { label: '3 perguntas',           valor: 'R$ 75,00' },
-          { label: 'Acima de 5 perguntas',  valor: 'R$ 25,00 cada' },
+          { label: '1 pergunta',           valor: 'R$ 30,00' },
+          { label: '3 perguntas',          valor: 'R$ 75,00' },
+          { label: 'Acima de 5 perguntas', valor: 'R$ 25,00 cada' },
         ],
       },
       {
-        id: 'hora',
-        nome: 'Por Hora',
-        descricao: 'Consulta ao vivo, em conversa aberta. Você pergunta à vontade enquanto a mesa estiver posta.',
-        duracao: 'Ao vivo, com hora marcada',
-        destaque: false,
-        acento: 'lavanda',
+        id: 'hora', nome: 'Por Hora', acento: 'lavanda', destaque: false,
+        descricao: 'Consulta ao vivo, conversa aberta.',
+        duracao: 'Hora marcada',
         obs: 'Sem limite de perguntas',
         linhas: [
           { label: '1 hora',           valor: 'R$ 100,00' },
           { label: '2 horas',          valor: 'R$ 150,00' },
-          { label: 'Acima de 3 horas', valor: '+ R$ 30,00 / hora' },
+          { label: 'Acima de 3 horas', valor: '+ R$ 30,00 / h' },
         ],
       },
     ],
   },
 
+  jornada: {
+    titulo: 'Como funciona',
+    passos: [
+      { n: '01', titulo: 'Escolha o formato',   texto: 'Simples, Completas ou por hora.' },
+      { n: '02', titulo: 'Mande as perguntas',  texto: 'Pelo WhatsApp, no seu tempo.' },
+      { n: '03', titulo: 'Eu abro as cartas',   texto: 'Tiragem feita com a sua energia em mente.' },
+      { n: '04', titulo: 'Você recebe',         texto: 'Em áudio ou texto, com a foto da tiragem.' },
+    ],
+  },
+
+  /* ---------- CARTA DO DIA ---------- */
+  carta: {
+    eyebrow: 'Mini-oráculo · Grátis',
+    titulo: 'Sua carta de hoje',
+    subtitulo: 'Uma carta, uma mensagem. A mesma acompanha você até a meia-noite.',
+  },
+
   /* ---------- DEPOIMENTOS ----------
-     ⚠️⚠️⚠️  ATENÇÃO — LEIA ANTES DE PUBLICAR  ⚠️⚠️⚠️
-     Os depoimentos abaixo são EXEMPLOS FICTÍCIOS, escritos apenas para
-     você ver como a seção fica montada. Eles NÃO são clientes reais.
+     ⚠️⚠️⚠️  LEIA ANTES DE PUBLICAR  ⚠️⚠️⚠️
+     Os depoimentos abaixo são EXEMPLOS FICTÍCIOS, escritos só para
+     demonstrar o layout. NÃO são clientes reais.
 
-     TROQUE TODOS por depoimentos verdadeiros antes de colocar o site no ar.
-     Publicar avaliação inventada como se fosse real é propaganda enganosa
-     (CDC art. 37) e destrói a confiança que esse trabalho depende.
+     Troque por depoimentos verdadeiros antes de divulgar o site.
+     Publicar avaliação inventada como real é propaganda enganosa
+     (CDC art. 37) e derruba a confiança que esse trabalho exige.
 
-     Se ainda não tiver depoimentos, o mais honesto é APAGAR a lista
-     (deixe `lista: []`) — a seção some sozinha do site.
-     ⚠️⚠️⚠️ ------------------------------------ ⚠️⚠️⚠️ */
+     Sem depoimentos reais ainda? Use `lista: []` — a seção some sozinha.
+     ⚠️⚠️⚠️ ---------------------------- ⚠️⚠️⚠️ */
   depoimentos: {
-    eyebrow: 'Quem já sentou à mesa',
-    titulo: 'Palavras de quem consultou',
-    exemplo: true, // ← deixe `true` enquanto forem exemplos; mude para `false` com os reais
+    exemplo: true,   // ← mude para false quando forem reais
     lista: [
-      {
-        texto: 'Cheguei perdida sobre uma decisão de trabalho e saí com clareza. A Debs não enfeita nem assusta: fala o que a carta mostra, com cuidado.',
-        autor: 'M. R.',
-        contexto: 'Leitura Completa · 3 perguntas',
-      },
-      {
-        texto: 'O que mais me marcou foi a escuta. Não me senti julgada em nenhum momento, e isso fez toda diferença para eu conseguir perguntar de verdade.',
-        autor: 'A. L.',
-        contexto: 'Consulta por hora',
-      },
-      {
-        texto: 'Fiz uma pergunta simples só para testar e a resposta foi tão certeira que voltei na semana seguinte para uma leitura completa.',
-        autor: 'J. P.',
-        contexto: 'Leitura Simples · 1 pergunta',
-      },
-      {
-        texto: 'Ela explica o significado de cada carta, então você entende de onde veio a leitura. Não é achismo, tem método.',
-        autor: 'C. S.',
-        contexto: 'Leitura Completa · 5 perguntas',
-      },
+      { texto: 'Cheguei perdida sobre uma decisão de trabalho e saí com clareza. Ela não enfeita nem assusta.', autor: 'M. R.', contexto: 'Completa · 3 perguntas' },
+      { texto: 'O que me marcou foi a escuta. Não me senti julgada em nenhum momento.', autor: 'A. L.', contexto: 'Consulta por hora' },
+      { texto: 'Fiz uma pergunta simples só para testar e voltei na semana seguinte para uma completa.', autor: 'J. P.', contexto: 'Simples · 1 pergunta' },
     ],
   },
 
@@ -198,80 +147,31 @@ const CONFIG = {
   agendamento: {
     eyebrow: 'Vamos abrir as cartas',
     titulo: 'Agende sua leitura',
-    subtitulo:
-      'Preencha abaixo e eu recebo tudo organizado no WhatsApp. Leva menos de um minuto.',
+    subtitulo: 'Preencha e eu recebo tudo organizado no WhatsApp.',
     temas: [
-      'Amor e relacionamentos',
-      'Trabalho e carreira',
-      'Dinheiro e prosperidade',
-      'Família',
-      'Espiritualidade',
-      'Decisão específica',
-      'Panorama geral do momento',
-      'Outro',
+      'Amor e relacionamentos', 'Trabalho e carreira', 'Dinheiro e prosperidade',
+      'Família', 'Espiritualidade', 'Decisão específica', 'Panorama geral', 'Outro',
     ],
     horarios: ['Manhã', 'Tarde', 'Noite', 'Tanto faz'],
   },
 
   /* ---------- FAQ ---------- */
   faq: {
-    eyebrow: 'Antes de perguntar',
     titulo: 'Dúvidas frequentes',
     itens: [
-      {
-        p: 'Preciso estar presente durante a tiragem?',
-        r: 'Nas leituras Simples e Completas, não. Você manda as perguntas, eu faço a tiragem e te envio o resultado. Na consulta por hora sim: é ao vivo, em conversa.',
-      },
-      {
-        p: 'Como eu recebo a leitura?',
-        r: 'Pelo WhatsApp, em áudio ou texto (você escolhe), sempre acompanhada da foto da tiragem para você ver as cartas que saíram.',
-      },
-      {
-        p: 'Quais as formas de pagamento?',
-        r: 'Pix, antes da tiragem. Depois de confirmado, entro na leitura e te retorno dentro do prazo combinado.',
-      },
-      {
-        p: 'Posso perguntar sobre outra pessoa?',
-        r: 'Posso ler a sua relação com essa pessoa e o que ela move em você. O que não faço é ler a vida íntima de terceiros que não pediram — isso é invasão, não leitura.',
-      },
-      {
-        p: 'O Tarô prevê doença, morte ou gravidez?',
-        r: 'Não, e eu não faço esse tipo de leitura. Para saúde, procure um médico; para questões jurídicas, um advogado. O Tarô é ferramenta de autoconhecimento, não de diagnóstico.',
-      },
-      {
-        p: 'E se a resposta não for a que eu queria?',
-        r: 'Ela vem do mesmo jeito, com cuidado. Meu compromisso é com a verdade da tiragem, não com o que é confortável — mas nunca com crueldade.',
-      },
-      {
-        p: 'Atende menor de idade?',
-        r: 'Não. Atendimento exclusivo para maiores de 18 anos.',
-      },
+      { p: 'Preciso estar presente na tiragem?', r: 'Nas leituras Simples e Completas, não — você manda as perguntas e recebe o resultado. Na consulta por hora, sim: é ao vivo.' },
+      { p: 'Como recebo a leitura?', r: 'Pelo WhatsApp, em áudio ou texto, com a foto da tiragem.' },
+      { p: 'Formas de pagamento?', r: 'Pix, antes da tiragem.' },
+      { p: 'Posso perguntar sobre outra pessoa?', r: 'Posso ler a sua relação com ela. O que não faço é ler a vida de terceiros que não pediram.' },
+      { p: 'O Tarô prevê doença ou morte?', r: 'Não, e eu não faço esse tipo de leitura. Para saúde, procure um médico.' },
     ],
   },
 
   /* ---------- RODAPÉ ---------- */
   rodape: {
     frase: 'Que a sua próxima carta venha leve.',
-    avisoLegal:
-      'As leituras de Tarô têm finalidade de autoconhecimento, reflexão e orientação pessoal. Não constituem e não substituem acompanhamento médico, psicológico, jurídico ou financeiro. As decisões e seus resultados são de responsabilidade exclusiva do consulente. Atendimento para maiores de 18 anos.',
-    links: [
-      { label: 'Sobre mim',    href: '#sobre' },
-      { label: 'Jornada',      href: '#jornada' },
-      { label: 'Serviços',     href: '#servicos' },
-      { label: 'Depoimentos',  href: '#depoimentos' },
-      { label: 'Dúvidas',      href: '#faq' },
-      { label: 'Agendamento',  href: '#agendamento' },
-    ],
+    avisoLegal: 'As leituras de Tarô têm finalidade de autoconhecimento e reflexão. Não substituem acompanhamento médico, psicológico, jurídico ou financeiro. Atendimento para maiores de 18 anos.',
   },
-
-  /* ---------- NAVEGAÇÃO ---------- */
-  nav: [
-    { label: 'Sobre Mim',   href: '#sobre' },
-    { label: 'Jornada',     href: '#jornada' },
-    { label: 'Serviços',    href: '#servicos' },
-    { label: 'Depoimentos', href: '#depoimentos' },
-    { label: 'Dúvidas',     href: '#faq' },
-  ],
 };
 
 /* Monta um link wa.me com a mensagem já codificada. */

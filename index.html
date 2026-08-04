@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -9,177 +9,107 @@
 <meta name="description" content="Leituras de Tarô online com escuta, ética e acolhimento. Perguntas simples, leituras completas ou consulta por hora. Agende pelo WhatsApp.">
 <meta name="author" content="Debs | Cartomante">
 
-<!-- Open Graph / redes sociais -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="Debs | Cartomante — Leituras de Tarô Online">
-<meta property="og:description" content="Os guias falam. Eu traduzo. Leituras de Tarô online, com hora marcada e zero julgamento.">
+<meta property="og:description" content="Os guias falam. Eu traduzo. Leituras de Tarô online, com hora marcada.">
 <meta name="twitter:card" content="summary_large_image">
 
-<!-- Ícone: lua crescente em SVG inline (sem arquivo externo) -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F172A'/%3E%3Cpath d='M20 8a9 9 0 1 0 0 16 10.5 10.5 0 0 1 0-16z' fill='%23D4AF37'/%3E%3C/svg%3E">
 
-<!-- Fontes -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<!-- Tailwind (CDN) — utilidades de layout. Exige internet. -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          noite:   { DEFAULT: '#0F172A', 2: '#1E1B4B', 3: '#141B34', 4: '#0B1120' },
-          ouro:    { DEFAULT: '#D4AF37', claro: '#F0D98C', escuro: '#8C7220' },
-          creme:   { DEFAULT: '#F4EDE4', suave: '#C9C2BC' },
-          rosa:    '#E8B4C4',
-          lavanda: '#B9A7DA',
-          salvia:  '#9DB89E',
-        },
-        fontFamily: {
-          display: ['"Playfair Display"', 'Georgia', 'serif'],
-          titulo:  ['Cinzel', 'Georgia', 'serif'],
-          corpo:   ['Inter', 'system-ui', 'sans-serif'],
-        },
-      },
+  tailwind.config = { theme: { extend: {
+    colors: {
+      noite: { DEFAULT:'#0F172A', 2:'#1E1B4B', 3:'#141B34', 4:'#0B1120' },
+      ouro:  { DEFAULT:'#D4AF37', claro:'#F0D98C', escuro:'#8C7220' },
+      creme: { DEFAULT:'#F4EDE4', suave:'#C9C2BC' },
+      rosa:'#E8B4C4', lavanda:'#B9A7DA', salvia:'#9DB89E',
     },
-  };
+    fontFamily: {
+      display:['"Playfair Display"','Georgia','serif'],
+      titulo:['Cinzel','Georgia','serif'],
+      corpo:['Inter','system-ui','sans-serif'],
+    },
+  } } };
 </script>
 
-<!-- CSS do projeto — bumpe ?v= a cada edição (cache-busting) -->
-<link rel="stylesheet" href="css/style.css?v=3">
-<link rel="stylesheet" href="css/animations.css?v=3">
+<!-- bumpe ?v= a cada edição de CSS/JS -->
+<link rel="stylesheet" href="css/style.css?v=4">
+<link rel="stylesheet" href="css/animations.css?v=4">
 
-<!-- Dados estruturados para o Google -->
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Debs | Cartomante",
-  "description": "Leituras de Tarô online com foco em autoconhecimento, ética e acolhimento.",
-  "telephone": "+5511941723682",
-  "areaServed": "BR",
-  "availableLanguage": "pt-BR",
-  "sameAs": ["https://instagram.com/debsmedisse"],
-  "priceRange": "R$15 - R$150"
-}
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"Debs | Cartomante",
+"description":"Leituras de Tarô online com foco em autoconhecimento, ética e acolhimento.",
+"telephone":"+5511941723682","areaServed":"BR","availableLanguage":"pt-BR",
+"sameAs":["https://instagram.com/debsmedisse"],"priceRange":"R$15 - R$150"}
 </script>
 </head>
 
 <body>
 
-<!-- ============================================================
-     SPRITE DE ÍCONES — referenciados por <use href="#ico-x">
-     ============================================================ -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <defs>
-    <!-- WhatsApp -->
-    <symbol id="ico-zap" viewBox="0 0 24 24">
-      <path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97s-.47-.15-.67.15-.77.96-.94 1.16-.35.22-.65.08a8.13 8.13 0 0 1-2.39-1.48 9 9 0 0 1-1.66-2.06c-.17-.3 0-.46.13-.61s.3-.35.45-.52a2 2 0 0 0 .3-.5.55.55 0 0 0 0-.53c0-.15-.67-1.61-.92-2.2s-.49-.51-.67-.52h-.57a1.1 1.1 0 0 0-.8.37 3.34 3.34 0 0 0-1.04 2.48 5.8 5.8 0 0 0 1.21 3.08 13.27 13.27 0 0 0 5.07 4.48c.71.3 1.26.49 1.69.63a4.07 4.07 0 0 0 1.87.12 3.06 3.06 0 0 0 2-1.41 2.48 2.48 0 0 0 .17-1.41c-.07-.13-.27-.2-.57-.34z"/>
-      <path fill="currentColor" d="M12.04 2A9.95 9.95 0 0 0 3.6 17.24L2.05 22l4.88-1.5A9.95 9.95 0 1 0 12.04 2zm0 18.2a8.25 8.25 0 0 1-4.2-1.15l-.3-.18-3.12.96 1-3-.2-.31a8.26 8.26 0 1 1 6.82 3.68z"/>
-    </symbol>
+<!-- ícones -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <symbol id="ico-zap" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97s-.47-.15-.67.15-.77.96-.94 1.16-.35.22-.65.08a8.13 8.13 0 0 1-2.39-1.48 9 9 0 0 1-1.66-2.06c-.17-.3 0-.46.13-.61s.3-.35.45-.52a2 2 0 0 0 .3-.5.55.55 0 0 0 0-.53c0-.15-.67-1.61-.92-2.2s-.49-.51-.67-.52h-.57a1.1 1.1 0 0 0-.8.37 3.34 3.34 0 0 0-1.04 2.48 5.8 5.8 0 0 0 1.21 3.08 13.27 13.27 0 0 0 5.07 4.48c.71.3 1.26.49 1.69.63a4.07 4.07 0 0 0 1.87.12 3.06 3.06 0 0 0 2-1.41 2.48 2.48 0 0 0 .17-1.41c-.07-.13-.27-.2-.57-.34z"/>
+    <path fill="currentColor" d="M12.04 2A9.95 9.95 0 0 0 3.6 17.24L2.05 22l4.88-1.5A9.95 9.95 0 1 0 12.04 2zm0 18.2a8.25 8.25 0 0 1-4.2-1.15l-.3-.18-3.12.96 1-3-.2-.31a8.26 8.26 0 1 1 6.82 3.68z"/>
+  </symbol>
+  <symbol id="ico-insta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+    <rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/>
+    <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/>
+  </symbol>
+  <symbol id="ico-dir" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="ico-esq" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+  <symbol id="ico-balanca" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 5v16M8 21h8M4 8h16"/><path d="M7 8 4 15h6zM17 8l-3 7h6z"/><circle cx="12" cy="4" r="1.6"/>
+  </symbol>
+  <symbol id="ico-cadeado" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1.4"/>
+  </symbol>
+  <symbol id="ico-coracao" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 20s-7.5-4.7-7.5-9.6A4.4 4.4 0 0 1 12 7.6a4.4 4.4 0 0 1 7.5 2.8C19.5 15.3 12 20 12 20z"/>
+  </symbol>
+  <symbol id="ico-chave" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="8" cy="8" r="4.5"/><path d="M11.2 11.2 20 20M17 17l2-2M14.5 14.5l2-2"/>
+  </symbol>
+  <symbol id="ico-carta-simples" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="7" y="3" width="12" height="18" rx="2"/><path d="M13 8v6M13 17v.5"/><path d="M4 6v13a2 2 0 0 0 2 2" opacity=".5"/>
+  </symbol>
+  <symbol id="ico-carta-completa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="6" width="9" height="14" rx="2" transform="rotate(-10 7.5 13)"/>
+    <rect x="8" y="4" width="9" height="14" rx="2"/>
+    <rect x="13" y="6" width="9" height="14" rx="2" transform="rotate(10 17.5 13)"/>
+  </symbol>
+  <symbol id="ico-relogio" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="13" r="8"/><path d="M12 8.5V13l3 2"/><path d="M9 3h6M12 3v2"/>
+  </symbol>
+  <symbol id="ico-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.5"/></symbol>
+  <symbol id="ico-alerta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 22 20H2z"/><path d="M12 10v4.5M12 17.5v.5"/></symbol>
+  <symbol id="ico-escudo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.4 8.2-8 9.5C7.4 20.2 4 17 4 12V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="ico-lua" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3a9 9 0 1 0 0 18 10.5 10.5 0 0 1 0-18z"/></symbol>
+  <symbol id="ico-estrela" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4z"/></symbol>
+  <symbol id="ico-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.7l1.4-2h6.8l1.4 2h1.7A2.5 2.5 0 0 1 21 8.5v9A2.5 2.5 0 0 1 18.5 20h-13A2.5 2.5 0 0 1 3 17.5z"/><circle cx="12" cy="13" r="4"/>
+  </symbol>
+</defs></svg>
 
-    <!-- Instagram -->
-    <symbol id="ico-insta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
-      <rect x="3" y="3" width="18" height="18" rx="5"/>
-      <circle cx="12" cy="12" r="4"/>
-      <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/>
-    </symbol>
-
-    <!-- Setas -->
-    <symbol id="ico-dir" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M5 12h14M13 6l6 6-6 6"/>
-    </symbol>
-    <symbol id="ico-esq" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M19 12H5M11 6l-6 6 6 6"/>
-    </symbol>
-    <symbol id="ico-cima" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 19V5M6 11l6-6 6 6"/>
-    </symbol>
-
-    <!-- Pilares -->
-    <symbol id="ico-balanca" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 3v18M8 21h8M3 7h18M12 7 6 7M12 7l6 0"/>
-      <path d="M6 7 3 14h6zM18 7l-3 7h6z"/>
-      <circle cx="12" cy="4.5" r="1.5"/>
-    </symbol>
-    <symbol id="ico-cadeado" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="4" y="10" width="16" height="11" rx="2.5"/>
-      <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
-      <circle cx="12" cy="15.5" r="1.4"/>
-    </symbol>
-    <symbol id="ico-coracao" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 20s-7.5-4.7-7.5-9.6A4.4 4.4 0 0 1 12 7.6a4.4 4.4 0 0 1 7.5 2.8C19.5 15.3 12 20 12 20z"/>
-    </symbol>
-    <symbol id="ico-chave" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="8" cy="8" r="4.5"/>
-      <path d="M11.2 11.2 20 20M17 17l2-2M14.5 14.5l2-2"/>
-    </symbol>
-
-    <!-- Serviços -->
-    <symbol id="ico-carta-simples" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="15" y="8" width="21" height="32" rx="3"/>
-      <path d="M25.5 16.5v10M25.5 31v.5"/>
-      <path d="M11 14v22a3 3 0 0 0 3 3" opacity=".5"/>
-    </symbol>
-    <symbol id="ico-carta-completa" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="8" y="12" width="18" height="27" rx="3" transform="rotate(-10 17 25)"/>
-      <rect x="17" y="9" width="18" height="27" rx="3"/>
-      <rect x="26" y="12" width="18" height="27" rx="3" transform="rotate(10 35 25)"/>
-      <path d="m26 18 1.6 4.4 4.4 1.6-4.4 1.6L26 30l-1.6-4.4-4.4-1.6 4.4-1.6z"/>
-    </symbol>
-    <symbol id="ico-relogio" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="24" cy="26" r="15"/>
-      <path d="M24 17v9l6 4"/>
-      <path d="M18 6h12M24 6v5"/>
-      <path d="M38 13l3-3M10 13l-3-3"/>
-    </symbol>
-
-    <!-- Diversos -->
-    <symbol id="ico-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.5"/>
-    </symbol>
-    <symbol id="ico-alerta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 3.5 22 20H2z"/><path d="M12 10v4.5M12 17.5v.5"/>
-    </symbol>
-    <symbol id="ico-escudo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 3l8 3v6c0 5-3.4 8.2-8 9.5C7.4 20.2 4 17 4 12V6z"/>
-      <path d="m9 12 2 2 4-4"/>
-    </symbol>
-    <symbol id="ico-lua" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M15 3a9 9 0 1 0 0 18 10.5 10.5 0 0 1 0-18z"/>
-    </symbol>
-    <symbol id="ico-estrela" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="m12 3 2.4 6.6L21 12l-6.6 2.4L12 21l-2.4-6.6L3 12l6.6-2.4z"/>
-    </symbol>
-    <symbol id="ico-camera" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.7l1.4-2h6.8l1.4 2h1.7A2.5 2.5 0 0 1 21 8.5v9A2.5 2.5 0 0 1 18.5 20h-13A2.5 2.5 0 0 1 3 17.5z"/>
-      <circle cx="12" cy="13" r="4"/>
-    </symbol>
-  </defs>
-</svg>
-
-<!-- Barra de progresso do scroll -->
-<div class="progresso" id="progresso" aria-hidden="true"></div>
-
-<!-- Aura que segue o cursor (só desktop) -->
-<div class="cursor-aura" id="cursorAura" aria-hidden="true"></div>
-
+<canvas id="starfield" aria-hidden="true"></canvas>
 
 <!-- ============================================================
-     NAVBAR
+     TOPO
      ============================================================ -->
-<header class="nav" id="nav">
-  <div class="wrap">
-    <a href="#topo" class="logo" aria-label="Início">
+<header class="topo" id="topo">
+  <div class="topo-in">
+    <a href="#/inicio" class="logo" aria-label="Início">
       <span class="logo-mark">
         <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
-          <circle cx="22" cy="22" r="20" opacity=".45"/>
+          <circle cx="22" cy="22" r="20" opacity=".4"/>
           <path d="M26 11a11.5 11.5 0 1 0 0 22 13.5 13.5 0 0 1 0-22z" stroke-linejoin="round"/>
-          <path d="M22 2v3M22 39v3M2 22h3M39 22h3" stroke-linecap="round"/>
-          <path d="m8 8 2 2M36 36l-2-2M8 36l2-2M36 8l-2 2" stroke-linecap="round" opacity=".7"/>
+          <path d="M22 2v3M22 39v3M2 22h3M39 22h3" stroke-linecap="round" opacity=".8"/>
         </svg>
       </span>
       <span class="logo-txt">
@@ -188,366 +118,239 @@
       </span>
     </a>
 
-    <nav class="nav-links" id="navLinks" aria-label="Navegação principal"></nav>
+    <nav class="abas" id="abas" aria-label="Seções do site">
+      <span class="abas-marca" id="abasMarca" aria-hidden="true"></span>
+    </nav>
 
-    <a class="btn btn--ouro btn--sm nav-cta" data-zap="hero" href="#agendamento">
-      Agendar Consulta
+    <a class="btn btn--zap btn--sm topo-zap" data-zap="hero" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-zap"/></svg>
+      <span class="so-desktop">Agendar</span>
     </a>
-
-    <button class="burger" id="burger" aria-expanded="false" aria-controls="menuMob" aria-label="Abrir menu">
-      <span></span><span></span><span></span>
-    </button>
   </div>
 </header>
 
-<!-- Menu mobile -->
-<nav class="menu-mob" id="menuMob" aria-label="Navegação mobile"></nav>
-
-
-<main id="topo">
 
 <!-- ============================================================
-     HERO
+     PALCO — cada .tela é uma "janela" própria
      ============================================================ -->
-<section class="hero">
-  <canvas id="starfield" aria-hidden="true"></canvas>
+<main class="palco" id="palco">
 
-  <div class="lua-halo anim-flutua-lento" aria-hidden="true">
-    <svg viewBox="0 0 200 200" fill="none">
-      <circle cx="100" cy="100" r="62" stroke="currentColor" stroke-width=".8" opacity=".35"/>
-      <circle cx="100" cy="100" r="78" stroke="currentColor" stroke-width=".5" opacity=".22"/>
-      <circle cx="100" cy="100" r="94" stroke="currentColor" stroke-width=".4" opacity=".12"/>
-      <path d="M118 54a48 48 0 1 0 0 92 56 56 0 0 1 0-92z" fill="currentColor" opacity=".13"/>
-      <path d="M118 54a48 48 0 1 0 0 92 56 56 0 0 1 0-92z" stroke="currentColor" stroke-width="1"/>
-      <g class="anim-gira" style="transform-origin:100px 100px">
-        <path d="M100 22v-8M100 178v8M22 100h-8M178 100h8" stroke="currentColor" stroke-width=".9" opacity=".5"/>
-      </g>
-    </svg>
-  </div>
+  <!-- ---------- INÍCIO ---------- -->
+  <section class="tela" data-tela="inicio" aria-labelledby="t-inicio">
+    <div class="moldura moldura--hero">
+      <div class="mold-cantos" aria-hidden="true"></div>
+      <div class="mold-corpo hero-corpo">
 
-  <div class="wrap">
-    <div class="hero-grid">
-      <div>
-        <p class="eyebrow" data-hero-eyebrow></p>
-        <h1 id="heroTitulo"></h1>
-        <p class="hero-sub" data-hero-sub></p>
+        <div class="hero-txt">
+          <p class="eyebrow" data-hero-eyebrow></p>
+          <h1 id="t-inicio"></h1>
+          <p class="lead" data-hero-sub></p>
 
-        <div class="hero-ctas">
-          <a href="#servicos" class="btn btn--ouro" data-magnetico>
-            <span data-hero-cta1></span>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-dir"/></svg>
-          </a>
-          <a href="#agendamento" class="btn btn--linha" data-magnetico>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-lua"/></svg>
-            <span data-hero-cta2></span>
-          </a>
-        </div>
-
-        <div class="hero-prova">
-          <div class="hero-prova-item">
-            <div class="num"><span data-contador="22">0</span></div>
-            <div class="lbl">Arcanos maiores</div>
+          <div class="acoes">
+            <a href="#/leituras" class="btn btn--ouro" data-magnetico>
+              <span data-hero-cta1></span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-dir"/></svg>
+            </a>
+            <a href="#/agendar" class="btn btn--linha" data-magnetico>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-lua"/></svg>
+              <span data-hero-cta2></span>
+            </a>
           </div>
-          <div class="hero-prova-item">
-            <div class="num">100%</div>
-            <div class="lbl">Online e sigiloso</div>
-          </div>
-          <div class="hero-prova-item">
-            <div class="num">24h</div>
-            <div class="lbl">Prazo de resposta</div>
-          </div>
+
+          <ul class="marcas" id="heroMarcas"></ul>
         </div>
+
+        <div class="leque" id="leque" aria-hidden="true"></div>
       </div>
-
-      <div class="leque" id="leque" aria-hidden="true"></div>
+      <span class="mold-fita" data-fita>Início</span>
     </div>
-  </div>
+  </section>
 
-  <div class="scroll-dica" aria-hidden="true">
-    <span>Role</span>
-    <span class="linha"></span>
-    <svg class="seta" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M6 9l6 6 6-6"/>
-    </svg>
-  </div>
-</section>
+  <!-- ---------- SOBRE ---------- -->
+  <section class="tela" data-tela="sobre" aria-labelledby="t-sobre">
+    <div class="moldura">
+      <div class="mold-cantos" aria-hidden="true"></div>
+      <div class="mold-corpo sobre-corpo">
 
-
-<!-- ============================================================
-     CARTA DO DIA
-     ============================================================ -->
-<section class="secao secao--alt" id="carta-do-dia">
-  <div class="aurora-blob aurora-blob--lavanda" style="width:min(46vw,420px);aspect-ratio:1;top:-8%;left:-8%" aria-hidden="true"></div>
-  <div class="aurora-blob aurora-blob--ouro" style="width:min(38vw,340px);aspect-ratio:1;bottom:-6%;right:-6%" aria-hidden="true"></div>
-
-  <div class="wrap" style="position:relative;z-index:2">
-    <div class="secao-head" data-reveal>
-      <p class="eyebrow">Mini-oráculo · Grátis</p>
-      <h2>Sua carta de hoje</h2>
-      <p>Uma carta, uma mensagem. Toque no baralho e veja o que os Arcanos Maiores têm a dizer sobre o seu dia.</p>
-    </div>
-
-    <div class="carta-dia-box">
-      <!-- Baralho -->
-      <div class="baralho" data-reveal="zoom">
-        <div class="carta" id="carta" role="button" tabindex="0"
-             aria-label="Tirar a carta do dia" aria-pressed="false">
-          <div class="carta-face carta-verso" id="cartaVerso"></div>
-          <div class="carta-face carta-frente" id="cartaFrente"></div>
-          <div class="particulas" id="particulas" aria-hidden="true"></div>
-        </div>
-      </div>
-
-      <!-- Leitura -->
-      <div class="carta-leitura" data-reveal="direita" data-delay="150">
-        <p class="rotulo" id="cartaRotulo">Toque no baralho</p>
-        <h3 id="cartaTitulo">O baralho está pronto</h3>
-        <div class="carta-chaves" id="cartaChaves"></div>
-        <p class="msg" id="cartaMsg">
-          Respire fundo, pense na sua pergunta e toque nas cartas. A mesma carta acompanha você até a meia-noite —
-          amanhã o baralho se renova.
-        </p>
-
-        <div class="rodape-msg" id="cartaRodape" hidden>
-          <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-lua"/></svg>
-          <span>Volte amanhã para uma nova carta.</span>
-        </div>
-
-        <div class="carta-acoes" id="cartaAcoes" hidden>
-          <a class="btn btn--zap" data-zap="carta" data-magnetico>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-zap"/></svg>
-            Quero uma leitura completa
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divisor" data-reveal aria-hidden="true">
-  <span class="barra"></span><span class="losango anim-gira"></span><span class="barra"></span>
-</div>
-
-
-<!-- ============================================================
-     SOBRE
-     ============================================================ -->
-<section class="secao" id="sobre">
-  <div class="wrap">
-    <div class="sobre-grid">
-      <!-- Retrato -->
-      <div data-reveal="esquerda">
         <div class="retrato">
-          <div class="retrato-moldura" aria-hidden="true">
+          <div class="retrato-arco" aria-hidden="true">
             <svg viewBox="0 0 300 400" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
               <path data-desenha style="--traco:1100"
-                    d="M150 12c-46 0-84 34-84 78v250c0 26 21 47 47 47h74c26 0 47-21 47-47V90c0-44-38-78-84-78z"/>
+                    d="M150 14c-45 0-82 33-82 76v244c0 25 20 45 45 45h74c25 0 45-20 45-45V90c0-43-37-76-82-76z"/>
               <path data-desenha style="--traco:420;--delay:250ms"
-                    d="M66 130c-14-8-22-22-22-38 0-10 6-18 14-18s14 8 14 18M234 130c14-8 22-22 22-38 0-10-6-18-14-18s-14 8-14 18"/>
+                    d="M68 132c-13-8-21-21-21-37 0-9 6-17 13-17s13 8 13 17M232 132c13-8 21-21 21-37 0-9-6-17-13-17s-13 8-13 17"/>
               <path data-desenha style="--traco:300;--delay:450ms"
-                    d="M150 12v-10M138 6l12-8 12 8M120 26c-8-6-8-16 0-20M180 26c8-6 8-16 0-20"/>
-              <path data-desenha style="--traco:340;--delay:600ms"
-                    d="M60 340c-10 8-16 20-16 32M240 340c10 8 16 20 16 32M44 386h32M224 386h32"/>
-              <g opacity=".7">
-                <circle cx="44" cy="200" r="2.5" fill="currentColor" stroke="none" class="anim-cintila"/>
-                <circle cx="256" cy="200" r="2.5" fill="currentColor" stroke="none" class="anim-cintila d2"/>
-                <circle cx="52" cy="270" r="1.8" fill="currentColor" stroke="none" class="anim-cintila d3"/>
-                <circle cx="248" cy="270" r="1.8" fill="currentColor" stroke="none" class="anim-cintila d1"/>
-              </g>
+                    d="M150 14V4M139 8l11-8 11 8M122 28c-8-6-8-15 0-19M178 28c8-6 8-15 0-19"/>
             </svg>
           </div>
           <div class="retrato-foto" id="retratoFoto"></div>
         </div>
+
+        <div class="sobre-txt">
+          <p class="eyebrow" data-sobre-eyebrow></p>
+          <h2 id="t-sobre" data-sobre-titulo></h2>
+          <div class="prosa" id="sobreTexto"></div>
+          <p class="assinatura" data-sobre-assinatura></p>
+          <ul class="pilares" id="pilares"></ul>
+        </div>
+
       </div>
-
-      <!-- Texto -->
-      <div data-reveal="direita" data-delay="120">
-        <p class="eyebrow" data-sobre-eyebrow></p>
-        <h2 style="font-size:var(--t-h2)" data-sobre-titulo></h2>
-        <div id="sobreTexto" style="margin-top:1.3rem;display:grid;gap:1rem;color:var(--creme-suave)"></div>
-        <p class="assinatura" data-sobre-assinatura></p>
-        <div class="pilares" id="pilares"></div>
-      </div>
+      <span class="mold-fita" data-fita>Sobre</span>
     </div>
-  </div>
-</section>
+  </section>
 
+  <!-- ---------- LEITURAS ---------- -->
+  <section class="tela" data-tela="leituras" aria-labelledby="t-leituras">
+    <div class="moldura">
+      <div class="mold-cantos" aria-hidden="true"></div>
+      <div class="mold-corpo">
 
-<!-- ============================================================
-     JORNADA
-     ============================================================ -->
-<section class="secao secao--alt" id="jornada">
-  <div class="mandala anim-gira" style="width:min(70vw,620px);aspect-ratio:1;top:8%;right:-18%" aria-hidden="true">
-    <svg viewBox="0 0 200 200" fill="none" stroke="currentColor" stroke-width=".7">
-      <circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="76"/>
-      <circle cx="100" cy="100" r="52"/><circle cx="100" cy="100" r="30"/>
-      <g>
-        <path d="M100 4v192M4 100h192M32 32l136 136M168 32L32 168"/>
-        <path d="M100 24l14 26-14 26-14-26zM100 124l14 26-14 26-14-26z"/>
-        <path d="M24 100l26 14 26-14-26-14zM124 100l26 14 26-14-26-14z"/>
-      </g>
-    </svg>
-  </div>
+        <header class="tela-head">
+          <p class="eyebrow" data-servicos-eyebrow></p>
+          <h2 id="t-leituras" data-servicos-titulo></h2>
+          <p class="lead" data-servicos-sub></p>
+        </header>
 
-  <div class="wrap" style="position:relative;z-index:2">
-    <div class="secao-head" data-reveal>
-      <p class="eyebrow" data-jornada-eyebrow></p>
-      <h2 data-jornada-titulo></h2>
-      <p data-jornada-sub></p>
-    </div>
+        <div class="svc-grid" id="servicosGrid"></div>
 
-    <div class="timeline" id="timeline" style="max-width:720px;margin-inline:auto">
-      <div class="timeline-fill" id="timelineFill" aria-hidden="true"></div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     SERVIÇOS E PREÇOS
-     ============================================================ -->
-<section class="secao" id="servicos">
-  <div class="aurora-blob aurora-blob--rosa" style="width:min(50vw,460px);aspect-ratio:1;top:12%;left:-12%" aria-hidden="true"></div>
-
-  <div class="wrap" style="position:relative;z-index:2">
-    <div class="secao-head" data-reveal>
-      <p class="eyebrow" data-servicos-eyebrow></p>
-      <h2 data-servicos-titulo></h2>
-      <p data-servicos-sub></p>
-    </div>
-
-    <div class="servicos-grid" id="servicosGrid"></div>
-
-    <p class="pagamento-nota" data-reveal data-delay="200">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-escudo"/></svg>
-      Pagamento via Pix antes da tiragem · Sigilo garantido · Atendimento para maiores de 18 anos
-    </p>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     DEPOIMENTOS
-     ============================================================ -->
-<section class="secao secao--alt" id="depoimentos" hidden>
-  <div class="wrap">
-    <div class="secao-head" data-reveal>
-      <p class="eyebrow" data-depo-eyebrow></p>
-      <h2 data-depo-titulo></h2>
-    </div>
-
-    <!-- Aviso exibido enquanto os depoimentos forem exemplos (config.depoimentos.exemplo) -->
-    <div class="aviso-exemplo" id="avisoExemplo" hidden data-reveal>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-alerta"/></svg>
-      <span>
-        <strong>Aviso ao editar o site:</strong> estes depoimentos são exemplos fictícios, incluídos apenas
-        para demonstrar o layout. Troque-os por depoimentos reais em <code>js/config.js</code> antes de publicar —
-        ou apague a lista para ocultar esta seção.
-      </span>
-    </div>
-
-    <div class="carrossel" id="carrossel" data-reveal="zoom">
-      <div class="carrossel-trilho" id="carrosselTrilho"></div>
-    </div>
-
-    <div class="carrossel-nav" data-reveal>
-      <button class="carrossel-btn" id="depoAnt" aria-label="Depoimento anterior">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-esq"/></svg>
-      </button>
-      <div class="dots" id="depoDots" role="tablist" aria-label="Selecionar depoimento"></div>
-      <button class="carrossel-btn" id="depoProx" aria-label="Próximo depoimento">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-dir"/></svg>
-      </button>
-    </div>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     AGENDAMENTO
-     ============================================================ -->
-<section class="secao" id="agendamento">
-  <div class="aurora-blob aurora-blob--ouro" style="width:min(44vw,400px);aspect-ratio:1;top:0;right:-10%" aria-hidden="true"></div>
-
-  <div class="wrap" style="position:relative;z-index:2">
-    <div class="secao-head" data-reveal>
-      <p class="eyebrow" data-agenda-eyebrow></p>
-      <h2 data-agenda-titulo></h2>
-      <p data-agenda-sub></p>
-    </div>
-
-    <form class="form-box" id="formAgenda" novalidate data-reveal="zoom">
-      <div class="form-grid">
-        <div class="campo">
-          <label for="fNome">Seu nome</label>
-          <input type="text" id="fNome" name="nome" placeholder="Como posso te chamar?" autocomplete="name" required>
-          <span class="erro" data-erro="fNome"></span>
-        </div>
-
-        <div class="campo">
-          <label for="fFormato">Formato da leitura</label>
-          <select id="fFormato" name="formato" required></select>
-          <span class="erro" data-erro="fFormato"></span>
-        </div>
-
-        <div class="campo" id="campoQtd">
-          <label for="fQtd">Quantas perguntas?</label>
-          <select id="fQtd" name="qtd">
-            <option value="1 pergunta">1 pergunta</option>
-            <option value="3 perguntas" selected>3 perguntas</option>
-            <option value="5 perguntas">5 perguntas</option>
-            <option value="mais de 5 perguntas">Mais de 5 perguntas</option>
-            <option value="ainda não sei">Ainda não sei</option>
-          </select>
-          <span class="erro"></span>
-        </div>
-
-        <div class="campo">
-          <label for="fTema">Tema principal</label>
-          <select id="fTema" name="tema"></select>
-          <span class="erro"></span>
-        </div>
-
-        <div class="campo campo--full">
-          <label for="fHorario">Melhor horário para falar</label>
-          <select id="fHorario" name="horario"></select>
-          <span class="erro"></span>
-        </div>
-
-        <div class="campo campo--full">
-          <label for="fMsg">Quer adiantar alguma coisa? <span style="opacity:.5;text-transform:none;letter-spacing:0">(opcional)</span></label>
-          <textarea id="fMsg" name="msg" placeholder="Conte em poucas linhas o que está te trazendo até as cartas."></textarea>
-          <span class="erro"></span>
-        </div>
-      </div>
-
-      <div class="form-rodape">
-        <button type="submit" class="btn btn--zap btn--bloco" data-magnetico>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-zap"/></svg>
-          Enviar pelo WhatsApp
-        </button>
-        <p class="form-nota">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-info"/></svg>
-          Nada é enviado sozinho: o botão abre o WhatsApp com a mensagem pronta para você revisar antes de mandar.
+        <p class="nota">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-escudo"/></svg>
+          Pix antes da tiragem · Sigilo garantido · Maiores de 18 anos
         </p>
+
+        <div class="risco" aria-hidden="true"><i></i><b></b><i></i></div>
+
+        <h3 class="sub-titulo" data-jornada-titulo></h3>
+        <ol class="passos" id="passos"></ol>
+
+        <div id="depoBloco" hidden>
+          <div class="risco" aria-hidden="true"><i></i><b></b><i></i></div>
+          <div class="aviso" id="avisoExemplo" hidden>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-alerta"/></svg>
+            <span><strong>Nota para quem edita:</strong> depoimentos de exemplo. Troque por reais em <code>js/config.js</code> antes de divulgar.</span>
+          </div>
+          <div class="carrossel" id="carrossel">
+            <div class="carrossel-trilho" id="carrosselTrilho"></div>
+          </div>
+          <div class="carrossel-nav">
+            <button class="cbtn" id="depoAnt" aria-label="Anterior"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-esq"/></svg></button>
+            <div class="dots" id="depoDots" role="tablist" aria-label="Depoimentos"></div>
+            <button class="cbtn" id="depoProx" aria-label="Próximo"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-dir"/></svg></button>
+          </div>
+        </div>
+
       </div>
-    </form>
-  </div>
-</section>
-
-
-<!-- ============================================================
-     FAQ
-     ============================================================ -->
-<section class="secao secao--alt" id="faq">
-  <div class="wrap">
-    <div class="secao-head" data-reveal>
-      <p class="eyebrow" data-faq-eyebrow></p>
-      <h2 data-faq-titulo></h2>
+      <span class="mold-fita" data-fita>Leituras</span>
     </div>
-    <div class="faq-lista" id="faqLista"></div>
-  </div>
-</section>
+  </section>
+
+  <!-- ---------- CARTA DO DIA ---------- -->
+  <section class="tela" data-tela="carta" aria-labelledby="t-carta">
+    <div class="moldura">
+      <div class="mold-cantos" aria-hidden="true"></div>
+      <div class="mold-corpo carta-corpo">
+
+        <div class="baralho">
+          <div class="carta" id="carta" role="button" tabindex="0"
+               aria-label="Tirar a carta do dia" aria-pressed="false">
+            <div class="carta-face carta-verso" id="cartaVerso"></div>
+            <div class="carta-face carta-frente" id="cartaFrente"></div>
+            <div class="particulas" id="particulas" aria-hidden="true"></div>
+          </div>
+          <span class="carta-dica" id="cartaDica">toque para revelar</span>
+        </div>
+
+        <div class="carta-leitura">
+          <p class="eyebrow" id="cartaRotulo" data-carta-eyebrow></p>
+          <h2 id="t-carta"><span id="cartaTitulo"></span></h2>
+          <div class="carta-chaves" id="cartaChaves"></div>
+          <p class="msg" id="cartaMsg"></p>
+
+          <p class="rodape-msg" id="cartaRodape" hidden>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-lua"/></svg>
+            <span>Volte amanhã para uma nova carta.</span>
+          </p>
+
+          <div class="acoes" id="cartaAcoes" hidden>
+            <a class="btn btn--zap" data-zap="carta" target="_blank" rel="noopener" data-magnetico>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-zap"/></svg>
+              Quero uma leitura completa
+            </a>
+          </div>
+        </div>
+
+      </div>
+      <span class="mold-fita" data-fita>Carta do dia</span>
+    </div>
+  </section>
+
+  <!-- ---------- AGENDAR ---------- -->
+  <section class="tela" data-tela="agendar" aria-labelledby="t-agendar">
+    <div class="moldura">
+      <div class="mold-cantos" aria-hidden="true"></div>
+      <div class="mold-corpo">
+
+        <header class="tela-head">
+          <p class="eyebrow" data-agenda-eyebrow></p>
+          <h2 id="t-agendar" data-agenda-titulo></h2>
+          <p class="lead" data-agenda-sub></p>
+        </header>
+
+        <form id="formAgenda" novalidate>
+          <div class="form-grid">
+            <div class="campo">
+              <label for="fNome">Seu nome</label>
+              <input type="text" id="fNome" placeholder="Como posso te chamar?" autocomplete="name" required>
+              <span class="erro" data-erro="fNome"></span>
+            </div>
+            <div class="campo">
+              <label for="fFormato">Formato</label>
+              <select id="fFormato" required></select>
+              <span class="erro" data-erro="fFormato"></span>
+            </div>
+            <div class="campo" id="campoQtd">
+              <label for="fQtd">Quantas perguntas?</label>
+              <select id="fQtd">
+                <option>1 pergunta</option>
+                <option selected>3 perguntas</option>
+                <option>5 perguntas</option>
+                <option>mais de 5 perguntas</option>
+                <option>ainda não sei</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="fTema">Tema</label>
+              <select id="fTema"></select>
+            </div>
+            <div class="campo campo--full">
+              <label for="fHorario">Melhor horário</label>
+              <select id="fHorario"></select>
+            </div>
+            <div class="campo campo--full">
+              <label for="fMsg">Quer adiantar algo? <em>(opcional)</em></label>
+              <textarea id="fMsg" placeholder="Em poucas linhas, o que te traz até as cartas."></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn--zap btn--bloco" data-magnetico>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-zap"/></svg>
+            Enviar pelo WhatsApp
+          </button>
+          <p class="nota">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-info"/></svg>
+            O botão abre o WhatsApp com a mensagem pronta para você revisar antes de enviar.
+          </p>
+        </form>
+
+        <div class="risco" aria-hidden="true"><i></i><b></b><i></i></div>
+
+        <h3 class="sub-titulo" data-faq-titulo></h3>
+        <div class="faq" id="faqLista"></div>
+
+      </div>
+      <span class="mold-fita" data-fita>Agendar</span>
+    </div>
+  </section>
 
 </main>
 
@@ -556,74 +359,28 @@
      RODAPÉ
      ============================================================ -->
 <footer class="rodape">
-  <div class="wrap">
-    <p class="rodape-frase texto-brilho" data-rodape-frase></p>
-
-    <div class="rodape-grid">
-      <div>
-        <div class="logo" style="margin-bottom:1rem">
-          <span class="logo-mark">
-            <svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
-              <circle cx="22" cy="22" r="20" opacity=".45"/>
-              <path d="M26 11a11.5 11.5 0 1 0 0 22 13.5 13.5 0 0 1 0-22z" stroke-linejoin="round"/>
-            </svg>
-          </span>
-          <span class="logo-txt">
-            <span class="logo-nome" data-marca-nome></span>
-            <span class="logo-sub" data-marca-titulo></span>
-          </span>
-        </div>
-        <p style="font-size:.87rem;color:var(--creme-suave);max-width:34ch" data-marca-tagline></p>
-      </div>
-
-      <div>
-        <h4>Navegar</h4>
-        <div class="rodape-links" id="rodapeLinks"></div>
-      </div>
-
-      <div>
-        <h4>Falar comigo</h4>
-        <div class="sociais" id="sociais"></div>
-      </div>
-    </div>
-
-    <p class="aviso-legal">
-      <strong>Aviso importante:</strong>
-      <span data-rodape-aviso></span>
-    </p>
-
-    <div class="copy">
-      <span>© <span id="ano"></span> <span data-marca-nome></span> · Todos os direitos reservados.</span>
-    </div>
-  </div>
+  <p class="rodape-frase" data-rodape-frase></p>
+  <div class="sociais" id="sociais"></div>
+  <details class="legal">
+    <summary>Aviso legal</summary>
+    <p data-rodape-aviso></p>
+  </details>
+  <p class="copy">© <span id="ano"></span> <span data-marca-nome></span> · Arte das cartas: Rider-Waite-Smith (1909), domínio público.</p>
 </footer>
 
 
-<!-- ============================================================
-     FLUTUANTES
-     ============================================================ -->
-<button class="topo-btn" id="topoBtn" aria-label="Voltar ao topo">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-cima"/></svg>
-</button>
-
-<a class="zap-flut" data-zap="padrao" target="_blank" rel="noopener" aria-label="Conversar no WhatsApp">
-  <span class="anel" aria-hidden="true"></span>
-  <span class="anel anel2" aria-hidden="true"></span>
-  <span class="balao" aria-hidden="true">Vamos conversar?</span>
-  <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-zap"/></svg>
-</a>
+<!-- abas fixas (mobile) -->
+<nav class="abas-mob" id="abasMob" aria-label="Seções do site"></nav>
 
 <noscript>
   <div style="position:fixed;inset:auto 0 0;padding:1rem;background:#1E1B4B;border-top:1px solid #D4AF37;text-align:center;font-size:.9rem;z-index:999">
-    Este site precisa de JavaScript para funcionar.
-    Você também pode falar direto no WhatsApp: <strong>+55 (11) 94172-3682</strong>.
+    Este site precisa de JavaScript. Fale direto no WhatsApp: <strong>+55 (11) 94172-3682</strong>.
   </div>
 </noscript>
 
-<!-- Scripts — bumpe ?v= a cada edição -->
-<script src="js/config.js?v=3"></script>
-<script src="js/cards.js?v=3"></script>
-<script src="js/animations.js?v=3"></script>
-<script src="js/app.js?v=3"></script>
+<script src="js/config.js?v=4"></script>
+<script src="js/cards.js?v=4"></script>
+<script src="js/animations.js?v=4"></script>
+<script src="js/app.js?v=4"></script>
 </body>
 </html>
