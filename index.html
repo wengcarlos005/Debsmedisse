@@ -39,8 +39,8 @@
 </script>
 
 <!-- bumpe ?v= a cada edição de CSS/JS -->
-<link rel="stylesheet" href="css/style.css?v=6">
-<link rel="stylesheet" href="css/animations.css?v=6">
+<link rel="stylesheet" href="css/style.css?v=8">
+<link rel="stylesheet" href="css/animations.css?v=8">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"ProfessionalService","name":"Debs | Cartomante",
@@ -203,19 +203,22 @@
   <div class="moldura" id="bloco-sobre">
     <span class="mold-cantos" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
     <div class="mold-corpo sobre-corpo">
-      <div class="retrato" data-reveal="zoom">
-        <div class="retrato-arco" aria-hidden="true">
-          <svg viewBox="0 0 300 400" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
-            <path data-desenha style="--traco:1100"
-                  d="M150 14c-45 0-82 33-82 76v244c0 25 20 45 45 45h74c25 0 45-20 45-45V90c0-43-37-76-82-76z"/>
-            <path data-desenha style="--traco:420;--delay:250ms"
-                  d="M68 132c-13-8-21-21-21-37 0-9 6-17 13-17s13 8 13 17M232 132c13-8 21-21 21-37 0-9-6-17-13-17s-13 8-13 17"/>
-            <path data-desenha style="--traco:300;--delay:450ms"
-                  d="M150 14V4M139 8l11-8 11 8M122 28c-8-6-8-15 0-19M178 28c8-6 8-15 0-19"/>
-          </svg>
-        </div>
+      <figure class="retrato" data-reveal="zoom">
         <div class="retrato-foto" id="retratoFoto"></div>
-      </div>
+
+        <!-- ornamento no ápice do arco -->
+        <span class="retrato-topo" aria-hidden="true">
+          <svg viewBox="0 0 60 34" fill="none" stroke="currentColor"
+               stroke-width="1.1" stroke-linecap="round">
+            <path d="M30 32V12"/>
+            <path d="M30 12l4.5 7-4.5 7-4.5-7z" fill="currentColor" fill-opacity=".18"/>
+            <path d="M30 12c-5-4-6-9-4-12 4 2 6 7 4 12zM30 12c5-4 6-9 4-12-4 2-6 7-4 12z"/>
+            <path d="M18 26c-4 0-7-3-7-7M42 26c4 0 7-3 7-7"/>
+            <circle cx="11" cy="17" r="1.6" fill="currentColor" stroke="none"/>
+            <circle cx="49" cy="17" r="1.6" fill="currentColor" stroke="none"/>
+          </svg>
+        </span>
+      </figure>
 
       <div class="sobre-txt">
         <p class="eyebrow" data-sobre-eyebrow></p>
@@ -407,9 +410,9 @@
   </div>
 </noscript>
 
-<script src="js/config.js?v=6"></script>
-<script src="js/cards.js?v=6"></script>
-<script src="js/animations.js?v=6"></script>
-<script src="js/app.js?v=6"></script>
+<script src="js/config.js?v=8"></script>
+<script src="js/cards.js?v=8"></script>
+<script src="js/animations.js?v=8"></script>
+<script src="js/app.js?v=8"></script>
 </body>
 </html>

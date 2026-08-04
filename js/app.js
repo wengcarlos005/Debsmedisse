@@ -202,13 +202,15 @@
       }
     }
 
+    // Princípios como lista editorial (não como grade de cards)
+    const ROMANOS = ['i', 'ii', 'iii', 'iv', 'v', 'vi'];
     const pil = $('#pilares');
     if (pil) {
       pil.innerHTML = s.pilares.map((p, i) => `
-        <li class="pilar" data-reveal="zoom" data-delay="${i * 80}">
-          ${ICO('ico-' + p.icone)}
-          <h4>${p.titulo}</h4>
-          <p>${p.texto}</p>
+        <li data-reveal="esquerda" data-delay="${i * 90}">
+          <span class="p-num">${ROMANOS[i] || i + 1}</span>
+          <span class="p-nome">${p.titulo}</span>
+          <span class="p-txt">${p.texto}</span>
         </li>`).join('');
     }
   }

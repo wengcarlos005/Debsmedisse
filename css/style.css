@@ -480,16 +480,46 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
    ============================================================ */
 .sobre-corpo { display: grid; gap: clamp(2rem, 5vw, 3.4rem); align-items: center; }
 
-.retrato { position: relative; width: min(320px, 78vw); margin-inline: auto; aspect-ratio: 3 / 4; }
-.retrato-arco { position: absolute; inset: -6%; color: var(--ouro); pointer-events: none; z-index: 2; }
-.retrato-arco svg { width: 100%; height: 100%; }
+/* Retrato: a moldura é CSS, então acompanha a foto com precisão.
+   --arco controla o raio do topo; o resto deriva dele. */
+.retrato {
+  --arco: 50%;
+  --pe: 14px;
+  position: relative;
+  width: min(300px, 74vw);
+  margin: 2.2rem auto 0;
+  aspect-ratio: 3 / 4;
+}
+
+/* dois filetes concêntricos acompanhando o mesmo arco */
+.retrato::before,
+.retrato::after {
+  content: '';
+  position: absolute;
+  border: 1px solid var(--ouro);
+  border-radius: var(--arco) var(--arco) var(--pe) var(--pe) / 38% 38% var(--pe) var(--pe);
+  pointer-events: none;
+}
+.retrato::before { inset: -13px; opacity: .7; }
+.retrato::after  { inset: -21px; opacity: .28; }
+
+/* ornamento no ápice */
+.retrato-topo {
+  position: absolute;
+  top: -46px; left: 50%;
+  transform: translateX(-50%);
+  width: 60px; height: 34px;
+  color: var(--ouro);
+  z-index: 3;
+}
+.retrato-topo svg { width: 100%; height: 100%; }
+
 .retrato-foto {
   position: absolute;
   inset: 0;
-  border-radius: 160px 160px 12px 12px;
+  border-radius: var(--arco) var(--arco) var(--pe) var(--pe) / 38% 38% var(--pe) var(--pe);
   overflow: hidden;
   background: linear-gradient(168deg, #232A5E, #10152F);
-  border: 1px solid var(--ouro-fraco);
   display: grid;
   place-items: center;
 }
@@ -499,15 +529,24 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   object-fit: cover;
   object-position: 50% 22%;
 }
-/* véu azul-noite por cima para a foto sentar na paleta */
+/* A foto é um retrato caseiro: o fundo (flores, sofá) briga com a paleta.
+   Dissolvo as bordas no painel e escureço a periferia, deixando só o rosto. */
+.retrato-foto img {
+  -webkit-mask-image: radial-gradient(68% 62% at 50% 40%, #000 52%, transparent 96%);
+          mask-image: radial-gradient(68% 62% at 50% 40%, #000 52%, transparent 96%);
+}
 .retrato-foto::after {
   content: '';
   position: absolute;
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(15, 20, 50, .1) 0%, transparent 32%, rgba(11, 17, 32, .55) 100%),
-    radial-gradient(75% 60% at 50% 38%, transparent 40%, rgba(20, 25, 60, .42) 100%);
+    radial-gradient(66% 58% at 50% 38%, transparent 38%, rgba(17, 22, 56, .72) 82%),
+    linear-gradient(180deg, rgba(20, 26, 64, .45) 0%, transparent 26%, transparent 58%, rgba(13, 18, 44, .9) 100%);
+}
+/* leve sombra interna, para a foto parecer encaixada na moldura */
+.retrato-foto {
+  box-shadow: inset 0 0 34px 10px rgba(13, 18, 44, .75);
 }
 .retrato-vazio {
   display: flex;
@@ -531,29 +570,43 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   margin-top: 1.3rem;
 }
 
-.pilares {
+/* Princípios — lista editorial, sem caixas. Lê como página de livro. */
+.pilares { margin-top: 1.9rem; border-top: 1px solid var(--ouro-fraco); }
+.pilares li {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: .6rem;
-  margin-top: 1.8rem;
+  grid-template-columns: 1.6rem minmax(0, auto) minmax(0, 1fr);
+  align-items: baseline;
+  gap: 0 .7rem;
+  padding: .72rem 0;
+  border-bottom: 1px solid rgba(212, 175, 55, .1);
 }
-.pilar {
-  padding: .9rem .85rem;
-  border-radius: var(--raio-sm);
-  border: 1px solid var(--ouro-fraco);
-  background: rgba(11, 17, 32, .4);
-  transition: border-color .3s ease, transform .3s ease;
-}
-.pilar:hover { border-color: var(--ouro-medio); transform: translateY(-3px); }
-.pilar svg { width: 22px; height: 22px; color: var(--ouro); margin-bottom: .45rem; }
-.pilar h4 {
+.p-num {
   font-family: var(--f-titulo);
-  font-size: .7rem;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  margin: 0 0 .25rem;
+  font-size: .64rem;
+  color: var(--ouro);
+  opacity: .6;
+  letter-spacing: .06em;
 }
-.pilar p { font-size: .76rem; line-height: 1.5; color: var(--creme-suave); }
+.p-nome {
+  font-family: var(--f-display);
+  font-size: .96rem;
+  color: var(--creme);
+  white-space: nowrap;
+}
+.p-nome::after {
+  content: '·';
+  color: var(--ouro);
+  opacity: .5;
+  margin-left: .55rem;
+}
+.p-txt { font-size: .84rem; color: var(--creme-suave); }
+
+/* no celular o texto desce para a linha de baixo */
+@media (max-width: 559px) {
+  .pilares li { grid-template-columns: 1.4rem 1fr; }
+  .p-nome::after { content: none; }
+  .p-txt { grid-column: 2; }
+}
 
 
 /* ============================================================
@@ -646,30 +699,43 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .svc-obs svg { width: 13px; height: 13px; flex: none; }
 .svc .btn { margin-top: 1.1rem; }
 
-/* passos */
-.passos { display: grid; gap: .7rem; grid-template-columns: 1fr; }
+/* Passos — sequência editorial numerada, sem caixas.
+   Uma régua dourada corre por trás ligando os números. */
+.passos {
+  position: relative;
+  max-width: 620px;
+  margin-inline: auto;
+  padding-left: 1.2rem;
+}
+.passos::before {
+  content: '';
+  position: absolute;
+  left: 0; top: .9rem; bottom: .9rem;
+  width: 1px;
+  background: linear-gradient(transparent, var(--ouro-medio) 12%, var(--ouro-medio) 88%, transparent);
+}
 .passo {
-  display: grid;
-  grid-template-columns: 38px 1fr;
-  gap: .85rem;
-  align-items: start;
-  padding: .85rem .9rem;
-  border-radius: var(--raio-sm);
-  border: 1px solid var(--ouro-fraco);
-  background: rgba(11, 17, 32, .35);
+  position: relative;
+  padding: .85rem 0 .85rem 2.4rem;
 }
 .passo-num {
-  width: 38px; height: 38px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  border: 1px solid var(--ouro-medio);
+  position: absolute;
+  left: -1.2rem; top: .95rem;
+  width: 2.4rem;
   font-family: var(--f-titulo);
   font-size: .7rem;
   color: var(--ouro);
+  background: #151A3C;          /* “corta” a régua atrás do número */
+  padding-block: .1rem;
+  text-align: center;
 }
-.passo h4 { font-family: var(--f-display); font-size: 1rem; margin: 0 0 .15rem; font-weight: 600; }
-.passo p { font-size: .8rem; color: var(--creme-suave); }
+.passo h4 {
+  font-family: var(--f-display);
+  font-size: 1.06rem;
+  font-weight: 600;
+  margin: 0 0 .12rem;
+}
+.passo p { font-size: .84rem; color: var(--creme-suave); }
 
 /* carrossel */
 .carrossel { overflow: hidden; }
@@ -997,18 +1063,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
    RESPONSIVO
    ============================================================ */
 @media (min-width: 560px) {
-  .pilares { grid-template-columns: repeat(2, 1fr); }
-  .passos { grid-template-columns: repeat(2, 1fr); }
   .form-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (min-width: 860px) {
   .svc-grid { grid-template-columns: repeat(3, 1fr); }
-  .sobre-corpo { grid-template-columns: .8fr 1.2fr; }
+  .sobre-corpo { grid-template-columns: .78fr 1.22fr; }
   .carta-corpo { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
   .hero-corpo { grid-template-columns: 1.05fr .95fr; align-items: center; }
-  .passos { grid-template-columns: repeat(4, 1fr); }
-  .pilares { grid-template-columns: repeat(4, 1fr); }
 }
 
 @media (min-width: 1024px) {
