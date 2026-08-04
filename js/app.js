@@ -377,6 +377,7 @@
     const msg    = $('#cartaMsg');
     const chaves = $('#cartaChaves');
     const dica   = $('#cartaDica');
+    const ritual = $('#cartaRitual');
     let revelada = false;
 
     // estado inicial
@@ -394,6 +395,7 @@
         chaves.innerHTML   = arc.palavras.map((p) => `<span>${p}</span>`).join('');
         $('#cartaRodape').hidden = false;
         $('#cartaAcoes').hidden  = false;
+        if (ritual) ritual.hidden = true;      // some o passo-a-passo
         if (dica) dica.style.opacity = '0';
         carta.classList.add('revelada');
         carta.setAttribute('aria-pressed', 'true');
@@ -433,6 +435,7 @@
     carta.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tirar(); }
     });
+    $('#btnVirar')?.addEventListener('click', tirar);
   }
 
 
