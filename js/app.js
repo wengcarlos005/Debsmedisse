@@ -253,9 +253,9 @@
               <div><h3>${it.nome}</h3><p class="svc-dur">${it.duracao}</p></div>
             </div>
             <p class="svc-desc">${it.descricao}</p>
-            ${it.paraQuem ? `<p class="svc-quem">${it.paraQuem}</p>` : ''}
+            <p class="svc-quem">${it.paraQuem || ''}</p>
             <div class="svc-tabela">${linhas}</div>
-            ${it.obs ? `<p class="svc-obs">${ICO('ico-info')} ${it.obs}</p>` : ''}
+            <p class="svc-obs">${it.obs ? ICO('ico-info') + ' ' + it.obs : ''}</p>
             <a class="btn ${it.destaque ? 'btn--ouro' : 'btn--linha'} btn--bloco"
                href="${linkWhats(msgCard)}" target="_blank" rel="noopener">Agendar</a>
           </article>`;
