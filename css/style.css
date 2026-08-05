@@ -28,7 +28,7 @@
   --f-corpo:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --t-h1:    clamp(2.1rem, 7vw, 4.1rem);
-  --t-h2:    clamp(1.65rem, 4.6vw, 2.6rem);
+  --t-h2:    clamp(1.6rem, 4.2vw, 2.25rem);
   --t-h3:    clamp(1.05rem, 2.3vw, 1.28rem);
   --t-corpo: clamp(.94rem, 1.5vw, 1.02rem);
   --t-mini:  .68rem;
@@ -296,10 +296,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 .lead { color: var(--creme-suave); max-width: 52ch; }
 
-.tela-head { text-align: center; margin-bottom: clamp(1.5rem, 3vw, 2.1rem); }
+.tela-head { text-align: center; margin-bottom: clamp(1.2rem, 2.2vw, 1.6rem); }
 .tela-head h2 { font-size: var(--t-h2); }
-.tela-head .lead { margin: .55rem auto 0; }
-.tela-head .eyebrow { margin-bottom: .45rem; }
+.tela-head .lead { margin: .4rem auto 0; }
+.tela-head .eyebrow { margin-bottom: .35rem; }
 
 .sub-titulo {
   font-size: var(--t-h3);
@@ -327,7 +327,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   align-items: center;
   justify-content: center;
   gap: .5rem;
-  margin-top: 1.4rem;
+  margin-top: .95rem;
   font-size: .76rem;
   color: var(--creme-suave);
   text-align: center;
@@ -1204,6 +1204,27 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .so-desktop { display: inline; }
   .leque { min-height: 380px; }
   .moldura { padding: clamp(2rem, 3.4vw, 3.2rem); }
+}
+
+/* MODO COMPACTO: notebook e monitor baixo.
+   Comprime a moldura e o cabeçalho para a tabela de preços caber
+   inteira, com a nota de rodapé, sem precisar rolar.
+   Telas altas continuam com o respiro original. */
+@media (min-width: 860px) and (max-height: 900px) {
+  .palco { padding-top: 1rem; padding-bottom: 1rem; }
+  .moldura { padding: 1.5rem 1.8rem 1.7rem; }
+  .tela-head { margin-bottom: 1rem; }
+  .tela-head h2 { font-size: clamp(1.5rem, 3.4vw, 1.95rem); }
+  .tela-head .lead { font-size: .92rem; }
+
+  .svc { padding: .95rem 1.05rem .9rem; }
+  .svc-topo svg { width: 26px; height: 26px; }
+  .svc h3 { font-size: 1.22rem; }
+  .svc-desc { margin-top: .45rem; }
+  .svc-tabela { margin-top: .6rem; }
+  .svc-linha { padding: .42rem 0; }
+  .svc .btn { margin-top: .65rem; }
+  .nota { margin-top: .7rem; }
 }
 
 /* celular deitado */
