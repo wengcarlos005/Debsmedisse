@@ -81,7 +81,7 @@ const CONFIG = {
       {
         id: 'simples', nome: 'Simples', acento: 'rosa', destaque: false,
         descricao: 'Respostas diretas ao ponto.',
-        paraQuem: 'Para uma dúvida pontual, do tipo sim ou não.',
+        paraQuem: 'Para uma dúvida pontual e direta.',
         duracao: 'Até 24h',
         linhas: [
           { label: '1 pergunta',           valor: 'R$ 15,00' },
@@ -91,8 +91,8 @@ const CONFIG = {
       },
       {
         id: 'completas', nome: 'Completas', acento: 'ouro', destaque: true, selo: 'Mais procurada',
-        descricao: 'Cada pergunta destrinchada: contexto, obstáculo e conselho.',
-        paraQuem: 'Para decisão importante, quando o porquê importa tanto quanto a resposta.',
+        descricao: 'Leitura aprofundada de cada pergunta.',
+        paraQuem: 'Para decisão importante, quando o porquê pesa.',
         duracao: 'Até 24h',
         linhas: [
           { label: '1 pergunta',           valor: 'R$ 30,00' },
@@ -103,7 +103,7 @@ const CONFIG = {
       {
         id: 'hora', nome: 'Por Hora', acento: 'lavanda', destaque: false,
         descricao: 'Consulta ao vivo, conversa aberta.',
-        paraQuem: 'Para momento de virada, quando uma pergunta puxa a outra.',
+        paraQuem: 'Quando uma pergunta puxa a outra.',
         duracao: 'Hora marcada',
         obs: 'Sem limite de perguntas',
         linhas: [

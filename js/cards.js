@@ -342,7 +342,7 @@ function cartaSVG(arc) {
       <stop offset="0%" stop-color="#F0D98C"/><stop offset="45%" stop-color="#D4AF37"/>
       <stop offset="100%" stop-color="#9C801F"/>
     </linearGradient>
-    <clipPath id="fArte${arc.n}"><rect x="24" y="56" width="252" height="434" rx="3"/></clipPath>
+    <clipPath id="fArte${arc.n}"><rect x="24" y="56" width="252" height="440" rx="3"/></clipPath>
   </defs>
 
   <rect width="${CARTA_W}" height="${CARTA_H}" rx="14" fill="url(#fFundo${arc.n})"/>
@@ -350,10 +350,10 @@ function cartaSVG(arc) {
   <rect x="15" y="15" width="270" height="490" rx="6" fill="none" stroke="#D4AF37" stroke-width=".6" opacity=".5"/>
 
   <!-- arte do baralho Rider-Waite-Smith (domínio público) -->
-  <image href="${arc.img}" x="24" y="56" width="252" height="434"
+  <image href="${arc.img}" x="24" y="56" width="252" height="440"
          preserveAspectRatio="xMidYMid slice" clip-path="url(#fArte${arc.n})"
          loading="lazy" decoding="async"/>
-  <rect x="24" y="56" width="252" height="434" rx="3" fill="none" stroke="#D4AF37" stroke-width="1.2" opacity=".9"/>
+  <rect x="24" y="56" width="252" height="440" rx="3" fill="none" stroke="#D4AF37" stroke-width="1.2" opacity=".9"/>
 
   <!-- numeral romano no topo -->
   <text x="150" y="42" text-anchor="middle" fill="#F0D98C"
@@ -363,13 +363,9 @@ function cartaSVG(arc) {
     <path d="M104 37l5-5 5 5-5 5zM186 37l5-5 5 5-5 5z" fill="none"/>
   </g>
 
-  <!-- fita com o nome, sobreposta ao pé da arte -->
-  <g>
-    <path d="M40 458h220l-13 16 13 16H40l13-16z" fill="#FBF7F2" stroke="#D4AF37" stroke-width="1.1"/>
-    <path d="M40 458l-15 9 15 7zM260 458l15 9-15 7z" fill="#E4DACB" stroke="#D4AF37" stroke-width="1"/>
-    <text x="150" y="479" text-anchor="middle" fill="#232A55"
-          font-family="Cinzel, Georgia, serif" font-size="${arc.nome.length > 16 ? 11 : 13.5}" letter-spacing="${arc.nome.length > 16 ? 1.2 : 2}">${arc.nome.toUpperCase()}</text>
-  </g>
+  <!-- Sem fita com o nome traduzido: a própria carta já traz o título
+       impresso, e a tradução por cima criava dois títulos empilhados.
+       O nome em português aparece no painel de leitura, ao lado. -->
 
   <!-- cantos ornamentados -->
   <g stroke="#D4AF37" fill="none" stroke-width="1" opacity=".8">

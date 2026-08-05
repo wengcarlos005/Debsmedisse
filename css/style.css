@@ -629,7 +629,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 1.5rem 1.25rem 1.3rem;
+  padding: 1.15rem 1.15rem 1.05rem;
   border-radius: var(--raio-sm);
   border: 1px solid var(--ouro-fraco);
   background: rgba(11, 17, 32, .5);
@@ -672,27 +672,29 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   text-transform: uppercase;
   color: var(--acento, var(--ouro));
 }
-.svc-desc { color: var(--creme-suave); font-size: .82rem; margin-top: .7rem; }
+.svc-desc { color: var(--creme-suave); font-size: .8rem; margin-top: .55rem; }
 /* critério de escolha: sem isto o cliente não sabe por que uma custa o dobro */
 .svc-quem {
-  font-size: .76rem;
+  font-size: .74rem;
   font-style: italic;
+  line-height: 1.45;
   color: var(--acento, var(--ouro));
   opacity: .85;
-  margin-top: .5rem;
-  padding-left: .6rem;
+  margin-top: .4rem;
+  padding-left: .55rem;
   border-left: 1px solid currentColor;
 }
 
-.svc-tabela { margin-top: 1rem; border-top: 1px solid var(--ouro-fraco); }
+.svc-tabela { margin-top: .75rem; border-top: 1px solid var(--ouro-fraco); }
 .svc-linha {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: .6rem;
-  padding: .68rem 0;
+  padding: .5rem 0;
   border-bottom: 1px dashed rgba(212, 175, 55, .15);
 }
+.svc-linha:last-child { border-bottom: 0; }
 .svc-linha .lbl { font-size: .8rem; color: var(--creme-suave); }
 .svc-linha .val {
   font-family: var(--f-display);
@@ -724,7 +726,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   color: var(--acento, var(--ouro));
 }
 .svc-obs svg { width: 13px; height: 13px; flex: none; }
-.svc .btn { margin-top: 1.1rem; }
+.svc .btn { margin-top: .8rem; }
 
 /* Slots vazios PRECISAM continuar no fluxo do grid, senão a linha some
    e o botão do card sem observação sobe. Só zeramos o que decora. */
