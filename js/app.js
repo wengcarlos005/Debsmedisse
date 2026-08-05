@@ -448,15 +448,35 @@
       if (!arc) return;
 
       const texto = `Minha carta de hoje: ${arc.nome}.\n"${arc.mensagem}"`;
-      const url = location.origin + location.pathname;
       const btn = e.currentTarget;
       const rotulo = btn.querySelector('span');
 
+      /* Cada carta tem sua própria página em /c/<slug>.html, com a
+         og:image daquela carta. Compartilhar a raiz do site mostraria
+         sempre a mesma capa genérica no WhatsApp. */
+      const slug = (typeof SLUGS !== 'undefined') && SLUGS[arc.nome];
+      const base = location.origin + location.pathname.replace(/index\.html$/, '');
+      const url = slug ? `${base}c/${slug}.html` : base;
+
       try {
+        // 1ª escolha: mandar a IMAGEM da carta (vira story de Instagram)
+        if (navigator.canShare) {
+          try {
+            const resp = await fetch(`assets/og/${slug}.jpg`);
+            const blob = await resp.blob();
+            const arquivo = new File([blob], `carta-${slug}.jpg`, { type: 'image/jpeg' });
+            if (navigator.canShare({ files: [arquivo] })) {
+              await navigator.share({ files: [arquivo], text: `${texto}\n${url}` });
+              return;
+            }
+          } catch { /* sem suporte a arquivo: cai para o link */ }
+        }
+
         if (navigator.share) {
           await navigator.share({ title: 'Carta do dia', text: texto, url });
           return;
         }
+
         await navigator.clipboard.writeText(`${texto}\n${url}`);
         rotulo.textContent = 'Copiado!';
         setTimeout(() => { rotulo.textContent = 'Compartilhar'; }, 2200);
