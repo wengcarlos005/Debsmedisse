@@ -44,7 +44,7 @@ const CONFIG = {
     ctaPrimario: 'Ver as leituras',
     ctaSecundario: 'Agendar',
     marcas: [
-      { num: '22',   lbl: 'Arcanos' },
+      { num: '78',   lbl: 'Cartas' },
       { num: '24h',  lbl: 'Resposta' },
       { num: '100%', lbl: 'Sigiloso' },
     ],

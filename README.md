@@ -83,7 +83,7 @@ index.html            Marcação e sprite de ícones
 css/style.css         Tokens, componentes, layout responsivo
 css/animations.css    Keyframes e prefers-reduced-motion
 js/config.js          ← TODO O CONTEÚDO EDITÁVEL
-js/cards.js           Os 22 Arcanos Maiores da carta do dia
+js/cards.js           As 78 cartas do baralho (22 Maiores + 56 Menores)
 js/ornamentos.js      Biblioteca de ornamentos SVG (molduras, florais, fitas)
 js/animations.js      Starfield, scroll-reveal, parallax, tilt
 js/app.js             Monta a página e liga as interações
@@ -99,8 +99,11 @@ senão o navegador continua servindo a versão antiga em cache.
 
 ## Créditos das imagens
 
-As 22 cartas em `assets/cartas/` são do baralho **Rider-Waite-Smith (1909)**,
+As 78 cartas em `assets/cartas/` são do baralho **Rider-Waite-Smith (1909)**,
 ilustrado por **Pamela Colman Smith**, publicado originalmente pela William Rider & Son.
+
+O baralho está completo: 22 Arcanos Maiores (`00.jpg` a `21.jpg`) e
+56 Menores em quatro naipes de 14 (`copas-01.jpg` … `paus-14.jpg`).
 
 A obra está em **domínio público** — o direito autoral expirou. Uso livre, inclusive
 comercial, sem necessidade de licença ou pagamento.
@@ -111,7 +114,7 @@ A moldura dourada, o verso da carta e todos os demais ornamentos do site são ve
 próprios do projeto.
 
 > Se um dia quiser trocar por um baralho autoral, basta substituir os arquivos
-> `assets/cartas/00.jpg` … `21.jpg` mantendo os nomes. Nada no código muda.
+> de `assets/cartas/` mantendo os nomes. Nada no código muda.
 
 ## Acessibilidade
 

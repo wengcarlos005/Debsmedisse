@@ -421,15 +421,15 @@
     function tirar() {
       if (revelada) return;
       const salvo = lerSalvo();
-      const arc = salvo ? (ARCANOS.find((a) => a.n === salvo.n) || ARCANOS[0])
-                        : ARCANOS[Math.floor(Math.random() * ARCANOS.length)];
+      const arc = salvo ? (BARALHO.find((a) => a.n === salvo.n) || BARALHO[0])
+                        : BARALHO[Math.floor(Math.random() * BARALHO.length)];
       if (!salvo) salvar(arc.n);
       revelar(arc, true);
     }
 
     const salvo = lerSalvo();
     if (salvo) {
-      const arc = ARCANOS.find((a) => a.n === salvo.n);
+      const arc = BARALHO.find((a) => a.n === salvo.n);
       if (arc) revelar(arc, false);
     }
 

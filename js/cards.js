@@ -1,5 +1,5 @@
 ﻿/* ============================================================
-   ARCANOS MAIORES — 22 cartas da "Carta do Dia".
+   BARALHO COMPLETO: 78 cartas (22 Arcanos Maiores + 56 Menores).
 
    A ARTE das cartas é o baralho Rider-Waite-Smith (1909),
    ilustrado por Pamela Colman Smith — obra em DOMÍNIO PÚBLICO,
@@ -123,9 +123,203 @@ const ARCANOS = [
   },
 ];
 
+/* ============================================================
+   ARCANOS MENORES — 56 cartas em 4 naipes de 14.
+   Copas (emoção) · Ouros (matéria) · Espadas (mente) · Paus (ação)
+   O campo `selo` é o rótulo impresso no topo da carta,
+   equivalente ao numeral romano dos Maiores.
+   ============================================================ */
+const MENORES = [
+
+  /* ---------- COPAS ---------- */
+  { n: 22, naipe: 'copas', selo: 'Copas', nome: 'Ás de Copas',
+    palavras: ['afeto', 'início', 'abertura'],
+    mensagem: 'Um sentimento novo bate à porta. Deixe entrar antes de perguntar se vai durar.' },
+  { n: 23, naipe: 'copas', selo: 'Copas', nome: 'Dois de Copas',
+    palavras: ['parceria', 'atração', 'acordo'],
+    mensagem: 'Duas pessoas se encontram de verdade. Vale cuidar do que está nascendo aqui.' },
+  { n: 24, naipe: 'copas', selo: 'Copas', nome: 'Três de Copas',
+    palavras: ['celebração', 'amizade', 'alívio'],
+    mensagem: 'Chame quem te quer bem. O que você viveu merece ser comemorado em voz alta.' },
+  { n: 25, naipe: 'copas', selo: 'Copas', nome: 'Quatro de Copas',
+    palavras: ['tédio', 'recusa', 'apatia'],
+    mensagem: 'Tem uma oferta na sua frente que você nem olhou direito. Levante os olhos.' },
+  { n: 26, naipe: 'copas', selo: 'Copas', nome: 'Cinco de Copas',
+    palavras: ['luto', 'perda', 'saudade'],
+    mensagem: 'Você está contando o que caiu e esquecendo o que ficou em pé. Olhe para trás de você.' },
+  { n: 27, naipe: 'copas', selo: 'Copas', nome: 'Seis de Copas',
+    palavras: ['memória', 'infância', 'doçura'],
+    mensagem: 'Algo do passado volta com gosto bom. Aproveite sem tentar morar lá.' },
+  { n: 28, naipe: 'copas', selo: 'Copas', nome: 'Sete de Copas',
+    palavras: ['opções', 'ilusão', 'escolha'],
+    mensagem: 'Tanta possibilidade que nenhuma vira decisão. Escolha uma e comece.' },
+  { n: 29, naipe: 'copas', selo: 'Copas', nome: 'Oito de Copas',
+    palavras: ['partida', 'desapego', 'busca'],
+    mensagem: 'Você já tirou daqui o que tinha para tirar. Pode seguir sem culpa.' },
+  { n: 30, naipe: 'copas', selo: 'Copas', nome: 'Nove de Copas',
+    palavras: ['desejo', 'satisfação', 'conquista'],
+    mensagem: 'O que você pediu está chegando. Receba de peito aberto.' },
+  { n: 31, naipe: 'copas', selo: 'Copas', nome: 'Dez de Copas',
+    palavras: ['harmonia', 'família', 'plenitude'],
+    mensagem: 'A paz que você procurava está mais perto do que imagina. Provavelmente dentro de casa.' },
+  { n: 32, naipe: 'copas', selo: 'Copas', nome: 'Valete de Copas',
+    palavras: ['recado', 'novidade', 'ternura'],
+    mensagem: 'Chega uma notícia afetuosa. Responda com o mesmo cuidado.' },
+  { n: 33, naipe: 'copas', selo: 'Copas', nome: 'Cavaleiro de Copas',
+    palavras: ['convite', 'romance', 'proposta'],
+    mensagem: 'Alguém se aproxima com uma proposta sincera. Escute antes de julgar.' },
+  { n: 34, naipe: 'copas', selo: 'Copas', nome: 'Rainha de Copas',
+    palavras: ['intuição', 'acolhimento', 'empatia'],
+    mensagem: 'Sua sensibilidade está afiada hoje. Confie no que você sentiu de primeira.' },
+  { n: 35, naipe: 'copas', selo: 'Copas', nome: 'Rei de Copas',
+    palavras: ['maturidade', 'calma', 'equilíbrio'],
+    mensagem: 'Dá para sentir tudo sem se afogar. Segure o próprio leme.' },
+
+  /* ---------- OUROS ---------- */
+  { n: 36, naipe: 'ouros', selo: 'Ouros', nome: 'Ás de Ouros',
+    palavras: ['oportunidade', 'semente', 'recurso'],
+    mensagem: 'Uma porta material se abre. Pequena, mas real.' },
+  { n: 37, naipe: 'ouros', selo: 'Ouros', nome: 'Dois de Ouros',
+    palavras: ['equilíbrio', 'malabarismo', 'fluxo'],
+    mensagem: 'Você está segurando muita coisa ao mesmo tempo. Está dando conta, só não force mais.' },
+  { n: 38, naipe: 'ouros', selo: 'Ouros', nome: 'Três de Ouros',
+    palavras: ['ofício', 'equipe', 'reconhecimento'],
+    mensagem: 'Seu trabalho começa a ser notado. Aceite ajuda para ir além.' },
+  { n: 39, naipe: 'ouros', selo: 'Ouros', nome: 'Quatro de Ouros',
+    palavras: ['retenção', 'apego', 'segurança'],
+    mensagem: 'Segurar demais também trava. Veja o que dá para soltar sem risco.' },
+  { n: 40, naipe: 'ouros', selo: 'Ouros', nome: 'Cinco de Ouros',
+    palavras: ['falta', 'exclusão', 'frio'],
+    mensagem: 'A ajuda existe, você só ainda não pediu. Bater na porta não diminui ninguém.' },
+  { n: 41, naipe: 'ouros', selo: 'Ouros', nome: 'Seis de Ouros',
+    palavras: ['troca', 'generosidade', 'justiça'],
+    mensagem: 'Dar e receber precisam se equilibrar. Repare de que lado você está sempre.' },
+  { n: 42, naipe: 'ouros', selo: 'Ouros', nome: 'Sete de Ouros',
+    palavras: ['espera', 'avaliação', 'paciência'],
+    mensagem: 'A colheita ainda não chegou. Continue regando.' },
+  { n: 43, naipe: 'ouros', selo: 'Ouros', nome: 'Oito de Ouros',
+    palavras: ['dedicação', 'prática', 'esmero'],
+    mensagem: 'Repetição vira habilidade. Insista no detalhe.' },
+  { n: 44, naipe: 'ouros', selo: 'Ouros', nome: 'Nove de Ouros',
+    palavras: ['autonomia', 'conforto', 'mérito'],
+    mensagem: 'Você construiu o próprio chão. Pode descansar nele.' },
+  { n: 45, naipe: 'ouros', selo: 'Ouros', nome: 'Dez de Ouros',
+    palavras: ['patrimônio', 'legado', 'raiz'],
+    mensagem: 'O que você faz hoje sustenta gente além de você.' },
+  { n: 46, naipe: 'ouros', selo: 'Ouros', nome: 'Valete de Ouros',
+    palavras: ['estudo', 'começo', 'curiosidade'],
+    mensagem: 'Bom momento para aprender algo prático. Comece pelo básico.' },
+  { n: 47, naipe: 'ouros', selo: 'Ouros', nome: 'Cavaleiro de Ouros',
+    palavras: ['constância', 'método', 'firmeza'],
+    mensagem: 'Devagar e sempre resolve isso. Pressa aqui só atrapalha.' },
+  { n: 48, naipe: 'ouros', selo: 'Ouros', nome: 'Rainha de Ouros',
+    palavras: ['cuidado', 'prosperidade', 'chão'],
+    mensagem: 'Cuide do corpo e da casa. O resto se organiza a partir daí.' },
+  { n: 49, naipe: 'ouros', selo: 'Ouros', nome: 'Rei de Ouros',
+    palavras: ['solidez', 'domínio', 'provisão'],
+    mensagem: 'Você tem mais controle da situação do que está admitindo.' },
+
+  /* ---------- ESPADAS ---------- */
+  { n: 50, naipe: 'espadas', selo: 'Espadas', nome: 'Ás de Espadas',
+    palavras: ['clareza', 'verdade', 'corte'],
+    mensagem: 'A confusão acaba hoje. A verdade aparece limpa, mesmo que incomode.' },
+  { n: 51, naipe: 'espadas', selo: 'Espadas', nome: 'Dois de Espadas',
+    palavras: ['impasse', 'recusa', 'pausa'],
+    mensagem: 'Você está de olhos fechados para não ter que decidir. Abra.' },
+  { n: 52, naipe: 'espadas', selo: 'Espadas', nome: 'Três de Espadas',
+    palavras: ['mágoa', 'ruptura', 'dor'],
+    mensagem: 'Doeu, e não adianta fingir que não. Chore o que tem que chorar.' },
+  { n: 53, naipe: 'espadas', selo: 'Espadas', nome: 'Quatro de Espadas',
+    palavras: ['repouso', 'recuperação', 'silêncio'],
+    mensagem: 'Pare. Seu corpo está pedindo trégua há um tempo.' },
+  { n: 54, naipe: 'espadas', selo: 'Espadas', nome: 'Cinco de Espadas',
+    palavras: ['conflito', 'orgulho', 'custo'],
+    mensagem: 'Ganhar essa discussão vai te custar caro. Pense se vale.' },
+  { n: 55, naipe: 'espadas', selo: 'Espadas', nome: 'Seis de Espadas',
+    palavras: ['travessia', 'mudança', 'alívio'],
+    mensagem: 'Você está saindo de águas revoltas. Aguenta mais um pouco.' },
+  { n: 56, naipe: 'espadas', selo: 'Espadas', nome: 'Sete de Espadas',
+    palavras: ['estratégia', 'cautela', 'segredo'],
+    mensagem: 'Nem todo mundo está jogando limpo. Confira antes de confiar.' },
+  { n: 57, naipe: 'espadas', selo: 'Espadas', nome: 'Oito de Espadas',
+    palavras: ['limitação', 'medo', 'saída'],
+    mensagem: 'A amarra que te prende está mais frouxa do que parece. Tente se mexer.' },
+  { n: 58, naipe: 'espadas', selo: 'Espadas', nome: 'Nove de Espadas',
+    palavras: ['angústia', 'insônia', 'medo'],
+    mensagem: 'O que te tira o sono é maior de madrugada. De manhã encolhe.' },
+  { n: 59, naipe: 'espadas', selo: 'Espadas', nome: 'Dez de Espadas',
+    palavras: ['fim', 'fundo', 'recomeço'],
+    mensagem: 'Chegou ao fundo. Daqui o único caminho sobe.' },
+  { n: 60, naipe: 'espadas', selo: 'Espadas', nome: 'Valete de Espadas',
+    palavras: ['vigilância', 'curiosidade', 'atenção'],
+    mensagem: 'Preste atenção no que estão dizendo em volta. Tem informação útil ali.' },
+  { n: 61, naipe: 'espadas', selo: 'Espadas', nome: 'Cavaleiro de Espadas',
+    palavras: ['pressa', 'impulso', 'ímpeto'],
+    mensagem: 'Você quer resolver tudo agora. Respire antes de disparar.' },
+  { n: 62, naipe: 'espadas', selo: 'Espadas', nome: 'Rainha de Espadas',
+    palavras: ['lucidez', 'franqueza', 'limite'],
+    mensagem: 'Fale a verdade com elegância. Dá para ser honesta sem ser dura.' },
+  { n: 63, naipe: 'espadas', selo: 'Espadas', nome: 'Rei de Espadas',
+    palavras: ['razão', 'julgamento', 'autoridade'],
+    mensagem: 'Decida com a cabeça fria. Hoje a emoção está te enganando.' },
+
+  /* ---------- PAUS ---------- */
+  { n: 64, naipe: 'paus', selo: 'Paus', nome: 'Ás de Paus',
+    palavras: ['faísca', 'impulso', 'criação'],
+    mensagem: 'Uma ideia acende. Anote antes que apague.' },
+  { n: 65, naipe: 'paus', selo: 'Paus', nome: 'Dois de Paus',
+    palavras: ['planejamento', 'horizonte', 'escolha'],
+    mensagem: 'Você já sabe para onde quer ir. Falta marcar a data.' },
+  { n: 66, naipe: 'paus', selo: 'Paus', nome: 'Três de Paus',
+    palavras: ['expansão', 'espera', 'visão'],
+    mensagem: 'O que você lançou está a caminho de volta. Confie no prazo.' },
+  { n: 67, naipe: 'paus', selo: 'Paus', nome: 'Quatro de Paus',
+    palavras: ['celebração', 'casa', 'estabilidade'],
+    mensagem: 'Um ciclo se firma. Comemore em casa, com quem importa.' },
+  { n: 68, naipe: 'paus', selo: 'Paus', nome: 'Cinco de Paus',
+    palavras: ['atrito', 'competição', 'ruído'],
+    mensagem: 'Muita gente falando ao mesmo tempo. Escolha uma briga só.' },
+  { n: 69, naipe: 'paus', selo: 'Paus', nome: 'Seis de Paus',
+    palavras: ['vitória', 'reconhecimento', 'orgulho'],
+    mensagem: 'Você venceu essa. Deixe se elogiar.' },
+  { n: 70, naipe: 'paus', selo: 'Paus', nome: 'Sete de Paus',
+    palavras: ['defesa', 'posição', 'coragem'],
+    mensagem: 'Alguém está testando o seu limite. Segure o terreno.' },
+  { n: 71, naipe: 'paus', selo: 'Paus', nome: 'Oito de Paus',
+    palavras: ['velocidade', 'notícia', 'movimento'],
+    mensagem: 'As coisas vão acelerar. Prepare-se para responder rápido.' },
+  { n: 72, naipe: 'paus', selo: 'Paus', nome: 'Nove de Paus',
+    palavras: ['resistência', 'cansaço', 'quase'],
+    mensagem: 'Você está cansada e quase lá. Não largue agora.' },
+  { n: 73, naipe: 'paus', selo: 'Paus', nome: 'Dez de Paus',
+    palavras: ['sobrecarga', 'peso', 'delegar'],
+    mensagem: 'Você pegou peso demais. Coloque alguma coisa no chão.' },
+  { n: 74, naipe: 'paus', selo: 'Paus', nome: 'Valete de Paus',
+    palavras: ['entusiasmo', 'novidade', 'coragem'],
+    mensagem: 'Bateu vontade de mudar tudo. Comece por uma coisa.' },
+  { n: 75, naipe: 'paus', selo: 'Paus', nome: 'Cavaleiro de Paus',
+    palavras: ['aventura', 'ímpeto', 'partida'],
+    mensagem: 'Dá vontade de sair correndo atrás disso. Vá, mas leve mapa.' },
+  { n: 76, naipe: 'paus', selo: 'Paus', nome: 'Rainha de Paus',
+    palavras: ['confiança', 'magnetismo', 'presença'],
+    mensagem: 'Sua presença abre portas hoje. Ocupe o espaço.' },
+  { n: 77, naipe: 'paus', selo: 'Paus', nome: 'Rei de Paus',
+    palavras: ['liderança', 'visão', 'comando'],
+    mensagem: 'Assuma o leme. Estão esperando você decidir.' },
+];
+
+/* Baralho completo usado pela Carta do Dia */
+const BARALHO = ARCANOS.concat(MENORES);
+
 /* Caminho da arte de cada arcano (00.jpg … 21.jpg) */
 ARCANOS.forEach((a) => {
   a.img = `assets/cartas/${String(a.n).padStart(2, '0')}.jpg`;
+});
+
+// menores: copas-01.jpg … paus-14.jpg
+MENORES.forEach((c, i) => {
+  const posicao = (i % 14) + 1;
+  c.img = `assets/cartas/${c.naipe}-${String(posicao).padStart(2, '0')}.jpg`;
 });
 
 /* Proporção da carta: 300 × 520 (a arte RWS é 440×758) */
@@ -138,7 +332,7 @@ const CARTA_H = 520;
 function cartaSVG(arc) {
   return `
 <svg viewBox="0 0 ${CARTA_W} ${CARTA_H}" class="carta-svg" role="img"
-     aria-label="Carta ${arc.romano}, ${arc.nome}">
+     aria-label="${arc.nome}">
   <defs>
     <linearGradient id="fFundo${arc.n}" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#242A5E"/><stop offset="55%" stop-color="#171C42"/>
@@ -162,7 +356,7 @@ function cartaSVG(arc) {
 
   <!-- numeral romano no topo -->
   <text x="150" y="42" text-anchor="middle" fill="#F0D98C"
-        font-family="Cinzel, Georgia, serif" font-size="15" letter-spacing="4">${arc.romano}</text>
+        font-family="Cinzel, Georgia, serif" font-size="15" letter-spacing="4">${arc.selo || arc.romano}</text>
   <g stroke="#D4AF37" stroke-width=".9" opacity=".6" stroke-linecap="round">
     <path d="M40 37h58M202 37h58"/>
     <path d="M104 37l5-5 5 5-5 5zM186 37l5-5 5 5-5 5z" fill="none"/>
@@ -173,7 +367,7 @@ function cartaSVG(arc) {
     <path d="M40 458h220l-13 16 13 16H40l13-16z" fill="#FBF7F2" stroke="#D4AF37" stroke-width="1.1"/>
     <path d="M40 458l-15 9 15 7zM260 458l15 9-15 7z" fill="#E4DACB" stroke="#D4AF37" stroke-width="1"/>
     <text x="150" y="479" text-anchor="middle" fill="#232A55"
-          font-family="Cinzel, Georgia, serif" font-size="13.5" letter-spacing="2">${arc.nome.toUpperCase()}</text>
+          font-family="Cinzel, Georgia, serif" font-size="${arc.nome.length > 16 ? 11 : 13.5}" letter-spacing="${arc.nome.length > 16 ? 1.2 : 2}">${arc.nome.toUpperCase()}</text>
   </g>
 
   <!-- cantos ornamentados -->
