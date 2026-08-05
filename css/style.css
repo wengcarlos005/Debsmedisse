@@ -179,6 +179,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .abas a {
   position: relative;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
   padding: .5rem .95rem;
   border-radius: 999px;
   font-family: var(--f-titulo);
@@ -388,7 +391,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .btn--zap:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -12px rgba(37, 211, 102, .9); }
 
 .btn--bloco { width: 100%; }
-.btn--sm { padding: .55rem 1rem; font-size: .66rem; letter-spacing: .1em; }
+/* min-height 44px: alvo de toque acessível (WCAG 2.5.5) */
+.btn--sm { padding: .55rem 1rem; font-size: .66rem; letter-spacing: .1em; min-height: 44px; }
 
 .btn::after {
   content: '';
@@ -658,6 +662,16 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   color: var(--acento, var(--ouro));
 }
 .svc-desc { color: var(--creme-suave); font-size: .82rem; margin-top: .7rem; }
+/* critério de escolha: sem isto o cliente não sabe por que uma custa o dobro */
+.svc-quem {
+  font-size: .76rem;
+  font-style: italic;
+  color: var(--acento, var(--ouro));
+  opacity: .85;
+  margin-top: .5rem;
+  padding-left: .6rem;
+  border-left: 1px solid currentColor;
+}
 
 .svc-tabela { margin-top: 1rem; border-top: 1px solid var(--ouro-fraco); }
 .svc-linha {
@@ -948,6 +962,30 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .campo .erro { font-size: .72rem; color: var(--rosa); min-height: 1em; }
 .campo input.invalido, .campo select.invalido { border-color: var(--rosa); }
 
+/* obrigatório marcado ANTES de errar, não depois */
+.campo label .req { color: var(--rosa); margin-left: .18rem; }
+
+/* confirmação de envio */
+.sucesso {
+  display: flex;
+  gap: .8rem;
+  align-items: flex-start;
+  margin-top: 1.2rem;
+  padding: 1rem 1.1rem;
+  border-radius: var(--raio-sm);
+  border: 1px solid rgba(52, 209, 127, .45);
+  background: rgba(52, 209, 127, .09);
+}
+.sucesso.bloqueado {
+  border-color: rgba(232, 180, 196, .5);
+  background: rgba(232, 180, 196, .09);
+}
+.sucesso svg { width: 21px; height: 21px; flex: none; color: #34d17f; margin-top: 1px; }
+.sucesso.bloqueado svg { color: var(--rosa); }
+.sucesso strong { display: block; font-size: .92rem; margin-bottom: .15rem; }
+.sucesso p { font-size: .82rem; color: var(--creme-suave); }
+.sucesso a { color: var(--ouro-claro); text-decoration: underline; text-underline-offset: 3px; }
+
 /* FAQ */
 .faq { max-width: 680px; margin-inline: auto; display: grid; gap: .5rem; }
 .faq-item {
@@ -1009,6 +1047,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   display: inline-flex;
   align-items: center;
   gap: .5rem;
+  min-height: 44px;
   padding: .55rem .95rem;
   border-radius: 999px;
   border: 1px solid var(--ouro-fraco);

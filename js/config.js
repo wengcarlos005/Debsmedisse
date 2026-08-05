@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    CONFIG — Tudo que a Debs precisa editar está NESTE arquivo.
    Nome, telefone, preços, textos, depoimentos e FAQ.
    ============================================================ */
@@ -81,6 +81,7 @@ const CONFIG = {
       {
         id: 'simples', nome: 'Simples', acento: 'rosa', destaque: false,
         descricao: 'Respostas diretas ao ponto.',
+        paraQuem: 'Para uma dúvida pontual, do tipo sim ou não.',
         duracao: 'Até 24h',
         linhas: [
           { label: '1 pergunta',           valor: 'R$ 15,00' },
@@ -91,6 +92,7 @@ const CONFIG = {
       {
         id: 'completas', nome: 'Completas', acento: 'ouro', destaque: true, selo: 'Mais procurada',
         descricao: 'Cada pergunta destrinchada: contexto, obstáculo e conselho.',
+        paraQuem: 'Para decisão importante, quando o porquê importa tanto quanto a resposta.',
         duracao: 'Até 24h',
         linhas: [
           { label: '1 pergunta',           valor: 'R$ 30,00' },
@@ -101,6 +103,7 @@ const CONFIG = {
       {
         id: 'hora', nome: 'Por Hora', acento: 'lavanda', destaque: false,
         descricao: 'Consulta ao vivo, conversa aberta.',
+        paraQuem: 'Para momento de virada, quando uma pergunta puxa a outra.',
         duracao: 'Hora marcada',
         obs: 'Sem limite de perguntas',
         linhas: [
@@ -165,6 +168,8 @@ const CONFIG = {
   faq: {
     titulo: 'Dúvidas frequentes',
     itens: [
+      { p: 'E se vier uma resposta ruim?', r: 'Eu conto o que a carta mostra, com cuidado no jeito de falar. Nunca uso o Tarô para assustar ninguém. E carta difícil quase sempre vem junto com um caminho de saída.' },
+      { p: 'Nunca fiz leitura. Como começo?', r: 'Me chama no WhatsApp e conversa comigo antes. Ajudo você a formular a pergunta, que é metade do trabalho. Se preferir testar, uma pergunta Simples custa R$ 15,00.' },
       { p: 'Preciso estar presente na tiragem?', r: 'Nas Simples e Completas não: você manda as perguntas e recebe o resultado pronto. Na consulta por hora sim, porque é ao vivo.' },
       { p: 'Como recebo a leitura?', r: 'Pelo WhatsApp, em áudio ou texto, com a foto da tiragem.' },
       { p: 'Formas de pagamento?', r: 'Pix, antes da tiragem.' },

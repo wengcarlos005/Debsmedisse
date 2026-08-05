@@ -351,7 +351,8 @@ function cartaSVG(arc) {
 
   <!-- arte do baralho Rider-Waite-Smith (domínio público) -->
   <image href="${arc.img}" x="24" y="56" width="252" height="434"
-         preserveAspectRatio="xMidYMid slice" clip-path="url(#fArte${arc.n})"/>
+         preserveAspectRatio="xMidYMid slice" clip-path="url(#fArte${arc.n})"
+         loading="lazy" decoding="async"/>
   <rect x="24" y="56" width="252" height="434" rx="3" fill="none" stroke="#D4AF37" stroke-width="1.2" opacity=".9"/>
 
   <!-- numeral romano no topo -->

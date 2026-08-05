@@ -253,6 +253,7 @@
               <div><h3>${it.nome}</h3><p class="svc-dur">${it.duracao}</p></div>
             </div>
             <p class="svc-desc">${it.descricao}</p>
+            ${it.paraQuem ? `<p class="svc-quem">${it.paraQuem}</p>` : ''}
             <div class="svc-tabela">${linhas}</div>
             ${it.obs ? `<p class="svc-obs">${ICO('ico-info')} ${it.obs}</p>` : ''}
             <a class="btn ${it.destaque ? 'btn--ouro' : 'btn--linha'} btn--bloco"
@@ -438,6 +439,31 @@
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); tirar(); }
     });
     $('#btnVirar')?.addEventListener('click', tirar);
+
+    /* Compartilhar a carta: é o gancho de divulgação orgânica.
+       Usa a folha nativa do celular; no desktop copia o texto. */
+    $('#btnCompartilhar')?.addEventListener('click', async (e) => {
+      const salvoAgora = lerSalvo();
+      const arc = salvoAgora && BARALHO.find((a) => a.n === salvoAgora.n);
+      if (!arc) return;
+
+      const texto = `Minha carta de hoje: ${arc.nome}.\n"${arc.mensagem}"`;
+      const url = location.origin + location.pathname;
+      const btn = e.currentTarget;
+      const rotulo = btn.querySelector('span');
+
+      try {
+        if (navigator.share) {
+          await navigator.share({ title: 'Carta do dia', text: texto, url });
+          return;
+        }
+        await navigator.clipboard.writeText(`${texto}\n${url}`);
+        rotulo.textContent = 'Copiado!';
+        setTimeout(() => { rotulo.textContent = 'Compartilhar'; }, 2200);
+      } catch {
+        // usuário cancelou a folha de compartilhamento, ou clipboard negado
+      }
+    });
   }
 
 
@@ -483,7 +509,20 @@
       const extra = $('#fMsg').value.trim();
       if (extra) linhas.push('', `*Contexto:* ${extra}`);
 
-      window.open(linkWhats(linhas.join('\n')), '_blank', 'noopener');
+      const url = linkWhats(linhas.join('\n'));
+      const aba = window.open(url, '_blank', 'noopener');
+
+      // confirma na página; se o popup foi bloqueado, oferece o link manual
+      const ok = $('#formSucesso');
+      if (ok) {
+        $('#linkManual').href = url;
+        ok.hidden = false;
+        ok.classList.toggle('bloqueado', !aba);
+        ok.querySelector('strong').textContent = aba
+          ? 'Pronto, o WhatsApp foi aberto.'
+          : 'Seu navegador bloqueou a janela.';
+        ok.scrollIntoView({ block: 'nearest', behavior: Anim.menosMovimento ? 'auto' : 'smooth' });
+      }
     });
 
     renderFaq();
