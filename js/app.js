@@ -635,7 +635,59 @@
     document.body.classList.add('pronto');
   }
 
+  /* Carrega config do Supabase (se disponível) e aplica sobre o CONFIG estático */
+  async function loadRemoteConfig() {
+    if (typeof SupaDB === 'undefined' || !SupaDB.isConfigured()) return;
+    try {
+      const d = await SupaDB.loadConfig();
+      if (!d) return;
+      if (d.marca) Object.assign(CONFIG.marca, d.marca);
+      if (d.whatsapp) Object.assign(CONFIG.whatsapp, d.whatsapp);
+      if (d.hero) {
+        CONFIG.hero.eyebrow = d.hero.eyebrow || CONFIG.hero.eyebrow;
+        CONFIG.hero.titulo = d.hero.titulo || CONFIG.hero.titulo;
+        CONFIG.hero.subtitulo = d.hero.subtitulo || CONFIG.hero.subtitulo;
+        CONFIG.hero.ctaPrimario = d.hero.ctaPrimario || CONFIG.hero.ctaPrimario;
+        CONFIG.hero.ctaSecundario = d.hero.ctaSecundario || CONFIG.hero.ctaSecundario;
+      }
+      if (d.sobre) {
+        CONFIG.sobre.eyebrow = d.sobre.eyebrow || CONFIG.sobre.eyebrow;
+        CONFIG.sobre.titulo = d.sobre.titulo || CONFIG.sobre.titulo;
+        if (d.sobre.par1 || d.sobre.par2) CONFIG.sobre.paragrafos = [d.sobre.par1||'', d.sobre.par2||''];
+      }
+      if (d.pilares) CONFIG.sobre.pilares = d.pilares.map((p,i) => ({
+        titulo: p.titulo, texto: p.texto,
+        icone: p.icone || (CONFIG.sobre.pilares[i]||{}).icone || 'estrela',
+      }));
+      if (d.servicos) {
+        const acentos = ['rosa','ouro','lavanda'];
+        const ids = ['simples','completas','hora'];
+        CONFIG.servicos.itens = d.servicos.map((s,i) => ({
+          id: ids[i]||'extra', nome: s.nome, acento: acentos[i]||'ouro',
+          destaque: i===1, selo: i===1?'Mais procurada':'',
+          descricao: s.descricao, paraQuem: s.paraQuem, duracao: s.duracao,
+          obs: i===2?'Sem limite de perguntas':'',
+          linhas: s.linhas,
+        }));
+      }
+      if (d.jornada) CONFIG.jornada.passos = d.jornada.map((j,i) => ({
+        n: String(i+1).padStart(2,'0'), titulo: j.titulo, texto: j.texto,
+      }));
+      if (d.faq) CONFIG.faq.itens = d.faq;
+      if (d.depoimentos) {
+        CONFIG.depoimentos.lista = d.depoimentos;
+        CONFIG.depoimentos.exemplo = false;
+      }
+      if (d.rodape) Object.assign(CONFIG.rodape, d.rodape);
+    } catch(e) { console.warn('[Debs] Config remoto indisponível, usando estático.', e); }
+  }
+
+  async function boot() {
+    await loadRemoteConfig();
+    init();
+  }
+
   document.readyState === 'loading'
-    ? document.addEventListener('DOMContentLoaded', init)
-    : init();
+    ? document.addEventListener('DOMContentLoaded', boot)
+    : boot();
 })();
