@@ -9,7 +9,7 @@ const CONFIG = {
   marca: {
     nome: 'Debs',
     titulo: 'Cartomante',
-    tagline: 'Os guias falam. Eu traduzo.',
+    tagline: 'Os guias falam. Eu traduzo. Tarô e Baralho Cigano.',
     instagram: 'debsmedisse',
     instagramUrl: 'https://instagram.com/debsmedisse',
   },
@@ -20,7 +20,7 @@ const CONFIG = {
     numero: '5511941723682',
     exibicao: '+55 (11) 94172-3682',
     msgPadrao: 'Olá, Debs! Vim pelo site e gostaria de saber mais sobre as leituras.',
-    msgHero: 'Olá, Debs! Vim pelo site e gostaria de agendar uma leitura de Tarô.',
+    msgHero: 'Olá, Debs! Vim pelo site e gostaria de agendar uma leitura ao vivo.',
     msgCartaDoDia: 'Olá, Debs! Tirei minha carta do dia no site e gostaria de uma leitura completa.',
   },
 
@@ -38,9 +38,9 @@ const CONFIG = {
 
   /* ---------- INÍCIO ---------- */
   hero: {
-    eyebrow: 'Leituras de Tarô · Online',
+    eyebrow: 'Tarô e Baralho Cigano · Ao Vivo',
     titulo: 'Os guias falam.<br>Eu <em>traduzo</em>.',
-    subtitulo: 'Você traz a pergunta. As cartas fazem o resto.',
+    subtitulo: 'Leituras em tempo real. Você traz a pergunta, as cartas fazem o resto.',
     ctaPrimario: 'Ver as leituras',
     ctaSecundario: 'Agendar',
     marcas: [
@@ -55,15 +55,15 @@ const CONFIG = {
     eyebrow: 'Quem lê as cartas',
     titulo: 'Prazer, eu sou a Debs',
     paragrafos: [
-      'Não leio futuro fechado. Abro o baralho com você e mostro o que está em jogo agora: os movimentos, os medos, as portas que você ainda não viu.',
-      'Atendo online, com hora marcada. A decisão continua sendo sua.',
+      'Não leio futuro fechado. Abro o baralho com você, em tempo real, e mostro o que está em jogo agora: os movimentos, os medos, as portas que você ainda não viu.',
+      'Trabalho com Tarô e Baralho Cigano. Atendo online, ao vivo, com hora marcada. A decisão continua sendo sua.',
     ],
     // Foto tratada a partir de assets/debora-original.jpg
     // (recorte 3:4, nitidez e gradação para a paleta do site)
     foto:      'assets/debora.jpg',
     fotoWebp:  'assets/debora.webp',
     fotoMini:  'assets/debora@450.jpg',
-    fotoAlt:   'Débora, cartomante e leitora de Tarô',
+    fotoAlt:   'Debs, cartomante — Tarô e Baralho Cigano',
     pilares: [
       { titulo: 'Ética',         texto: 'Não leio terceiros sem consentimento.',      icone: 'balanca' },
       { titulo: 'Sigilo',        texto: 'O que é dito na leitura fica na leitura.',   icone: 'cadeado' },
@@ -76,13 +76,13 @@ const CONFIG = {
   servicos: {
     eyebrow: 'Tabela de preços',
     titulo: 'Escolha o seu oráculo',
-    subtitulo: 'Pagamento via Pix antes da tiragem.',
+    subtitulo: 'Todas as leituras são feitas em tempo real. Pagamento via Pix antes da tiragem.',
     itens: [
       {
         id: 'simples', nome: 'Simples', acento: 'rosa', destaque: false,
-        descricao: 'Respostas diretas ao ponto.',
+        descricao: 'Respostas diretas, ao vivo.',
         paraQuem: 'Para uma dúvida pontual e direta.',
-        duracao: 'Até 24h',
+        duracao: 'Em tempo real',
         linhas: [
           { label: '1 pergunta',           valor: 'R$ 15,00' },
           { label: '3 perguntas',          valor: 'R$ 35,00' },
@@ -91,9 +91,9 @@ const CONFIG = {
       },
       {
         id: 'completas', nome: 'Completas', acento: 'ouro', destaque: true, selo: 'Mais procurada',
-        descricao: 'Leitura aprofundada de cada pergunta.',
+        descricao: 'Leitura aprofundada ao vivo, com Tarô ou Baralho Cigano.',
         paraQuem: 'Para decisão importante, quando o porquê pesa.',
-        duracao: 'Até 24h',
+        duracao: 'Em tempo real',
         linhas: [
           { label: '1 pergunta',           valor: 'R$ 30,00' },
           { label: '3 perguntas',          valor: 'R$ 75,00' },
@@ -102,7 +102,7 @@ const CONFIG = {
       },
       {
         id: 'hora', nome: 'Por Hora', acento: 'lavanda', destaque: false,
-        descricao: 'Consulta ao vivo, conversa aberta.',
+        descricao: 'Consulta ao vivo, conversa aberta — Tarô ou Baralho Cigano.',
         paraQuem: 'Quando uma pergunta puxa a outra.',
         duracao: 'Hora marcada',
         obs: 'Sem limite de perguntas',
@@ -118,10 +118,10 @@ const CONFIG = {
   jornada: {
     titulo: 'Como funciona',
     passos: [
-      { n: '01', titulo: 'Escolha o formato',   texto: 'Simples, Completas ou por hora.' },
-      { n: '02', titulo: 'Mande as perguntas',  texto: 'Pelo WhatsApp, no seu tempo.' },
-      { n: '03', titulo: 'Eu abro as cartas',   texto: 'Tiragem feita com a sua energia em mente.' },
-      { n: '04', titulo: 'Você recebe',         texto: 'Em áudio ou texto, com a foto da tiragem.' },
+      { n: '01', titulo: 'Escolha o formato',   texto: 'Simples, Completas ou por hora. Tarô ou Baralho Cigano.' },
+      { n: '02', titulo: 'Agende pelo WhatsApp', texto: 'Marcamos o horário que funcione pra você.' },
+      { n: '03', titulo: 'Eu abro as cartas ao vivo', texto: 'Tiragem em tempo real, com a sua energia presente.' },
+      { n: '04', titulo: 'Você acompanha tudo',  texto: 'Conversa ao vivo com a foto da tiragem.' },
     ],
   },
 
@@ -170,8 +170,9 @@ const CONFIG = {
     itens: [
       { p: 'E se vier uma resposta ruim?', r: 'Eu conto o que a carta mostra, com cuidado no jeito de falar. Nunca uso o Tarô para assustar ninguém. E carta difícil quase sempre vem junto com um caminho de saída.' },
       { p: 'Nunca fiz leitura. Como começo?', r: 'Me chama no WhatsApp e conversa comigo antes. Ajudo você a formular a pergunta, que é metade do trabalho. Se preferir testar, uma pergunta Simples custa R$ 15,00.' },
-      { p: 'Preciso estar presente na tiragem?', r: 'Nas Simples e Completas não: você manda as perguntas e recebe o resultado pronto. Na consulta por hora sim, porque é ao vivo.' },
-      { p: 'Como recebo a leitura?', r: 'Pelo WhatsApp, em áudio ou texto, com a foto da tiragem.' },
+      { p: 'As leituras são ao vivo mesmo?', r: 'Sim! Todas as leituras são feitas em tempo real. Marcamos um horário e eu abro as cartas com você presente.' },
+      { p: 'Qual a diferença entre Tarô e Baralho Cigano?', r: 'O Tarô trabalha com 78 cartas e traz camadas mais profundas. O Baralho Cigano tem 36 cartas e é mais direto, prático. Posso te ajudar a escolher.' },
+      { p: 'Como funciona a leitura?', r: 'Pelo WhatsApp, ao vivo. Eu abro as cartas, mando a foto da tiragem e vamos conversando sobre o que apareceu.' },
       { p: 'Formas de pagamento?', r: 'Pix, antes da tiragem.' },
       { p: 'Posso perguntar sobre outra pessoa?', r: 'Posso ler a sua relação com ela. A vida íntima de quem não pediu leitura eu não abro.' },
       { p: 'O Tarô prevê doença ou morte?', r: 'Não faço esse tipo de leitura. Para saúde, procure um médico.' },
