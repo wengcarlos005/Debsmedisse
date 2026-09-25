@@ -5,8 +5,8 @@
    ============================================================ */
 
 const SUPABASE_CONFIG = {
-  url: '',   // ← Preencher: https://xxxxx.supabase.co
-  key: '',   // ← Preencher: anon/public key (não é a secret!)
+  url: 'https://rkmndimsgqwjhsejpszl.supabase.co',
+  key: 'sb_publishable_umPlxsx7GPFjc8ypzCwzHQ_cefg7L6t',
 };
 
 const SupaDB = (() => {
