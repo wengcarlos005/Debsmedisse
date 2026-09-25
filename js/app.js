@@ -392,14 +392,14 @@
       revelada = true;
 
       const mostrar = () => {
-        rotulo.textContent = `Arcano ${arc.romano}`;
+        rotulo.textContent = arc.romano ? `Arcano ${arc.romano}` : (arc.naipe ? arc.naipe.charAt(0).toUpperCase() + arc.naipe.slice(1) : '');
         titulo.textContent = arc.nome;
         msg.textContent    = arc.mensagem;
         chaves.innerHTML   = arc.palavras.map((p) => `<span>${p}</span>`).join('');
         $('#cartaRodape').hidden = false;
         $('#cartaAcoes').hidden  = false;
         if (ritual) ritual.hidden = true;      // some o passo-a-passo
-        if (dica) dica.style.opacity = '0';
+        if (dica) { dica.style.opacity = '0'; dica.style.display = 'none'; }
         carta.classList.add('revelada');
         carta.setAttribute('aria-pressed', 'true');
         carta.setAttribute('aria-label', `Carta do dia: ${arc.nome}`);
