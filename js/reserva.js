@@ -102,15 +102,7 @@ const Reserva = (() => {
   }
 
   function htmlEtapa1() {
-    const oraculos = CONFIG.oraculos || ['Tarô'];
     return `
-      <div class="rv-bloco">
-        <p class="rv-rot">Com qual oráculo?</p>
-        <div class="rv-pills" role="radiogroup">
-          ${oraculos.map((o) => `<button type="button" role="radio" aria-checked="${st.oraculo === o}"
-              class="rv-pill${st.oraculo === o ? ' on' : ''}" data-oraculo="${esc(o)}">${esc(o)}</button>`).join('')}
-        </div>
-      </div>
       <div class="rv-bloco">
         <p class="rv-rot">Qual leitura?</p>
         <div class="rv-pacotes" role="radiogroup">
@@ -123,7 +115,7 @@ const Reserva = (() => {
         </div>
       </div>
       <button type="button" class="btn btn--ouro btn--bloco" data-ir="2"
-        ${st.oraculo && st.pacote ? '' : 'disabled'}>Escolher dia e horário</button>`;
+        ${st.pacote ? '' : 'disabled'}>Escolher dia e horário</button>`;
   }
 
   function htmlEtapa2() {
@@ -166,7 +158,7 @@ const Reserva = (() => {
 
   function htmlResumo() {
     return `<div class="rv-resumo">
-      <div><span>Leitura</span><b>${esc(st.oraculo)} · ${esc(st.pacote.nome)}</b></div>
+      <div><span>Leitura</span><b>${esc(st.pacote.nome)}</b></div>
       <div><span>Quando</span><b>${rotuloDia(st.dia)} às ${st.hora}</b></div>
       <div><span>Valor</span><b class="rv-valor">${brl(st.pacote.preco)}</b></div>
     </div>`;
@@ -221,7 +213,7 @@ const Reserva = (() => {
       `Olá, ${CONFIG.marca.nome}! Acabei de agendar pelo site.`, '',
       `*Pedido:* ${st.codigo}`,
       `*Nome:* ${st.dados.nome}`,
-      `*Leitura:* ${st.oraculo} · ${st.pacote.nome}`,
+      `*Leitura:* ${st.pacote.nome}`,
       `*Quando:* ${rotuloDia(st.dia)} às ${st.hora}`,
       `*Valor:* ${brl(st.pacote.preco)}`, '',
       CONFIG.agenda.pixChave ? 'Segue o comprovante do Pix 👇' : 'Pode me mandar a chave Pix?',
@@ -232,7 +224,7 @@ const Reserva = (() => {
     return [
       `Olá, ${CONFIG.marca.nome}! Tentei agendar pelo site e não consegui.`, '',
       `*Nome:* ${st.dados.nome}`,
-      `*Leitura:* ${st.oraculo} · ${st.pacote.nome}`,
+      `*Leitura:* ${st.pacote.nome}`,
       `*Quando:* ${rotuloDia(st.dia)} às ${st.hora}`,
     ].join('\n');
   }
@@ -320,7 +312,7 @@ const Reserva = (() => {
 
     const ag = {
       id: st.codigo, nome: st.dados.nome, whatsapp: dig,
-      oraculo: st.oraculo, pacote: st.pacote.nome, valor: Number(st.pacote.preco),
+      oraculo: '', pacote: st.pacote.nome, valor: Number(st.pacote.preco),
       inicio: inicio.toISOString(), fim: fim.toISOString(),
       tema: st.dados.tema || null, mensagem: st.dados.mensagem || null,
     };
@@ -363,7 +355,6 @@ const Reserva = (() => {
       const b = e.target.closest('button, [data-ir]');
       if (!b || b.disabled) return;
 
-      if (b.dataset.oraculo) { st.oraculo = b.dataset.oraculo; render(); return; }
       if (b.dataset.pacote) {
         const p = CONFIG.pacotes[Number(b.dataset.pacote)];
         if (p !== st.pacote) { st.pacote = p; st.hora = null; }
@@ -403,7 +394,6 @@ const Reserva = (() => {
   function montar(el) {
     if (!el) return;
     root = el;
-    if ((CONFIG.oraculos || []).length === 1) st.oraculo = CONFIG.oraculos[0];
     ligar();
     render();
   }

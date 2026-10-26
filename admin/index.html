@@ -154,8 +154,8 @@ input[type=time],input[type=number],input[type=date]{width:100%;background:var(-
 
 <div class="toast" id="toast"></div>
 
-<script src="/js/supabase.js?v=25"></script>
-<script src="/js/config.js?v=25"></script>
+<script src="/js/supabase.js?v=26"></script>
+<script src="/js/config.js?v=26"></script>
 <script>
 let DATA = {};
 let SESSION = null;
@@ -443,7 +443,7 @@ function cardAg(a){
       <span class="st st-${s}">${ROT[s]||s}</span>
     </div>
     <div class="ag-info">
-      <b>${esc(a.nome)}</b> · ${esc(a.oraculo)}<br>
+      <b>${esc(a.nome)}</b>${a.oraculo?` · ${esc(a.oraculo)}`:''}<br>
       ${esc(a.pacote)} · <b>${brl(a.valor)}</b>${a.tema?` · ${esc(a.tema)}`:''}
     </div>
     ${a.mensagem?`<div class="ag-msg">${esc(a.mensagem)}</div>`:''}
@@ -549,11 +549,6 @@ function renderAgendaPix(){
   pintarPac();
   root.appendChild(pac);
 
-  // Oráculos
-  const ora = section('Oráculos', false);
-  ora.querySelector('.sec-body').appendChild(field('Separados por vírgula', DATA.oraculos.join(', '),
-    v=>DATA.oraculos=v.split(',').map(x=>x.trim()).filter(Boolean)));
-  root.appendChild(ora);
 }
 
 /* ====== SAVE ====== */
