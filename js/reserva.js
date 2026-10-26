@@ -101,18 +101,42 @@ const Reserva = (() => {
     </ol>`;
   }
 
+  /* agrupa "Simples · 1 pergunta" em Simples → 1 pergunta */
+  function gruposPacotes() {
+    const grupos = [];
+    CONFIG.pacotes.forEach((p, i) => {
+      const partes = String(p.nome).split(' · ');
+      const nome = partes.length > 1 ? partes[0] : '';
+      const rotulo = partes.length > 1 ? partes.slice(1).join(' · ') : p.nome;
+      let g = grupos.find((x) => x.nome === nome);
+      if (!g) grupos.push(g = { nome, itens: [] });
+      g.itens.push({ p, i, rotulo });
+    });
+    return grupos;
+  }
+
   function htmlEtapa1() {
     return `
-      <div class="rv-bloco">
-        <p class="rv-rot">Qual leitura?</p>
-        <div class="rv-pacotes" role="radiogroup">
-          ${CONFIG.pacotes.map((p, i) => `<button type="button" role="radio" aria-checked="${st.pacote === p}"
-              class="rv-pacote${st.pacote === p ? ' on' : ''}" data-pacote="${i}">
-              <span class="rv-pac-nome">${esc(p.nome)}</span>
-              <span class="rv-pac-dur">${p.duracao} min · ao vivo</span>
-              <span class="rv-pac-preco">${brl(p.preco)}</span>
-            </button>`).join('')}
-        </div>
+      <div class="rv-bloco rv-drop">
+        <p class="rv-rot" id="rvLeituraRot">Qual leitura?</p>
+        <button type="button" class="rv-sel${st.dropAberto ? ' ab' : ''}" data-abrir
+          aria-haspopup="listbox" aria-expanded="${!!st.dropAberto}" aria-labelledby="rvLeituraRot">
+          <span class="${st.pacote ? '' : 'rv-ph'}">${st.pacote ? esc(st.pacote.nome) : 'Escolha sua leitura'}</span>
+          <span class="rv-sel-dir">
+            ${st.pacote ? `<span class="rv-pac-preco">${brl(st.pacote.preco)}</span>` : ''}
+            <svg class="rv-ch" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+        </button>
+        ${st.dropAberto ? `<div class="rv-lista" role="listbox" aria-labelledby="rvLeituraRot">
+          ${gruposPacotes().map((g) => `
+            ${g.nome ? `<p class="rv-grp">${esc(g.nome)}</p>` : ''}
+            ${g.itens.map(({ p, i, rotulo }) => `
+              <button type="button" role="option" aria-selected="${st.pacote === p}"
+                class="rv-op${st.pacote === p ? ' on' : ''}" data-pacote="${i}">
+                <span>${esc(rotulo)}<small>${p.duracao} min · ao vivo</small></span>
+                <span class="rv-pac-preco">${brl(p.preco)}</span>
+              </button>`).join('')}`).join('<div class="rv-dv"></div>')}
+        </div>` : ''}
       </div>
       <button type="button" class="btn btn--ouro btn--bloco" data-ir="2"
         ${st.pacote ? '' : 'disabled'}>Escolher dia e horário</button>`;
@@ -355,10 +379,17 @@ const Reserva = (() => {
       const b = e.target.closest('button, [data-ir]');
       if (!b || b.disabled) return;
 
+      if ('abrir' in b.dataset) {
+        st.dropAberto = !st.dropAberto; render();
+        if (st.dropAberto) root.querySelector('.rv-op.on, .rv-op')?.focus();
+        return;
+      }
       if (b.dataset.pacote) {
         const p = CONFIG.pacotes[Number(b.dataset.pacote)];
         if (p !== st.pacote) { st.pacote = p; st.hora = null; }
-        render(); return;
+        st.dropAberto = false; render();
+        root.querySelector('[data-abrir]')?.focus();
+        return;
       }
       if (b.dataset.dia) { st.dia = b.dataset.dia; st.hora = null; render();
         root.querySelector('.rv-horas')?.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); return; }
@@ -380,9 +411,22 @@ const Reserva = (() => {
         return;
       }
       if ('reiniciar' in b.dataset) {
-        Object.assign(st, { etapa: 1, pacote: null, dia: null, hora: null, codigo: null, pix: '' });
+        Object.assign(st, { etapa: 1, dropAberto: false, pacote: null, dia: null, hora: null, codigo: null, pix: '' });
         irPara(1); return;
       }
+    });
+
+    /* fecha a lista ao clicar fora ou apertar Esc; setas navegam */
+    document.addEventListener('click', (e) => {
+      if (st.dropAberto && !e.target.closest('.rv-drop')) { st.dropAberto = false; render(); }
+    });
+    root.addEventListener('keydown', (e) => {
+      if (!st.dropAberto) return;
+      const ops = [...root.querySelectorAll('.rv-op')];
+      const i = ops.indexOf(document.activeElement);
+      if (e.key === 'Escape') { st.dropAberto = false; render(); root.querySelector('[data-abrir]')?.focus(); }
+      else if (e.key === 'ArrowDown') { e.preventDefault(); ops[Math.min(i + 1, ops.length - 1)]?.focus(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); ops[Math.max(i - 1, 0)]?.focus(); }
     });
 
     root.addEventListener('submit', (e) => {
