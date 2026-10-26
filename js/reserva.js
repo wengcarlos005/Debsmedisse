@@ -203,7 +203,7 @@ const Reserva = (() => {
           </div>
           <label class="rv-check campo--full">
             <input type="checkbox" name="maior" required>
-            <span>Tenho 18 anos ou mais e entendo que a leitura é para autoconhecimento.</span>
+            <span>Tenho 16 anos ou mais e entendo que a leitura é para autoconhecimento.</span>
           </label>
           <span class="erro rv-erro-maior" data-erro="maior"></span>
         </div>

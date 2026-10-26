@@ -209,7 +209,7 @@ const CONFIG = {
   /* ---------- RODAPÉ ---------- */
   rodape: {
     frase: 'Que a sua próxima carta venha leve.',
-    avisoLegal: 'As leituras de Tarô têm finalidade de autoconhecimento e reflexão. Não substituem acompanhamento médico, psicológico, jurídico ou financeiro. Atendimento para maiores de 18 anos.',
+    avisoLegal: 'As leituras de Tarô têm finalidade de autoconhecimento e reflexão. Não substituem acompanhamento médico, psicológico, jurídico ou financeiro. Atendimento a partir de 16 anos.',
   },
 };
 
