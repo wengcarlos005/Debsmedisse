@@ -497,70 +497,9 @@
     setTexto('[data-agenda-sub]', a.subtitulo);
     setTexto('[data-faq-titulo]', CONFIG.faq.titulo);
 
-    const fFormato = $('#fFormato');
-    if (fFormato) {
-      fFormato.innerHTML =
-        `<option value="" disabled selected>Escolha…</option>` +
-        CONFIG.servicos.itens.map((it) => `<option>${it.nome}</option>`).join('') +
-        `<option>Ainda não sei</option>`;
-    }
-    if ($('#fTema'))    $('#fTema').innerHTML    = a.temas.map((t) => `<option>${t}</option>`).join('');
-    if ($('#fHorario')) $('#fHorario').innerHTML = a.horarios.map((h) => `<option${h === 'Tanto faz' ? ' selected' : ''}>${h}</option>`).join('');
-
-    // "Por Hora" não tem limite de perguntas
-    fFormato?.addEventListener('change', () => {
-      const campo = $('#campoQtd');
-      if (campo) campo.style.display = /hora/i.test(fFormato.value) ? 'none' : '';
-    });
-
-    $('#formAgenda')?.addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (!validar()) return;
-
-      const formato = $('#fFormato').value;
-      const porHora = /hora/i.test(formato);
-      const linhas = [
-        `Olá, ${CONFIG.marca.nome}! Vim pelo site e gostaria de agendar uma leitura.`, '',
-        `*Nome:* ${$('#fNome').value.trim()}`,
-        `*Formato:* ${formato}`,
-      ];
-      if (!porHora) linhas.push(`*Perguntas:* ${$('#fQtd').value}`);
-      linhas.push(`*Tema:* ${$('#fTema').value}`, `*Melhor horário:* ${$('#fHorario').value}`);
-      const extra = $('#fMsg').value.trim();
-      if (extra) linhas.push('', `*Contexto:* ${extra}`);
-
-      const url = linkWhats(linhas.join('\n'));
-      const aba = window.open(url, '_blank', 'noopener');
-
-      // confirma na página; se o popup foi bloqueado, oferece o link manual
-      const ok = $('#formSucesso');
-      if (ok) {
-        $('#linkManual').href = url;
-        ok.hidden = false;
-        ok.classList.toggle('bloqueado', !aba);
-        ok.querySelector('strong').textContent = aba
-          ? 'Pronto, o WhatsApp foi aberto.'
-          : 'Seu navegador bloqueou a janela.';
-        ok.scrollIntoView({ block: 'nearest', behavior: Anim.menosMovimento ? 'auto' : 'smooth' });
-      }
-    });
+    if (typeof Reserva !== 'undefined') Reserva.montar($('#reserva'));
 
     renderFaq();
-  }
-
-  function validar() {
-    let ok = true;
-    const checar = (id, msg) => {
-      const campo = $(id);
-      const erro  = $(`[data-erro="${id.slice(1)}"]`);
-      const vazio = !campo.value.trim();
-      campo.classList.toggle('invalido', vazio);
-      if (erro) erro.textContent = vazio ? msg : '';
-      if (vazio && ok) { campo.focus(); ok = false; }
-    };
-    checar('#fNome', 'Preciso saber como te chamar.');
-    checar('#fFormato', 'Escolha um formato.');
-    return ok;
   }
 
   function renderFaq() {
@@ -679,6 +618,9 @@
         CONFIG.depoimentos.exemplo = false;
       }
       if (d.rodape) Object.assign(CONFIG.rodape, d.rodape);
+      if (d.agenda) Object.assign(CONFIG.agenda, d.agenda);
+      if (Array.isArray(d.pacotes) && d.pacotes.length) CONFIG.pacotes = d.pacotes;
+      if (Array.isArray(d.oraculos) && d.oraculos.length) CONFIG.oraculos = d.oraculos;
     } catch(e) { console.warn('[Debs] Config remoto indisponível, usando estático.', e); }
   }
 

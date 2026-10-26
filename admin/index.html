@@ -66,6 +66,55 @@ textarea{resize:vertical;min-height:55px}
 .toast{position:fixed;bottom:4.5rem;left:50%;transform:translateX(-50%);padding:.55rem 1.2rem;border-radius:8px;font-size:.82rem;font-weight:500;opacity:0;transition:opacity .3s;pointer-events:none;z-index:99}
 .toast.ok{background:#22c55e;color:#fff;opacity:1}
 .toast.err{background:#ef4444;color:#fff;opacity:1}
+
+/* ABAS */
+.tabs{display:flex;gap:.3rem;margin-bottom:1.2rem;border-bottom:1px solid rgba(212,175,55,.15);overflow-x:auto}
+.tabs button{background:none;border:0;border-bottom:2px solid transparent;color:var(--creme-s);padding:.6rem .8rem;font:inherit;font-size:.85rem;font-weight:500;cursor:pointer;white-space:nowrap}
+.tabs button.on{color:var(--ouro-c);border-bottom-color:var(--ouro)}
+.tabs .badge[hidden]{display:none}.tabs .badge{display:inline-block;min-width:18px;padding:0 5px;margin-left:4px;border-radius:9px;background:var(--rosa);color:var(--bg);font-size:.7rem;font-weight:600;line-height:18px;text-align:center}
+.tab{display:none}.tab.on{display:block}
+.hint{font-size:.75rem;color:var(--creme-s);opacity:.75;margin-top:.2rem;line-height:1.45}
+
+/* AGENDAMENTOS */
+.filtros{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem}
+.filtros button{background:var(--bg3);border:1px solid rgba(212,175,55,.2);color:var(--creme-s);border-radius:20px;padding:.35rem .8rem;font:inherit;font-size:.78rem;cursor:pointer}
+.filtros button.on{border-color:var(--ouro);color:var(--ouro-c)}
+.ag{border:1px solid rgba(212,175,55,.14);border-radius:var(--r);padding:.9rem 1rem;margin-bottom:.7rem;background:var(--bg3)}
+.ag-top{display:flex;justify-content:space-between;gap:.6rem;align-items:flex-start;margin-bottom:.45rem}
+.ag-quando{font-size:1rem;font-weight:600;color:var(--creme)}
+.ag-cod{font-size:.72rem;color:var(--creme-s);margin-top:.1rem}
+.st{font-size:.68rem;font-weight:600;padding:.2rem .55rem;border-radius:20px;white-space:nowrap;text-transform:uppercase;letter-spacing:.04em}
+.st-aguardando_pagamento{background:rgba(212,175,55,.15);color:var(--ouro-c)}
+.st-expirado{background:rgba(201,194,188,.12);color:var(--creme-s)}
+.st-confirmado{background:rgba(34,197,94,.15);color:#7ee2a2}
+.st-concluido{background:rgba(185,167,218,.15);color:#cbbcec}
+.st-cancelado{background:rgba(232,180,196,.12);color:var(--rosa)}
+.ag-info{font-size:.84rem;color:var(--creme-s);line-height:1.6}
+.ag-info b{color:var(--creme);font-weight:500}
+.ag-msg{font-size:.82rem;color:var(--creme-s);font-style:italic;margin-top:.4rem;padding-left:.6rem;border-left:2px solid rgba(212,175,55,.3)}
+.ag-acoes{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.7rem}
+.ag-acoes button,.ag-acoes a{font:inherit;font-size:.78rem;font-weight:600;padding:.45rem .75rem;border-radius:6px;cursor:pointer;text-decoration:none;border:1px solid rgba(212,175,55,.25);background:var(--bg);color:var(--creme)}
+.ag-acoes .ok{background:#22c55e;border-color:#22c55e;color:#fff}
+.ag-acoes .zap{border-color:rgba(37,211,102,.5);color:#7ee2a2}
+.ag-acoes .x{color:var(--rosa);border-color:rgba(232,180,196,.3)}
+.vazio{text-align:center;color:var(--creme-s);padding:2rem 1rem;font-size:.88rem}
+.resumo-ag{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:1rem}
+.resumo-ag div{background:var(--bg3);border:1px solid rgba(212,175,55,.12);border-radius:8px;padding:.6rem;text-align:center}
+.resumo-ag b{display:block;font-size:1.2rem;color:var(--ouro-c)}
+.resumo-ag span{font-size:.7rem;color:var(--creme-s)}
+
+/* AGENDA */
+.dias{display:flex;gap:.35rem;flex-wrap:wrap}
+.dias label{display:flex;align-items:center;gap:.3rem;background:var(--bg);border:1px solid rgba(212,175,55,.2);border-radius:6px;padding:.4rem .6rem;font-size:.82rem;text-transform:none;letter-spacing:0;color:var(--creme);cursor:pointer;margin:0}
+.dias input{accent-color:var(--ouro)}
+select{width:100%;background:var(--bg);border:1px solid rgba(212,175,55,.2);border-radius:6px;padding:.5rem .65rem;color:var(--creme);font-size:.85rem;font-family:inherit}
+input[type=time],input[type=number],input[type=date]{width:100%;background:var(--bg);border:1px solid rgba(212,175,55,.2);border-radius:6px;padding:.5rem .65rem;color:var(--creme);font-size:.85rem;font-family:inherit;color-scheme:dark}
+.folgas{display:flex;gap:.35rem;flex-wrap:wrap}
+.folga{background:var(--bg);border:1px solid rgba(232,180,196,.3);border-radius:20px;padding:.25rem .4rem .25rem .7rem;font-size:.78rem;display:flex;align-items:center;gap:.3rem}
+.folga button{background:none;border:0;color:var(--rosa);cursor:pointer;font-size:.9rem;line-height:1}
+.pac-row{display:grid;grid-template-columns:1fr 80px 80px 28px;gap:.4rem;align-items:center;margin-bottom:.4rem}
+.pac-row button{background:none;border:0;color:var(--rosa);cursor:pointer;font-size:1rem}
+.pac-head{font-size:.68rem;color:var(--creme-s);text-transform:uppercase;letter-spacing:.04em}
 </style>
 </head>
 <body>
@@ -85,20 +134,28 @@ textarea{resize:vertical;min-height:55px}
 <!-- EDITOR -->
 <div class="editor" id="editor">
   <h1>Painel da Debs</h1>
-  <p class="sub">Edite os textos do site e clique em Salvar.</p>
-  <div id="sections"></div>
+  <p class="sub" id="subTab">Seus agendamentos.</p>
+  <nav class="tabs" role="tablist">
+    <button class="on" data-tab="tabAgend">Agendamentos<span class="badge" id="badgePend" hidden></span></button>
+    <button data-tab="tabAgenda">Agenda e Pix</button>
+    <button data-tab="tabTextos">Textos do site</button>
+  </nav>
+  <section class="tab on" id="tabAgend"></section>
+  <section class="tab" id="tabAgenda"></section>
+  <section class="tab" id="tabTextos"><div id="sections"></div></section>
 </div>
 
 <div class="bar" id="bar" style="display:none">
   <button class="preview" onclick="window.open('/','_blank')">Ver site</button>
-  <button class="save" onclick="doSave()">Salvar</button>
+  <button class="save" id="btnSalvar" onclick="doSave()" style="display:none">Salvar</button>
+  <button class="preview" id="btnAtualizar" onclick="carregarAgendamentos()">Atualizar</button>
   <button class="logout" onclick="doLogout()">Sair</button>
 </div>
 
 <div class="toast" id="toast"></div>
 
-<script src="js/supabase.js?v=22"></script>
-<script src="js/config.js?v=22"></script>
+<script src="/js/supabase.js?v=23"></script>
+<script src="/js/config.js?v=23"></script>
 <script>
 let DATA = {};
 let SESSION = null;
@@ -145,9 +202,15 @@ async function showEditor(){
   $('#bar').style.display='flex';
 
   // Load from Supabase or fallback to static CONFIG
-  const remote = await SupaDB.loadConfig();
-  DATA = remote || configToData(CONFIG);
+  const remote = await SupaDB.loadConfig() || {};
+  DATA = { ...configToData(CONFIG), ...remote };
+  DATA.agenda = { ...CONFIG.agenda, ...(remote.agenda || {}) };
+  if (!Array.isArray(DATA.pacotes) || !DATA.pacotes.length) DATA.pacotes = CONFIG.pacotes.map(p=>({...p}));
+  if (!Array.isArray(DATA.oraculos) || !DATA.oraculos.length) DATA.oraculos = [...CONFIG.oraculos];
   renderSections();
+  renderAgendaPix();
+  ligarAbas();
+  carregarAgendamentos();
 }
 
 function configToData(c){
@@ -162,6 +225,9 @@ function configToData(c){
     faq: c.faq.itens.map(f=>({...f})),
     depoimentos: c.depoimentos.lista.map(d=>({...d})),
     rodape: { ...c.rodape },
+    agenda: { ...c.agenda, dias:[...c.agenda.dias], folgas:[...c.agenda.folgas] },
+    pacotes: c.pacotes.map(p=>({...p})),
+    oraculos: [...c.oraculos],
   };
 }
 
@@ -284,9 +350,217 @@ function renderSections(){
   ));
 }
 
+
+/* ====== ABAS ====== */
+const SUBS = { tabAgend:'Seus agendamentos.', tabAgenda:'Seus horários de atendimento, chave Pix e preços. Clique em Salvar ao terminar.', tabTextos:'Edite os textos do site e clique em Salvar.' };
+function ligarAbas(){
+  document.querySelectorAll('.tabs button').forEach(b=>{
+    b.onclick=()=>{
+      document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===b));
+      document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.id===b.dataset.tab));
+      $('#subTab').textContent = SUBS[b.dataset.tab];
+      const ag = b.dataset.tab==='tabAgend';
+      $('#btnSalvar').style.display = ag ? 'none' : '';
+      $('#btnAtualizar').style.display = ag ? '' : 'none';
+    };
+  });
+}
+
+/* ====== AGENDAMENTOS ====== */
+let AGS = []; let FILTRO = 'proximos';
+const SEM = ['dom','seg','ter','qua','qui','sex','sáb'];
+const MES = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+const RESERVA_MIN = 60;
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+const brl = v => Number(v).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+function sp(iso){ const d=new Date(new Date(iso).getTime()-3*3600e3);
+  return { dia:`${SEM[d.getUTCDay()]}, ${d.getUTCDate()} ${MES[d.getUTCMonth()]}`,
+    hora:`${String(d.getUTCHours()).padStart(2,'0')}:${String(d.getUTCMinutes()).padStart(2,'0')}` }; }
+function statusDe(a){
+  if(a.status==='aguardando_pagamento' && Date.now()-new Date(a.criado_em).getTime() > RESERVA_MIN*60e3) return 'expirado';
+  return a.status;
+}
+const ROT = { aguardando_pagamento:'Aguardando Pix', expirado:'Pix não pago', confirmado:'Confirmado', concluido:'Concluído', cancelado:'Cancelado' };
+
+async function carregarAgendamentos(){
+  const box = $('#tabAgend');
+  box.innerHTML = '<p class="vazio">Carregando…</p>';
+  const lista = await SupaDB.listarAgendamentos(SESSION.token);
+  if(!lista){ box.innerHTML = '<p class="vazio">Não consegui carregar. Sua sessão pode ter expirado — saia e entre de novo.</p>'; return; }
+  AGS = lista;
+  renderAgendamentos();
+}
+
+function renderAgendamentos(){
+  const box = $('#tabAgend');
+  const agora = Date.now();
+  const pend = AGS.filter(a=>statusDe(a)==='aguardando_pagamento');
+  const prox = AGS.filter(a=>a.status==='confirmado' && new Date(a.fim).getTime()>agora);
+  const mesAtual = new Date(agora-3*3600e3).toISOString().slice(0,7);
+  const fatMes = AGS.filter(a=>['confirmado','concluido'].includes(a.status) && new Date(new Date(a.inicio).getTime()-3*3600e3).toISOString().slice(0,7)===mesAtual)
+    .reduce((t,a)=>t+Number(a.valor),0);
+  const badge = $('#badgePend'); badge.hidden = !pend.length; badge.textContent = pend.length;
+
+  const filtros = {
+    proximos: a => (statusDe(a)==='aguardando_pagamento' || a.status==='confirmado') && new Date(a.fim).getTime()>agora,
+    pendentes: a => statusDe(a)==='aguardando_pagamento' || statusDe(a)==='expirado',
+    historico: a => ['concluido','cancelado'].includes(a.status) || new Date(a.fim).getTime()<=agora,
+    todos: () => true,
+  };
+  let itens = AGS.filter(filtros[FILTRO]);
+  if (FILTRO==='historico' || FILTRO==='todos') itens = itens.slice().reverse();
+
+  box.innerHTML = `
+    <div class="resumo-ag">
+      <div><b>${pend.length}</b><span>aguardando Pix</span></div>
+      <div><b>${prox.length}</b><span>confirmados</span></div>
+      <div><b>${brl(fatMes)}</b><span>no mês</span></div>
+    </div>
+    <div class="filtros">
+      ${[['proximos','Próximos'],['pendentes','Pagamentos'],['historico','Histórico'],['todos','Todos']]
+        .map(([k,l])=>`<button data-f="${k}" class="${FILTRO===k?'on':''}">${l}</button>`).join('')}
+    </div>
+    ${itens.length ? itens.map(cardAg).join('') : '<p class="vazio">Nada por aqui.</p>'}`;
+
+  box.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{ FILTRO=b.dataset.f; renderAgendamentos(); });
+  box.querySelectorAll('[data-acao]').forEach(b=>b.onclick=()=>mudarStatus(b.dataset.id, b.dataset.acao));
+}
+
+function cardAg(a){
+  const s = statusDe(a); const q = sp(a.inicio); const f = sp(a.fim);
+  const nome = esc(a.nome.split(' ')[0]);
+  const zapMsg = s==='confirmado'
+    ? `Oi, ${a.nome.split(' ')[0]}! Pagamento recebido, sua leitura está confirmada para ${q.dia} às ${q.hora}. Até lá! ✨`
+    : `Oi, ${a.nome.split(' ')[0]}! Aqui é a Debs, sobre seu agendamento ${a.id} (${q.dia} às ${q.hora}).`;
+  const acoes = [];
+  if (s==='aguardando_pagamento' || s==='expirado') acoes.push(`<button class="ok" data-acao="confirmado" data-id="${esc(a.id)}">✓ Pix recebido</button>`);
+  if (s==='confirmado') acoes.push(`<button class="ok" data-acao="concluido" data-id="${esc(a.id)}">✓ Leitura feita</button>`);
+  acoes.push(`<a class="zap" target="_blank" rel="noopener" href="https://wa.me/${esc(a.whatsapp)}?text=${encodeURIComponent(zapMsg)}">WhatsApp</a>`);
+  if (!['cancelado','concluido'].includes(s)) acoes.push(`<button class="x" data-acao="cancelado" data-id="${esc(a.id)}">Cancelar</button>`);
+  return `<article class="ag">
+    <div class="ag-top">
+      <div><div class="ag-quando">${q.dia} · ${q.hora}–${f.hora}</div><div class="ag-cod">${esc(a.id)}</div></div>
+      <span class="st st-${s}">${ROT[s]||s}</span>
+    </div>
+    <div class="ag-info">
+      <b>${esc(a.nome)}</b> · ${esc(a.oraculo)}<br>
+      ${esc(a.pacote)} · <b>${brl(a.valor)}</b>${a.tema?` · ${esc(a.tema)}`:''}
+    </div>
+    ${a.mensagem?`<div class="ag-msg">${esc(a.mensagem)}</div>`:''}
+    <div class="ag-acoes">${acoes.join('')}</div>
+  </article>`;
+}
+
+async function mudarStatus(id, status){
+  if (status==='cancelado' && !confirm('Cancelar este agendamento? O horário volta a ficar livre.')) return;
+  const ok = await SupaDB.atualizarStatus(id, status, SESSION.token);
+  if(!ok){ toast('Não consegui atualizar. Entre de novo e tente.', false); return; }
+  const a = AGS.find(x=>x.id===id); if(a) a.status = status;
+  renderAgendamentos();
+  toast(status==='confirmado' ? 'Confirmado! Avise a cliente pelo WhatsApp.' : 'Atualizado.');
+}
+
+/* ====== AGENDA E PIX ====== */
+function el(html){ const t=document.createElement('template'); t.innerHTML=html.trim(); return t.content.firstChild; }
+
+function renderAgendaPix(){
+  const A = DATA.agenda; const root = $('#tabAgenda'); root.innerHTML='';
+
+  // Pix
+  const pix = section('Chave Pix', true);
+  const pb = pix.querySelector('.sec-body');
+  const tipo = el(`<div><label>Tipo de chave</label><select>
+    ${[['telefone','Celular'],['cpf','CPF / CNPJ'],['email','E-mail'],['aleatoria','Chave aleatória']]
+      .map(([v,l])=>`<option value="${v}"${A.pixTipo===v?' selected':''}>${l}</option>`).join('')}</select></div>`);
+  tipo.querySelector('select').onchange=e=>A.pixTipo=e.target.value;
+  pb.appendChild(tipo);
+  pb.appendChild(field('Chave Pix', A.pixChave, v=>A.pixChave=v));
+  const r = document.createElement('div'); r.className='row';
+  r.appendChild(field('Nome no banco', A.pixNome, v=>A.pixNome=v));
+  r.appendChild(field('Cidade', A.pixCidade, v=>A.pixCidade=v));
+  pb.appendChild(r);
+  pb.appendChild(el(`<p class="hint">É com esses dados que o site gera o QR Code do Pix para a cliente. Sem chave, o site pede para a cliente falar com você no WhatsApp.</p>`));
+  root.appendChild(pix);
+
+  // Horários
+  const hor = section('Dias e horários de atendimento', true);
+  const hb = hor.querySelector('.sec-body');
+  const dias = el(`<div><label>Dias da semana</label><div class="dias">
+    ${['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'].map((d,i)=>`<label><input type="checkbox" value="${i}"${A.dias.map(Number).includes(i)?' checked':''}>${d}</label>`).join('')}
+  </div></div>`);
+  dias.querySelectorAll('input').forEach(c=>c.onchange=()=>{
+    A.dias=[...dias.querySelectorAll('input:checked')].map(x=>Number(x.value));
+  });
+  hb.appendChild(dias);
+  const r2 = el(`<div class="row">
+    <div><label>Começa às</label><input type="time" value="${A.inicio}" data-k="inicio"></div>
+    <div><label>Último horário termina às</label><input type="time" value="${A.fim}" data-k="fim"></div>
+  </div>`);
+  r2.querySelectorAll('input').forEach(i=>i.onchange=e=>A[e.target.dataset.k]=e.target.value);
+  hb.appendChild(r2);
+  const r3 = el(`<div class="row">
+    <div><label>Intervalo entre horários</label><select data-k="intervalo">
+      ${[15,30,60].map(n=>`<option value="${n}"${Number(A.intervalo)===n?' selected':''}>${n} min</option>`).join('')}</select></div>
+    <div><label>Antecedência mínima (horas)</label><input type="number" min="0" max="72" value="${A.antecedenciaHoras}" data-k="antecedenciaHoras"></div>
+  </div>`);
+  r3.querySelectorAll('select,input').forEach(i=>i.onchange=e=>A[e.target.dataset.k]=Number(e.target.value));
+  hb.appendChild(r3);
+  const r4 = el(`<div><label>Abrir agenda para os próximos</label><select>
+    ${[7,14,30,60,90].map(n=>`<option value="${n}"${Number(A.janelaDias)===n?' selected':''}>${n} dias</option>`).join('')}</select></div>`);
+  r4.querySelector('select').onchange=e=>A.janelaDias=Number(e.target.value);
+  hb.appendChild(r4);
+  root.appendChild(hor);
+
+  // Folgas
+  const fol = section('Folgas e dias bloqueados', false);
+  const fb = fol.querySelector('.sec-body');
+  const lista = el(`<div class="folgas"></div>`);
+  const pintar = ()=>{
+    A.folgas = [...new Set(A.folgas)].sort();
+    lista.innerHTML = A.folgas.length ? A.folgas.map(d=>{ const [y,m,dd]=d.split('-');
+      return `<span class="folga">${dd}/${m}/${y}<button data-d="${d}" aria-label="remover">×</button></span>`;}).join('')
+      : '<span class="hint">Nenhuma folga marcada.</span>';
+    lista.querySelectorAll('button').forEach(b=>b.onclick=()=>{ A.folgas=A.folgas.filter(x=>x!==b.dataset.d); pintar(); });
+  };
+  const add = el(`<div class="row"><input type="date"><button class="add-btn" style="margin:0">+ Bloquear este dia</button></div>`);
+  add.querySelector('button').onclick=()=>{ const v=add.querySelector('input').value; if(v){ A.folgas.push(v); pintar(); } };
+  fb.appendChild(add); fb.appendChild(lista); pintar();
+  root.appendChild(fol);
+
+  // Pacotes
+  const pac = section('Leituras que podem ser agendadas', false);
+  const kb = pac.querySelector('.sec-body');
+  const pintarPac = ()=>{
+    kb.innerHTML = `<div class="pac-row pac-head"><span>Nome</span><span>Preço R$</span><span>Minutos</span><span></span></div>`;
+    DATA.pacotes.forEach((p,i)=>{
+      const row = el(`<div class="pac-row">
+        <input type="text" value="${esc(p.nome)}"><input type="number" min="0" step="0.01" value="${p.preco}">
+        <input type="number" min="5" step="5" value="${p.duracao}"><button aria-label="remover">✕</button></div>`);
+      const [n,pr,du] = row.querySelectorAll('input');
+      n.oninput=e=>p.nome=e.target.value; pr.oninput=e=>p.preco=Number(e.target.value); du.oninput=e=>p.duracao=Number(e.target.value);
+      row.querySelector('button').onclick=()=>{ DATA.pacotes.splice(i,1); pintarPac(); };
+      kb.appendChild(row);
+    });
+    const b = el(`<button class="add-btn">+ Nova leitura</button>`);
+    b.onclick=()=>{ DATA.pacotes.push({nome:'',preco:0,duracao:30}); pintarPac(); };
+    kb.appendChild(b);
+    kb.appendChild(el(`<p class="hint">Os minutos definem quanto tempo da agenda a leitura ocupa.</p>`));
+  };
+  pintarPac();
+  root.appendChild(pac);
+
+  // Oráculos
+  const ora = section('Oráculos', false);
+  ora.querySelector('.sec-body').appendChild(field('Separados por vírgula', DATA.oraculos.join(', '),
+    v=>DATA.oraculos=v.split(',').map(x=>x.trim()).filter(Boolean)));
+  root.appendChild(ora);
+}
+
 /* ====== SAVE ====== */
 async function doSave(){
   if(!SESSION){toast('Faça login primeiro.', false);return;}
+  if(!(await SupaDB.getSession())){ toast('Sua sessão expirou. Entre de novo.', false); doLogout(); return; }
+  DATA.pacotes = DATA.pacotes.filter(p=>String(p.nome).trim() && Number(p.preco)>0 && Number(p.duracao)>0);
   const ok = await SupaDB.saveConfig(DATA, SESSION.token);
   toast(ok ? 'Salvo! O site já está atualizado.' : 'Erro ao salvar. Tente de novo.', ok);
 }

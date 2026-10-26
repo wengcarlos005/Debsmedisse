@@ -82,5 +82,50 @@ const SupaDB = (() => {
     return { token, user: await r.json() };
   }
 
-  return { isConfigured, loadConfig, saveConfig, login, getSession };
+  /* ---------- AGENDAMENTOS ---------- */
+
+  /* Cliente cria a reserva (fica aguardando o Pix). Não lê nada de volta. */
+  async function criarAgendamento(ag) {
+    const r = await fetch(api('agendamentos'), {
+      method: 'POST',
+      headers: { ...headers(), 'Prefer': 'return=minimal' },
+      body: JSON.stringify(ag),
+    });
+    if (r.ok) return { ok: true };
+    const txt = await r.text();
+    return { ok: false, ocupado: /horario_indisponivel/.test(txt), erro: txt };
+  }
+
+  /* Horários já tomados num intervalo — só início/fim, sem dados pessoais. */
+  async function horariosOcupados(deISO, ateISO) {
+    const r = await fetch(api('rpc/horarios_ocupados'), {
+      method: 'POST',
+      headers: headers(),
+      body: JSON.stringify({ de: deISO, ate: ateISO }),
+    });
+    if (!r.ok) throw new Error('ocupados ' + r.status);
+    return r.json();
+  }
+
+  /* Admin: lista os agendamentos */
+  async function listarAgendamentos(token) {
+    const r = await fetch(api('agendamentos?select=*&order=inicio.asc'), { headers: authHeaders(token) });
+    if (!r.ok) return null;
+    return r.json();
+  }
+
+  /* Admin: muda o status de um agendamento */
+  async function atualizarStatus(id, status, token) {
+    const r = await fetch(api('agendamentos?id=eq.' + encodeURIComponent(id)), {
+      method: 'PATCH',
+      headers: { ...authHeaders(token), 'Prefer': 'return=minimal' },
+      body: JSON.stringify({ status }),
+    });
+    return r.ok;
+  }
+
+  return {
+    isConfigured, loadConfig, saveConfig, login, getSession,
+    criarAgendamento, horariosOcupados, listarAgendamentos, atualizarStatus,
+  };
 })();

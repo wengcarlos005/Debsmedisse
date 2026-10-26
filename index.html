@@ -50,8 +50,9 @@
 </script>
 
 <!-- bumpe ?v= a cada edição de CSS/JS -->
-<link rel="stylesheet" href="css/style.css?v=22">
-<link rel="stylesheet" href="css/animations.css?v=22">
+<link rel="stylesheet" href="css/style.css?v=23">
+<link rel="stylesheet" href="css/animations.css?v=23">
+<link rel="stylesheet" href="css/reserva.css?v=23">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"ProfessionalService","name":"Debs | Cartomante",
@@ -374,62 +375,7 @@
         <p class="lead" data-agenda-sub></p>
       </header>
 
-      <form id="formAgenda" novalidate>
-        <div class="form-grid">
-          <div class="campo">
-            <label for="fNome">Seu nome <span class="req" aria-hidden="true">*</span></label>
-            <input type="text" id="fNome" placeholder="Como posso te chamar?"
-                   autocomplete="given-name" autocapitalize="words" enterkeyhint="next" required>
-            <span class="erro" data-erro="fNome"></span>
-          </div>
-          <div class="campo">
-            <label for="fFormato">Formato <span class="req" aria-hidden="true">*</span></label>
-            <select id="fFormato" required></select>
-            <span class="erro" data-erro="fFormato"></span>
-          </div>
-          <div class="campo" id="campoQtd">
-            <label for="fQtd">Quantas perguntas?</label>
-            <select id="fQtd">
-              <option>1 pergunta</option>
-              <option selected>3 perguntas</option>
-              <option>5 perguntas</option>
-              <option>mais de 5 perguntas</option>
-              <option>ainda não sei</option>
-            </select>
-          </div>
-          <div class="campo">
-            <label for="fTema">Tema</label>
-            <select id="fTema"></select>
-          </div>
-          <div class="campo campo--full">
-            <label for="fHorario">Melhor horário</label>
-            <select id="fHorario"></select>
-          </div>
-          <div class="campo campo--full">
-            <label for="fMsg">Quer adiantar algo? <em>(opcional)</em></label>
-            <textarea id="fMsg" rows="3" enterkeyhint="done" autocapitalize="sentences"
-                      placeholder="Em poucas linhas, o que te traz até as cartas."></textarea>
-          </div>
-        </div>
-
-        <button type="submit" class="btn btn--zap btn--bloco" data-magnetico>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-zap"/></svg>
-          Enviar pelo WhatsApp
-        </button>
-        <p class="nota">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-info"/></svg>
-          O botão abre o WhatsApp com a mensagem pronta para você revisar antes de enviar.
-        </p>
-
-        <!-- confirmação: sem isto, popup bloqueado parecia site quebrado -->
-        <div class="sucesso" id="formSucesso" hidden role="status" aria-live="polite">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-check"/></svg>
-          <div>
-            <strong>Pronto, o WhatsApp foi aberto.</strong>
-            <p>Não abriu? <a id="linkManual" target="_blank" rel="noopener">Toque aqui para abrir a conversa.</a></p>
-          </div>
-        </div>
-      </form>
+      <div id="reserva" class="reserva"></div>
 
       <div class="risco" aria-hidden="true"><i></i><b></b><i></i></div>
 
@@ -464,11 +410,14 @@
   </div>
 </noscript>
 
-<script src="js/supabase.js?v=22"></script>
-<script src="js/config.js?v=22"></script>
-<script src="js/cards.js?v=22"></script>
-<script src="js/slugs.js?v=22"></script>
-<script src="js/animations.js?v=22"></script>
-<script src="js/app.js?v=22"></script>
+<script src="js/supabase.js?v=23"></script>
+<script src="js/config.js?v=23"></script>
+<script src="js/cards.js?v=23"></script>
+<script src="js/slugs.js?v=23"></script>
+<script src="js/animations.js?v=23"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="js/pix.js?v=23"></script>
+<script src="js/reserva.js?v=23"></script>
+<script src="js/app.js?v=23"></script>
 </body>
 </html>

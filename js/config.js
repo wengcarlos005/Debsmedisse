@@ -45,7 +45,7 @@ const CONFIG = {
     ctaSecundario: 'Agendar',
     marcas: [
       { num: '78',   lbl: 'Cartas' },
-      { num: '24h',  lbl: 'Resposta' },
+      { num: 'Ao vivo', lbl: 'Leituras' },
       { num: '100%', lbl: 'Sigiloso' },
     ],
   },
@@ -156,13 +156,41 @@ const CONFIG = {
   agendamento: {
     eyebrow: 'Vamos abrir as cartas',
     titulo: 'Agende sua leitura',
-    subtitulo: 'Preencha e eu recebo tudo organizado no WhatsApp.',
+    subtitulo: 'Escolha a leitura, o dia e o horário. O pagamento é por Pix e garante a sua vaga.',
     temas: [
       'Amor e relacionamentos', 'Trabalho e carreira', 'Dinheiro e prosperidade',
       'Família', 'Espiritualidade', 'Decisão específica', 'Panorama geral', 'Outro',
     ],
     horarios: ['Manhã', 'Tarde', 'Noite', 'Tanto faz'],
   },
+
+  /* ---------- AGENDA + PIX (editável no /admin) ---------- */
+  agenda: {
+    pixTipo: 'telefone',          // cpf | telefone | email | aleatoria
+    pixChave: '',                 // ← a Débora preenche no /admin
+    pixNome: 'Debora',
+    pixCidade: 'Sao Paulo',
+    dias: [1, 2, 3, 4, 5, 6],     // 0=dom, 1=seg ... 6=sáb
+    inicio: '09:00',
+    fim: '21:00',
+    intervalo: 30,                // minutos entre um horário e outro
+    antecedenciaHoras: 2,         // não deixa marcar em cima da hora
+    janelaDias: 30,               // até quantos dias à frente
+    folgas: [],                   // datas bloqueadas: 'AAAA-MM-DD'
+  },
+
+  oraculos: ['Tarô', 'Baralho Cigano'],
+
+  /* Pacotes que o cliente pode reservar e pagar pelo site.
+     preco em reais (número) · duracao em minutos */
+  pacotes: [
+    { nome: 'Simples · 1 pergunta',   preco: 15,  duracao: 15 },
+    { nome: 'Simples · 3 perguntas',  preco: 35,  duracao: 30 },
+    { nome: 'Completa · 1 pergunta',  preco: 30,  duracao: 30 },
+    { nome: 'Completa · 3 perguntas', preco: 75,  duracao: 45 },
+    { nome: 'Por hora · 1 hora',      preco: 100, duracao: 60 },
+    { nome: 'Por hora · 2 horas',     preco: 150, duracao: 120 },
+  ],
 
   /* ---------- FAQ ---------- */
   faq: {
